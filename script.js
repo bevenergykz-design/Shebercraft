@@ -1,5 +1,5 @@
 /* =====================================================
-   SMARTCRAFT — JavaScript
+   SHEBERCRAFT — JavaScript
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -102,40 +102,66 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== MOBILE MENU =====
   const burgerBtn = document.getElementById('burgerBtn');
 
-  // Create mobile menu element
   const mobileMenu = document.createElement('div');
   mobileMenu.className = 'mobile-menu';
   mobileMenu.innerHTML = `
-    <button class="mobile-close" id="mobileClose" aria-label="Закрыть меню">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <button class="mobile-close" aria-label="Закрыть меню">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M18 6 6 18M6 6l12 12"/>
       </svg>
     </button>
     <a href="#services" class="mobile-nav-link">Услуги</a>
+    <a href="#crm" class="mobile-nav-link">CRM</a>
     <a href="#catalog" class="mobile-nav-link">Каталог</a>
-    <a href="#how-it-works" class="mobile-nav-link">Как работаем</a>
     <a href="#cases" class="mobile-nav-link">Кейсы</a>
     <a href="#faq" class="mobile-nav-link">FAQ</a>
-    <a href="#contact" class="btn-primary btn-lg" style="margin-top:1rem">Получить решение</a>
+    <a href="#contact" class="btn-primary btn-lg" style="margin-top:1.5rem">Получить решение</a>
   `;
   document.body.appendChild(mobileMenu);
 
   const toggleMenu = (open) => {
     mobileMenu.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-    burgerBtn.setAttribute('aria-expanded', open);
+    // Only lock vertical scroll — do NOT override overflow-x (breaks fixed float buttons)
+    document.body.style.overflowY = open ? 'hidden' : '';
+    if (burgerBtn) burgerBtn.setAttribute('aria-expanded', String(open));
   };
 
-  burgerBtn?.addEventListener('click', () => toggleMenu(!mobileMenu.classList.contains('open')));
-  document.getElementById('mobileClose')?.addEventListener('click', () => toggleMenu(false));
+  // Burger button opens menu
+  if (burgerBtn) {
+    burgerBtn.addEventListener('click', () => {
+      toggleMenu(!mobileMenu.classList.contains('open'));
+    });
+  }
+
+  // Close button — querySelector works after innerHTML set + appendChild
+  const mobileCloseBtn = mobileMenu.querySelector('.mobile-close');
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', () => toggleMenu(false));
+  }
+
+  // Any nav link closes menu
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  // Escape key closes menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      toggleMenu(false);
+    }
+  });
+
+  // Click outside menu content closes it
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) toggleMenu(false);
   });
 
   // ===== SMOOTH SCROLL for anchor links =====
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
-      const target = document.querySelector(link.getAttribute('href'));
+      const href = link.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
         const offset = 80;
@@ -172,54 +198,54 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
 
     const phone = document.getElementById('phone').value.trim();
-    const name = document.getElementById('name').value.trim();
 
     if (!phone) {
-      document.getElementById('phone').focus();
-      document.getElementById('phone').style.borderColor = 'var(--color-danger)';
-      setTimeout(() => document.getElementById('phone').style.borderColor = '', 2000);
+      const phoneEl = document.getElementById('phone');
+      phoneEl.focus();
+      phoneEl.style.borderColor = 'var(--color-danger)';
+      setTimeout(() => { phoneEl.style.borderColor = ''; }, 2000);
       return;
     }
 
-    // Simulate submission
     submitBtn.disabled = true;
-    submitBtn.querySelector('span').textContent = 'Отправляем...';
+    const btnSpan = submitBtn.querySelector('span');
+    if (btnSpan) btnSpan.textContent = 'Отправляем...';
 
     await new Promise(resolve => setTimeout(resolve, 1200));
 
-    // Show toast
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 4000);
+    if (toast) {
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
 
-    // Reset form
     contactForm.reset();
     submitBtn.disabled = false;
-    submitBtn.querySelector('span').textContent = 'Отправить заявку';
+    if (btnSpan) btnSpan.textContent = 'Отправить заявку';
   });
 
-  // ===== FAQ ACCORDION ANIMATION =====
+  // ===== FAQ ACCORDION =====
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('toggle', () => {
-      // Close others
       document.querySelectorAll('.faq-item[open]').forEach(other => {
         if (other !== item) other.removeAttribute('open');
       });
     });
   });
 
-  // ===== CARD HOVER 3D TILT (subtle) =====
-  document.querySelectorAll('.service-card, .catalog-card--featured').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `translateY(-6px) perspective(600px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+  // ===== CARD HOVER 3D TILT =====
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.service-card, .catalog-card--featured').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `translateY(-6px) perspective(600px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
     });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
+  }
 
   // ===== COPY EMAIL ON CLICK =====
   document.querySelectorAll('a[href^="mailto"]').forEach(link => {
@@ -228,30 +254,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (navigator.clipboard) {
         e.preventDefault();
         navigator.clipboard.writeText(email).then(() => {
-          const originalText = link.querySelector('span')?.textContent || link.textContent;
-          if (link.querySelector('span')) {
-            link.querySelector('span').textContent = 'Скопировано!';
-            setTimeout(() => { link.querySelector('span').textContent = originalText; }, 2000);
+          const span = link.querySelector('span');
+          if (span) {
+            const orig = span.textContent;
+            span.textContent = 'Скопировано!';
+            setTimeout(() => { span.textContent = orig; }, 2000);
           }
         }).catch(() => {
-          // fallback — just follow the link
           window.location.href = link.href;
         });
       }
     });
   });
 
-  // ===== KEYBOARD NAVIGATION =====
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-      toggleMenu(false);
-    }
-  });
-
   // ===== INITIAL HERO ANIMATIONS =====
-  // Stagger hero elements
   const heroElements = document.querySelectorAll('.hero [data-animate]');
-  heroElements.forEach((el, i) => {
+  heroElements.forEach((el) => {
     const baseDelay = parseInt(el.dataset.delay || '0', 10);
     el.style.transitionDelay = `${baseDelay + 200}ms`;
     requestAnimationFrame(() => {
