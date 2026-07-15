@@ -1498,7 +1498,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
   /* --- Bento --- */
   .bento-grid { grid-template-columns: 1fr; gap: var(--space-3); }
-  .bento-card--wide { grid-column: span 1; }
+  .bento-card--wide { grid-column: span 1 !important; }
 
   /* --- CRM --- */
   .crm-grid { grid-template-columns: 1fr; gap: var(--space-4); }
@@ -1533,10 +1533,10 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .catalog-actions .btn-ghost { flex: 1; justify-content: center; width: 100%; text-align: center; }
   .catalog-cta { flex-direction: column; text-align: center; gap: var(--space-4); }
 
-  /* --- Process steps --- */
-  .process-steps { flex-direction: column; gap: var(--space-5); }
+  /* --- Process steps (make vertical stacked icons on very small screens) --- */
+  .process-steps { flex-direction: column; gap: var(--space-6); }
   .process-connector { display: none; }
-  .process-step { flex-direction: row; align-items: flex-start; gap: var(--space-4); }
+  .process-step { flex-direction: column; align-items: center; text-align: center; gap: var(--space-2); padding: var(--space-2) 0; }
 
   /* --- Cases --- */
   .cases-grid { grid-template-columns: 1fr; gap: var(--space-4); }
