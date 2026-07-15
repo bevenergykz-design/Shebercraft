@@ -1455,6 +1455,15 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   }
 
   /* --- Navbar: hide all action buttons, keep only burger --- */
+  .navbar {
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    width: calc(100% - 1rem);
+    transform: none;
+    padding: 0 var(--space-3);
+  }
+  .navbar-links { display: none; }
   .navbar-actions .btn-secondary { display: none; }
   .navbar-actions .btn-primary   { display: none; }
   .burger { display: flex; }
@@ -1493,8 +1502,8 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
   /* --- CRM --- */
   .crm-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-  .crm-card { padding: var(--space-5); }
-  .crm-card__badge { font-size: 0.6rem; top: -16px; left: var(--space-4); }
+  .crm-card { padding: var(--space-6) var(--space-5) var(--space-5); }
+  .crm-card__badge { font-size: 0.65rem; top: -11px; left: var(--space-5); }
   .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
   .crm-benefits { padding: var(--space-6) var(--space-4); }
   .automation-strip { padding: var(--space-6) var(--space-4); }
@@ -2122,9 +2131,9 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 6rem;
-    right: 1.5rem;
-    width: 42px;
-    height: 42px;
+    bottom: 1.5rem;
+    right: 5.25rem; /* Sits to the left of the WhatsApp and Telegram floating buttons */
+    width: 44px;
+    height: 44px;
   }
 }
