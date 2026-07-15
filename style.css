@@ -1504,11 +1504,12 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .crm-grid { grid-template-columns: 1fr; gap: var(--space-4); }
   .crm-card { padding: var(--space-8) var(--space-5) var(--space-5); }
   .crm-card__badge { font-size: 0.65rem; top: -14px; left: 2rem; }
-  .benefits-grid { grid-template-columns: 1fr; gap: var(--space-6); text-align: center; }
-  .benefit-item { align-items: center; text-align: center; }
-  .benefit-label { max-width: 280px; margin: 0 auto; line-height: 1.4; }
+  .benefits-grid { display: flex; flex-direction: column; gap: var(--space-8); align-items: center; text-align: center; }
+  .benefit-item { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 260px; }
+  .benefit-num { font-size: 2.5rem !important; line-height: 1.1; margin-bottom: var(--space-1); }
+  .benefit-label { font-size: 0.8rem; color: var(--color-text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; }
   .crm-benefits { padding: var(--space-8) var(--space-4); }
-  .crm-benefits .heading-2 { font-size: clamp(1.2rem, 5vw, 1.5rem); line-height: 1.3; }
+  .crm-benefits .heading-2 { font-size: clamp(1.2rem, 5vw, 1.5rem); line-height: 1.35; margin-bottom: var(--space-8); }
   .automation-strip { padding: var(--space-6) var(--space-4); }
   .automation-strip .heading-2 { font-size: clamp(1.2rem, 5vw, 1.5rem); line-height: 1.3; }
   .automation-steps { flex-direction: column; gap: var(--space-3); }
