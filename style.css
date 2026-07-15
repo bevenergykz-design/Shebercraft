@@ -1436,7 +1436,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .footer-top           { grid-template-columns: 1fr; gap: var(--space-10); }
   .footer-nav           { grid-template-columns: repeat(3, 1fr); }
   .crm-grid             { grid-template-columns: 1fr; }
-  .benefits-grid        { grid-template-columns: repeat(2, 1fr); }
+  .benefits-grid        { display: flex; flex-direction: column; gap: var(--space-8); align-items: center; }
   .automation-steps     { flex-direction: column; }
   .auto-arrow           { transform: rotate(90deg); margin: 0 auto; }
   .process-steps        { flex-direction: column; }
