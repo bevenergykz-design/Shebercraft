@@ -1602,9 +1602,9 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   /* Mobile menu bigger tap targets */
   .mobile-menu a { font-size: 1.5rem; }
 
-  /* Float buttons smaller */
-  .float-btn { width: 46px; height: 46px; }
-  .float-buttons { bottom: 1rem; right: 1rem; }
+  /* Float buttons size override */
+  .float-btn { width: 44px; height: 44px; }
+  .float-buttons { bottom: 1rem; right: 1rem; flex-direction: row; gap: var(--space-2); }
 }
 
 /* =====================================================
