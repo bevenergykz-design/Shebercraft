@@ -1559,9 +1559,9 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .footer-bottom { flex-direction: column; text-align: center; gap: var(--space-3); }
   .footer-tagline { max-width: 100%; }
 
-  /* --- Float buttons --- */
-  .float-btn { width: 50px; height: 50px; }
-  .float-buttons { bottom: 1.5rem; right: 1.5rem; gap: var(--space-2); }
+  /* --- Float buttons (horizontal on mobile to prevent clipping/overlapping) --- */
+  .float-btn { width: 48px; height: 48px; }
+  .float-buttons { bottom: 1.5rem; right: 1.5rem; flex-direction: row; gap: var(--space-2); }
   .float-btn__tooltip { display: none; }
 }
 
@@ -2132,7 +2132,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 @media (max-width: 768px) {
   .back-to-top {
     bottom: 1.5rem;
-    right: 5.25rem; /* Sits to the left of the WhatsApp and Telegram floating buttons */
+    right: 8.5rem; /* Positioned to the left of the horizontal Telegram & WhatsApp row */
     width: 44px;
     height: 44px;
   }
