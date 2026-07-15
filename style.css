@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* =====================================================
    DESIGN SYSTEM — CSS CUSTOM PROPERTIES
@@ -1411,46 +1411,176 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 }
 
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVE — TABLET (≤1024px)
    ===================================================== */
 @media (max-width: 1024px) {
-  .services-grid   { grid-template-columns: 1fr; }
-  .bento-grid      { grid-template-columns: repeat(2, 1fr); }
-  .bento-card--wide { grid-column: span 2; }
-  .catalog-grid    { grid-template-columns: repeat(2, 1fr); }
-  .advantages-grid { grid-template-columns: repeat(2, 1fr); }
-  .cases-grid      { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
-  .contact-wrapper { grid-template-columns: 1fr; gap: var(--space-10); }
-  .footer-top      { grid-template-columns: 1fr; }
-  .footer-nav      { grid-template-columns: repeat(3, 1fr); }
+  .services-grid        { grid-template-columns: 1fr; }
+  .bento-grid           { grid-template-columns: repeat(2, 1fr); }
+  .bento-card--wide     { grid-column: span 2; }
+  .catalog-grid         { grid-template-columns: repeat(2, 1fr); }
+  .advantages-grid      { grid-template-columns: repeat(2, 1fr); }
+  .cases-grid           { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+  .contact-wrapper      { grid-template-columns: 1fr; gap: var(--space-10); }
+  .footer-top           { grid-template-columns: 1fr; gap: var(--space-10); }
+  .footer-nav           { grid-template-columns: repeat(3, 1fr); }
+  .crm-grid             { grid-template-columns: 1fr; }
+  .benefits-grid        { grid-template-columns: repeat(2, 1fr); }
+  .automation-steps     { flex-direction: column; }
+  .auto-arrow           { transform: rotate(90deg); margin: 0 auto; }
+  .process-steps        { flex-direction: column; }
+  .process-connector    { width: 2px; height: 24px; margin: 0 0 0 21px; }
 }
 
+/* =====================================================
+   RESPONSIVE — MOBILE (≤768px)
+   ===================================================== */
 @media (max-width: 768px) {
-  :root { --space-24: 4rem; --space-16: 3rem; }
-  .navbar { top: 0.5rem; width: calc(100% - 1rem); }
+  :root {
+    --space-24: 4rem;
+    --space-20: 3.5rem;
+    --space-16: 3rem;
+    --space-12: 2.5rem;
+  }
+
+  /* --- Navbar --- */
+  .navbar {
+    top: 0.5rem;
+    width: calc(100% - 1rem);
+    padding: 0 var(--space-4);
+  }
   .navbar-links { display: none; }
   .navbar-actions .btn-secondary { display: none; }
+  .navbar-actions .btn-sm { padding: 0.45rem 1rem; font-size: 0.78rem; }
   .burger { display: flex; }
-  .hero { padding: 7rem 0 var(--space-16); }
-  .hero-stats { gap: var(--space-5); padding: var(--space-5) var(--space-6); }
+
+  /* --- Hero --- */
+  .hero { padding: 6.5rem 0 var(--space-16); min-height: auto; }
+  .hero-container { padding: 0 var(--space-4); }
+  .hero-badge { margin-bottom: var(--space-4); }
+  .hero-stats {
+    gap: var(--space-3);
+    padding: var(--space-5) var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .stat-divider { display: none; }
-  .bento-grid { grid-template-columns: 1fr; }
+  .stat { min-width: 80px; }
+  .stat-number { font-size: 1.5rem; }
+  .hero-scroll-indicator { display: none; }
+
+  /* --- Sections --- */
+  .section { padding: var(--space-16) 0; }
+  .section-header { margin-bottom: var(--space-10); padding: 0 var(--space-2); }
+
+  /* --- Services --- */
+  .services-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .service-card__image { aspect-ratio: 16/7; }
+
+  /* --- Bento --- */
+  .bento-grid { grid-template-columns: 1fr; gap: var(--space-3); }
   .bento-card--wide { grid-column: span 1; }
-  .catalog-grid { grid-template-columns: 1fr; }
-  .catalog-filter { gap: var(--space-2); }
-  .advantages-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-nav { grid-template-columns: 1fr 1fr; }
-  .catalog-cta { flex-direction: column; text-align: center; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+
+  /* --- CRM --- */
+  .crm-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .crm-card { padding: var(--space-5); }
+  .crm-card__badge { font-size: 0.6rem; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+  .crm-benefits { padding: var(--space-6) var(--space-4); }
+  .automation-strip { padding: var(--space-6) var(--space-4); }
+  .automation-steps { flex-direction: column; gap: var(--space-3); }
+  .auto-arrow { transform: rotate(90deg); margin: 0 auto; }
+
+  /* --- Catalog Filter --- */
+  .catalog-filter {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2);
+    gap: var(--space-1);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .filter-btn { padding: 0.4rem 0.9rem; font-size: 0.75rem; }
+  .catalog-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .catalog-card { padding: var(--space-5); }
+  .catalog-card__footer { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .catalog-actions { width: 100%; }
+  .catalog-actions .btn-primary,
+  .catalog-actions .btn-ghost { flex: 1; justify-content: center; }
+  .catalog-cta { flex-direction: column; text-align: center; gap: var(--space-4); }
+
+  /* --- Process steps --- */
+  .process-steps { flex-direction: column; gap: var(--space-5); }
+  .process-connector { display: none; }
+  .process-step { flex-direction: row; align-items: flex-start; gap: var(--space-4); }
+
+  /* --- Cases --- */
+  .cases-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .case-card { flex-direction: column; }
+  .case-card__metric { border-right: none; border-bottom: 1px solid var(--color-border); padding-right: 0; padding-bottom: var(--space-4); margin-bottom: var(--space-4); }
+  .case-results { flex-direction: column; gap: var(--space-1); }
+
+  /* --- Advantages --- */
+  .advantages-grid { grid-template-columns: 1fr; gap: var(--space-3); }
+
+  /* --- FAQ --- */
+  .faq-question { gap: var(--space-4); }
+  .faq-question h3 { font-size: 0.95rem; }
+
+  /* --- Contact --- */
+  .contact-wrapper { grid-template-columns: 1fr; gap: var(--space-8); }
+  .form-row { grid-template-columns: 1fr; gap: var(--space-4); }
+  .contact-form-wrap { padding: 0; }
+  .contact-info { gap: var(--space-3); }
+  .contact-info-item { padding: var(--space-3) var(--space-4); font-size: 0.85rem; }
+
+  /* --- Footer --- */
+  .footer-top { grid-template-columns: 1fr; gap: var(--space-8); }
+  .footer-nav { grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+  .footer-bottom { flex-direction: column; text-align: center; gap: var(--space-3); }
+
+  /* --- Float buttons --- */
+  .float-btn { width: 50px; height: 50px; }
+  .float-buttons { bottom: 1.5rem; right: 1.5rem; gap: var(--space-2); }
+  .float-btn__tooltip { display: none; }
 }
 
+/* =====================================================
+   RESPONSIVE — SMALL MOBILE (≤480px)
+   ===================================================== */
 @media (max-width: 480px) {
+  /* Hide CTA in navbar, leave only burger */
   .navbar-actions .btn-primary { display: none; }
-  .hero-title { font-size: clamp(2.25rem, 8vw, 3.5rem); }
-  .hero-actions { flex-direction: column; width: 100%; }
+
+  /* Hero title size */
+  .hero-title { font-size: clamp(1.9rem, 7.5vw, 2.8rem) !important; }
+
+  /* Hero buttons full-width */
+  .hero-actions { flex-direction: column; width: 100%; gap: var(--space-3); }
   .hero-actions a { width: 100%; justify-content: center; }
-  .footer-nav { grid-template-columns: 1fr; }
+
+  /* Section headers */
+  .heading-1 { font-size: clamp(1.5rem, 6vw, 2rem); }
+
+  /* Catalog badge text wrap fix */
+  .catalog-card__header { flex-wrap: wrap; }
+
+  /* Footer nav single column */
+  .footer-nav { grid-template-columns: 1fr; gap: var(--space-5); }
+  .footer-legal { flex-direction: column; gap: var(--space-2); }
+
+  /* Benefits 2-col stays */
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .benefit-num { font-size: 2rem; }
+
+  /* Hero stats 2-col */
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+
+  /* Mobile menu bigger tap targets */
+  .mobile-menu a { font-size: 1.5rem; }
+
+  /* Float buttons smaller */
+  .float-btn { width: 46px; height: 46px; }
+  .float-buttons { bottom: 1rem; right: 1rem; }
 }
 
 /* =====================================================
@@ -1937,22 +2067,3 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   0%   { opacity: 0.6; transform: scale(1); }
   100% { opacity: 0; transform: scale(1.5); }
 }
-
-/* =====================================================
-   RESPONSIVE ADDITIONS
-   ===================================================== */
-@media (max-width: 1024px) {
-  .crm-grid       { grid-template-columns: 1fr; }
-  .benefits-grid  { grid-template-columns: repeat(2, 1fr); }
-  .automation-steps { flex-direction: column; }
-  .auto-arrow     { transform: rotate(90deg); margin: 0 auto; }
-}
-
-@media (max-width: 768px) {
-  .benefits-grid  { grid-template-columns: repeat(2, 1fr); }
-  .crm-benefits   { padding: var(--space-6); }
-  .automation-strip { padding: var(--space-6); }
-  .float-btn      { width: 50px; height: 50px; }
-  .float-buttons  { bottom: 1.5rem; right: 1.5rem; gap: var(--space-2); z-index: 99999; }
-}
-
