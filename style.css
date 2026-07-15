@@ -1502,8 +1502,8 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
   /* --- CRM --- */
   .crm-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-  .crm-card { padding: var(--space-6) var(--space-5) var(--space-5); }
-  .crm-card__badge { font-size: 0.65rem; top: -11px; left: var(--space-5); }
+  .crm-card { padding: var(--space-8) var(--space-5) var(--space-5); }
+  .crm-card__badge { font-size: 0.65rem; top: -14px; left: 2rem; }
   .benefits-grid { grid-template-columns: 1fr; gap: var(--space-6); text-align: center; }
   .benefit-item { align-items: center; text-align: center; }
   .benefit-label { max-width: 280px; margin: 0 auto; line-height: 1.4; }
@@ -1749,7 +1749,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
 .crm-card__badge {
   position: absolute;
-  top: -12px; left: var(--space-6);
+  top: -14px; left: var(--space-8);
   background: linear-gradient(135deg, var(--color-primary), hsl(199, 89%, 42%));
   color: hsl(220, 25%, 5%);
   font: 700 0.68rem/1 var(--font-mono);
