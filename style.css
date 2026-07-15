@@ -2136,8 +2136,13 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 @media (max-width: 768px) {
   .back-to-top {
     bottom: 1.5rem;
-    right: 8.5rem; /* Positioned to the left of the horizontal Telegram & WhatsApp row */
-    width: 44px;
-    height: 44px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) translateY(16px);
+    width: 46px;
+    height: 46px;
+  }
+  .back-to-top.visible {
+    transform: translateX(-50%) translateY(0);
   }
 }
