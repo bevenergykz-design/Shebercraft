@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* =====================================================
    DESIGN SYSTEM — CSS CUSTOM PROPERTIES
@@ -187,7 +187,7 @@ input, textarea, select { font-family: inherit; }
   z-index: 0;
 }
 
-body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toast):not(.mobile-menu) { position: relative; z-index: 1; }
+body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toast):not(.mobile-menu):not(.back-to-top) { position: relative; z-index: 1; }
 
 .blob {
   position: absolute;
@@ -1454,17 +1454,9 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
     --space-12: 2.5rem;
   }
 
-  /* --- Navbar --- */
-  .navbar {
-    top: 0.5rem;
-    width: calc(100% - 1rem);
-    padding: 0 var(--space-3);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .navbar-links { display: none; }
+  /* --- Navbar: hide all action buttons, keep only burger --- */
   .navbar-actions .btn-secondary { display: none; }
-  .navbar-actions .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.78rem; }
+  .navbar-actions .btn-primary   { display: none; }
   .burger { display: flex; }
 
   /* --- Container smaller padding on mobile --- */
@@ -1568,8 +1560,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
    RESPONSIVE — SMALL MOBILE (≤480px)
    ===================================================== */
 @media (max-width: 480px) {
-  /* Hide CTA in navbar, leave only burger */
-  .navbar-actions .btn-primary { display: none; }
+  /* Hide CTA in navbar on small mobile — already hidden at 768px */
 
   /* Hero title size */
   .hero-title { font-size: clamp(1.9rem, 7.5vw, 2.8rem) !important; }
@@ -2088,4 +2079,52 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 @keyframes floatPulse {
   0%   { opacity: 0.6; transform: scale(1); }
   100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* =====================================================
+   BACK TO TOP BUTTON
+   ===================================================== */
+.back-to-top {
+  position: fixed;
+  bottom: 7rem;
+  right: 2.5rem;
+  width: 46px;
+  height: 46px;
+  background: hsla(220, 18%, 12%, 0.9);
+  border: 1px solid var(--color-border-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  z-index: 9998;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: hsl(220, 25%, 5%);
+  box-shadow: 0 4px 24px var(--color-primary-glow);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 6rem;
+    right: 1.5rem;
+    width: 42px;
+    height: 42px;
+  }
 }

@@ -14,16 +14,31 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollProgress.style.width = pct + '%';
   };
 
-  // ===== NAVBAR SCROLL STATE =====
+  // ===== NAVBAR SCROLL STATE & BACK TO TOP =====
   const navbar = document.getElementById('navbar');
-  const handleNavbarScroll = () => {
-    if (!navbar) return;
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  const backToTop = document.getElementById('backToTop');
+  
+  const handleScrollEffects = () => {
+    const scrollY = window.scrollY;
+    
+    // Navbar scroll class
+    if (navbar) {
+      navbar.classList.toggle('scrolled', scrollY > 60);
+    }
+    
+    // Back to top button visibility
+    if (backToTop) {
+      if (scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }
   };
 
   window.addEventListener('scroll', () => {
     updateScrollProgress();
-    handleNavbarScroll();
+    handleScrollEffects();
   }, { passive: true });
 
   // ===== SCROLL-TRIGGERED ANIMATIONS =====
@@ -278,6 +293,16 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // ===== BACK TO TOP CLICK =====
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 
   console.log('%c Shebercraft ', 'background:#38bdf8;color:#0b0c0a;font-weight:700;padding:4px 8px;border-radius:4px;font-size:14px;', 'Цифровые решения для бизнеса Казахстана');
 });
