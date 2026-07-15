@@ -1494,7 +1494,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   /* --- CRM --- */
   .crm-grid { grid-template-columns: 1fr; gap: var(--space-4); }
   .crm-card { padding: var(--space-5); }
-  .crm-card__badge { font-size: 0.6rem; }
+  .crm-card__badge { font-size: 0.6rem; top: -16px; left: var(--space-4); }
   .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
   .crm-benefits { padding: var(--space-6) var(--space-4); }
   .automation-strip { padding: var(--space-6) var(--space-4); }
@@ -1513,10 +1513,10 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .filter-btn { padding: 0.4rem 0.9rem; font-size: 0.75rem; }
   .catalog-grid { grid-template-columns: 1fr; gap: var(--space-4); }
   .catalog-card { padding: var(--space-5); }
-  .catalog-card__footer { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
-  .catalog-actions { width: 100%; }
+  .catalog-card__footer { flex-direction: column; align-items: stretch; gap: var(--space-3); }
+  .catalog-actions { width: 100%; display: flex; gap: var(--space-2); }
   .catalog-actions .btn-primary,
-  .catalog-actions .btn-ghost { flex: 1; justify-content: center; }
+  .catalog-actions .btn-ghost { flex: 1; justify-content: center; width: 100%; text-align: center; }
   .catalog-cta { flex-direction: column; text-align: center; gap: var(--space-4); }
 
   /* --- Process steps --- */
