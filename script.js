@@ -240,11 +240,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== FAQ ACCORDION =====
   document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('toggle', () => {
-      document.querySelectorAll('.faq-item[open]').forEach(other => {
-        if (other !== item) other.removeAttribute('open');
+    const question = item.querySelector('.faq-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        document.querySelectorAll('.faq-item[open]').forEach(other => {
+          if (other !== item) {
+            other.removeAttribute('open');
+          }
+        });
       });
-    });
+    }
   });
 
   // ===== CARD HOVER 3D TILT =====
