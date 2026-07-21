@@ -126,9 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
       </svg>
     </button>
     <a href="#services" class="mobile-nav-link">Услуги</a>
-    <a href="#crm" class="mobile-nav-link">CRM</a>
+    <a href="#crm" class="mobile-nav-link">CRM & БП</a>
     <a href="#catalog" class="mobile-nav-link">Каталог</a>
     <a href="#cases" class="mobile-nav-link">Кейсы</a>
+    <a href="#articles" class="mobile-nav-link">Статьи</a>
     <a href="#faq" class="mobile-nav-link">FAQ</a>
     <a href="#contact" class="btn-primary btn-lg" style="margin-top:1.5rem">Получить решение</a>
   `;
@@ -308,6 +309,53 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // ===== BP DEPARTMENT TABS =====
+  const bpTabBtns = document.querySelectorAll('.bp-tab-btn');
+  const bpTabPanels = document.querySelectorAll('.bp-tab-panel');
+
+  bpTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.dataset.tab;
+      bpTabBtns.forEach(b => b.classList.remove('active'));
+      bpTabPanels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetPanel = document.getElementById(`tab-${targetTab}`);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    });
+  });
+
+  // ===== ARTICLE MODAL READER =====
+  const articleModal = document.getElementById('articleModal');
+  const openArticleBtns = document.querySelectorAll('.open-article-btn');
+  const closeArticleBtn = document.querySelector('.article-modal__close');
+  const articleOverlay = document.querySelector('.article-modal__overlay');
+
+  const toggleArticleModal = (open) => {
+    if (!articleModal) return;
+    articleModal.classList.toggle('open', open);
+    articleModal.setAttribute('aria-hidden', !open);
+    document.body.style.overflowY = open ? 'hidden' : '';
+  };
+
+  openArticleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleArticleModal(true);
+    });
+  });
+
+  if (closeArticleBtn) closeArticleBtn.addEventListener('click', () => toggleArticleModal(false));
+  if (articleOverlay) articleOverlay.addEventListener('click', () => toggleArticleModal(false));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && articleModal && articleModal.classList.contains('open')) {
+      toggleArticleModal(false);
+    }
+  });
 
   console.log('%c Shebercraft ', 'background:#38bdf8;color:#0b0c0a;font-weight:700;padding:4px 8px;border-radius:4px;font-size:14px;', 'Цифровые решения для бизнеса Казахстана');
 });

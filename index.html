@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -50,9 +51,10 @@
 
       <ul class="navbar-links" id="navLinks">
         <li><a href="#services" class="nav-link">Услуги</a></li>
-        <li><a href="#crm" class="nav-link">CRM</a></li>
+        <li><a href="#crm" class="nav-link">CRM & БП</a></li>
         <li><a href="#catalog" class="nav-link">Каталог</a></li>
         <li><a href="#cases" class="nav-link">Кейсы</a></li>
+        <li><a href="#articles" class="nav-link">Статьи</a></li>
         <li><a href="#faq" class="nav-link">FAQ</a></li>
       </ul>
 
@@ -231,8 +233,8 @@
       <div class="container">
         <div class="section-header" data-animate>
           <span class="section-tag">/ CRM и Битрикс24</span>
-          <h2 class="heading-1">Единая система продаж<br /><span class="gradient-text">на базе Битрикс24</span></h2>
-          <p class="body-lg text-muted">Внедряем и настраиваем Битрикс24 и amoCRM. Пишем бизнес-процессы под ваш отдел продаж — система работает сама, вы управляете на цифрах.</p>
+          <h2 class="heading-1">Сквозная автоматизация компании<br /><span class="gradient-text">на базе Битрикс24</span></h2>
+          <p class="body-lg text-muted">Внедряем Битрикс24 не только для отдела продаж, но и для всей организации. Автоматизируем документооборот, согласование счетов, кадры и внутренние заявки без необходимости ставит задачи вручную каждому сотруднику.</p>
         </div>
 
         <!-- CRM capabilities grid -->
@@ -257,14 +259,14 @@
             <div class="crm-card__icon">
               <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
             </div>
-            <h3>Бизнес-процессы (БП) в Битрикс24</h3>
-            <p>Разрабатываем и пишем бизнес-процессы с нуля под ваш бизнес. Роботы, триггеры, автоматические сценарии — система сама двигает сделки, ставит задачи и напоминает менеджерам.</p>
+            <h3>Бизнес-процессы (БП) компании</h3>
+            <p>Проектируем БП под любые отделы: Продажи, Бухгалтерия, Юристы, HR, АХО. Роботы сами согласуют документы и счета, распределят задачи и проконтролируют сроки.</p>
             <ul class="crm-features">
-              <li>Разработка БП под вашу воронку</li>
+              <li>Автоматическое принятие решений по счетам</li>
+              <li>Согласование договоров и документов</li>
+              <li>Кадровые процессы и Onboarding</li>
               <li>Роботы и триггеры автоматизации</li>
-              <li>Авто-задачи при смене стадий</li>
-              <li>Контроль SLA и сроков</li>
-              <li>Уведомления в мессенджеры</li>
+              <li>Уведомления в WhatsApp и Telegram</li>
             </ul>
           </div>
 
@@ -297,6 +299,166 @@
             </ul>
           </div>
 
+        </div>
+
+        <!-- Company-wide BP Scope Tabs -->
+        <div class="bp-dept-section" data-animate>
+          <div class="bp-dept-header">
+            <span class="section-tag">/ Сферы применения БП</span>
+            <h3 class="heading-2">Бизнес-процессы Битрикс24 <span class="gradient-text">для всей компании</span></h3>
+            <p class="body-lg text-muted" style="max-width:760px;margin:0 auto">Бизнес-процессы — это не только продажа товаров. Это сквозная автоматизация компании: от согласования счетов и договоров до кадрового учета и принятия решений без необходимости вручную ставить задачи каждому сотруднику.</p>
+          </div>
+
+          <div class="bp-tabs">
+            <button class="bp-tab-btn active" data-tab="sales">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8 a3 3 0 1 1 -5.8-1.6"/></svg>
+              Продажи и Лиды
+            </button>
+            <button class="bp-tab-btn" data-tab="docflow">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              Документооборот
+            </button>
+            <button class="bp-tab-btn" data-tab="finance">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              Финансы и Счета
+            </button>
+            <button class="bp-tab-btn" data-tab="hr">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Кадры & HR
+            </button>
+            <button class="bp-tab-btn" data-tab="service">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              Заявки & АХО
+            </button>
+          </div>
+
+          <div class="bp-tab-contents">
+            <!-- Tab 1: Sales -->
+            <div class="bp-tab-panel active" id="tab-sales">
+              <div class="bp-panel-grid">
+                <div class="bp-panel-info">
+                  <h4>Автоматизация коммерческого отдела</h4>
+                  <p>Роботы распределяют поступающие лиды по дежурным менеджерам, контролируют время отклика (SLA) и сами двигают сделки по этапам при оплате или получении документов.</p>
+                  <ul class="bp-check-list">
+                    <li>✦ Распределение лидов по очереди и нагрузке</li>
+                    <li>✦ Авто-напоминания и уведомления в WhatsApp</li>
+                    <li>✦ Запрет перехода на следующий этап без заполнения обязательных полей</li>
+                  </ul>
+                  <div class="bp-result-badge">Результат: +35% к конверсии и 0 упущенных заявок</div>
+                </div>
+                <div class="bp-panel-card">
+                  <div class="bp-flow-preview">
+                    <div class="bp-node bp-node--start">Заявка с сайта</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node">Робот проверил ответственного</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node bp-node--success">Отправлен КП в WhatsApp</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Docflow -->
+            <div class="bp-tab-panel" id="tab-docflow">
+              <div class="bp-panel-grid">
+                <div class="bp-panel-info">
+                  <h4>Согласование договоров и юридических документов</h4>
+                  <p>Забудьте о беготне с бумажными распечатками по кабинетам. Система автоматически запускает параллельное или последовательное согласование между юристом, бухгалтером и генеральным директором.</p>
+                  <ul class="bp-check-list">
+                    <li>✦ Автоматическая генерация договоров и актов по шаблону</li>
+                    <li>✦ Умные уведомления согласующим без спама задач</li>
+                    <li>✦ Версионность документов и фиксация всех правок</li>
+                  </ul>
+                  <div class="bp-result-badge">Результат: Согласование договора за 30 минут вместо 5 дней</div>
+                </div>
+                <div class="bp-panel-card">
+                  <div class="bp-flow-preview">
+                    <div class="bp-node bp-node--start">Генерация договора</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node">Проверка юристом и бухгалтером</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node bp-node--success">Авто-подпись & Отправка клиенту</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Finance -->
+            <div class="bp-tab-panel" id="tab-finance">
+              <div class="bp-panel-grid">
+                <div class="bp-panel-info">
+                  <h4>Автоматизированное принятие решений по счетам и закупкам</h4>
+                  <p>Больше не нужно вручную ставить задачи каждому руководителю. Система сама проверяет сумму счета, статьи бюджета и автоматически утверждает платежи по заданным правилам.</p>
+                  <ul class="bp-check-list">
+                    <li>✦ Лимиты утверждений: Счета до 500 тыс. ₸ утверждаются автоматически</li>
+                    <li>✦ Счета выше лимита отправляются на согласование финдиректору в 1 клик</li>
+                    <li>✦ Авто-передача согласованного счета в 1С Бухгалтерию на оплату</li>
+                  </ul>
+                  <div class="bp-result-badge">Результат: 0 потерянных счетов и прозрачный финконтроль</div>
+                </div>
+                <div class="bp-panel-card">
+                  <div class="bp-flow-preview">
+                    <div class="bp-node bp-node--start">Загрузка счета в CRM</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node">Авто-проверка лимита бюджета</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node bp-node--success">Передача на оплату в 1С</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 4: HR -->
+            <div class="bp-tab-panel" id="tab-hr">
+              <div class="bp-panel-grid">
+                <div class="bp-panel-info">
+                  <h4>Кадровый учет и адаптация новичков (Onboarding)</h4>
+                  <p>При выходе нового сотрудника бизнес-процесс в Битрикс24 самостоятельно организует все приготовления: создаст учётки, запросит ноутбук у IT и назначит наставника.</p>
+                  <ul class="bp-check-list">
+                    <li>✦ Заявки на отпуск, больничные и отгулы без бумажных бланков</li>
+                    <li>✦ Пошаговый чек-лист обучения и план адаптации для новичка</li>
+                    <li>✦ Авто-уведомление бухгалтерии для расчёта отпускных</li>
+                  </ul>
+                  <div class="bp-result-badge">Результат: Готовое рабочее место в 1-й день и минимум бюрократии</div>
+                </div>
+                <div class="bp-panel-card">
+                  <div class="bp-flow-preview">
+                    <div class="bp-node bp-node--start">Приём сотрудника</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node">Задачи в IT, АХО и Бухгалтерию</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node bp-node--success">Выдача доступов & Обучение</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 5: Service Desk -->
+            <div class="bp-tab-panel" id="tab-service">
+              <div class="bp-panel-grid">
+                <div class="bp-panel-info">
+                  <h4>Внутренние заявки компании (АХО, IT, Сервис)</h4>
+                  <p>Единое окно для всех внутренних нужд команды: ремонт техники, закупка канцелярии, справки с места работы или вызов курьера.</p>
+                  <ul class="bp-check-list">
+                    <li>✦ Маршрутизация заявок ответственным по категориям</li>
+                    <li>✦ Прозрачный статус решения для сотрудника</li>
+                    <li>✦ Полный отчёт по нагрузке и затратам служб поддержки</li>
+                  </ul>
+                  <div class="bp-result-badge">Результат: Порядок во внутренних службах и четкие SLA</div>
+                </div>
+                <div class="bp-panel-card">
+                  <div class="bp-flow-preview">
+                    <div class="bp-node bp-node--start">Заявка на ремонт / доступы</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node">Назначение инженера по категории</div>
+                    <div class="bp-arrow">↓</div>
+                    <div class="bp-node bp-node--success">Выполнение & Отчёт в CRM</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
         <!-- CRM Benefits -->
@@ -746,6 +908,136 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== ARTICLES / BLOG SECTION ===== -->
+    <section class="section section--dark" id="articles">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <span class="section-tag">/ База знаний & Статьи</span>
+          <h2 class="heading-1">Практические статьи <br /><span class="gradient-text">по автоматизации бизнеса</span></h2>
+          <p class="body-lg text-muted">Экспертные разборы, кейсы и гайды по настройке Битрикс24, бизнес-процессам и цифровизации компании.</p>
+        </div>
+
+        <div class="articles-grid">
+          <!-- Article Card 1 (Featured) -->
+          <article class="article-card article-card--featured" data-animate>
+            <div class="article-card__badge">🔥 Главный разбор</div>
+            <div class="article-card__body">
+              <div class="article-tags">
+                <span class="tag tag--green">Битрикс24</span>
+                <span class="tag">Бизнес-процессы</span>
+                <span class="tag">Автоматизация</span>
+              </div>
+              <h3 class="article-card__title">Битрикс24 вне отдела продаж: Как бизнес-процессы автоматизируют всю компанию от согласований до закупок</h3>
+              <p class="article-card__desc">Большинство предпринимателей используют CRM только для воронок продаж. Разбираем, как автоматизировать кадровый документооборот, согласование счетов, логистику и принятие решений без ручной постановки задач.</p>
+              <div class="article-card__meta">
+                <span class="meta-item">⏱ 6 мин чтения</span>
+                <span class="meta-item">📅 2026</span>
+                <button class="btn-primary btn-sm open-article-btn" data-article="bp-article">Читать статью →</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Card 2 -->
+          <article class="article-card" data-animate data-delay="100">
+            <div class="article-card__body">
+              <div class="article-tags">
+                <span class="tag">AI & Боты</span>
+                <span class="tag">WhatsApp</span>
+              </div>
+              <h3 class="article-card__title">AI-менеджеры в WhatsApp: Как не терять лиды в нерабочее время</h3>
+              <p class="article-card__desc">Инструкция по внедрению нейро-ботов, которые квалифицируют клиента, отвечают на частые вопросы и заносят контакты в CRM 24/7.</p>
+              <div class="article-card__meta">
+                <span class="meta-item">⏱ 4 мин чтения</span>
+                <button class="btn-ghost btn-sm open-article-btn" data-article="ai-article">Читать статью →</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE MODAL READER -->
+    <div class="article-modal" id="articleModal" aria-hidden="true">
+      <div class="article-modal__overlay"></div>
+      <div class="article-modal__container">
+        <button class="article-modal__close" aria-label="Закрыть статью">&times;</button>
+        <div class="article-modal__content">
+          <div class="article-modal__header">
+            <div class="article-tags">
+              <span class="tag tag--green">Битрикс24</span>
+              <span class="tag">Бизнес-процессы</span>
+              <span class="tag">Сквозная автоматизация</span>
+            </div>
+            <h1>Битрикс24 вне отдела продаж: Как бизнес-процессы автоматизируют всю компанию от согласований до закупок</h1>
+            <div class="article-author-info">
+              <span>Экспертный материал Shebercraft</span> • <span>6 минут чтения</span>
+            </div>
+          </div>
+
+          <div class="article-modal__body">
+            <p class="lead-text">Когда предприниматели слышат слово <strong>«CRM»</strong>, первая ассоциация — это воронка продаж, лиды, сделки и менеджеры на телефоне. Однако это лишь 30% потенциала платформы Битрикс24. Самый масштабный экономический эффект кроется в <strong>сквозных бизнес-процессах (БП)</strong>, которые связывают работу юристов, бухгалтерии, HR и АХО в единую бесшовную систему.</p>
+
+            <h3>1. Главная проблема ручного управления: Зависание задач и человеческий фактор</h3>
+            <p>В большинстве компаний без настроенных БП процесс согласования обычного договора или счета превращается в квест:</p>
+            <ul>
+              <li>Менеджер распечатывает договор и несёт юристу. Юрист ушёл на обед или занят.</li>
+              <li>Счёт на 100 000 ₸ ждёт подписи директора 3 дня, потому что директор в командировке.</li>
+              <li>Новый сотрудник первый день сидит без компьютера, потому что системному администратору забыли поставить задачу.</li>
+            </ul>
+            <p><strong>Результат:</strong> потеря времени, недовольные клиенты, хаос в задачах и сорванные дедлайны.</p>
+
+            <h3>2. Автоматическое принятие решений без постановки задач каждому</h3>
+            <p>Ключевой принцип грамотно спроектированных бизнес-процессов — <strong>система сама принимает решения на основе правил (матрицы полномочий)</strong>. Вручную ставит задачи только там, где действительно необходимо участие человека.</p>
+
+            <div class="article-quote">
+              <p>«Если счёт меньше 500 000 ₸ и входит в утверждённую статью бюджета, система сама ставит отметку "Утверждено" и отправляет его в 1С бухгалтеру. Директору не приходит ни одно лишнее уведомление!»</p>
+            </div>
+
+            <h3>3. Практические сферы применения БП вне отдела продаж</h3>
+
+            <h4>A. Юридический отдел и Документооборот</h4>
+            <p>Бизнес-процесс автоматической генерации и согласования документов:</p>
+            <ol>
+              <li>Менеджер выбирает реквизиты клиента в CRM. Система за 2 секунды генерирует готовый договор по шаблону.</li>
+              <li>Договор автоматически уходит на параллельное согласование юристу и финдиректору.</li>
+              <li>Если в течение 4 часов документ не проверен, система шлёт напоминание в WhatsApp или эскалирует на руководителя.</li>
+              <li>При утверждении создаётся ссылка на подпись и отправляется клиенту.</li>
+            </ol>
+
+            <h4>B. Финансы, Бухгалтерия и Закупки</h4>
+            <p>Маршрутизация счетов на оплату и контроль бюджетов:</p>
+            <ul>
+              <li>Загрузка счета любой службой (маркетинг, АХО, IT).</li>
+              <li>Проверка лимита расходов подразделения.</li>
+              <li>Автоматическая проверка дубликатов счетов.</li>
+              <li>Бесшовная передача в 1С Бухгалтерию после клика «Согласовано».</li>
+            </ul>
+
+            <h4>C. HR и Кадровые процессы (Onboarding)</h4>
+            <p>Автоматизация выхода нового сотрудника:</p>
+            <ul>
+              <li>При переходе кандидата в статус «Принят», БП мгновенно генерирует чек-лист из 10 автоматических задач: создаются учётки в почте и Битрикс24, отправляется заявка в АХО на стол и стул, формируется приказ в кадры.</li>
+              <li>Сотруднику в 1-й день приходит интерактивный гайд адаптации в Битрикс24.</li>
+            </ul>
+
+            <h3>4. Чек-лист: Готова ли ваша компания к сквозным БП?</h3>
+            <div class="article-checklist">
+              <div class="check-item">✅ У вас более 5 сотрудников и несколько отделов.</div>
+              <div class="check-item">✅ Согласование счетов или договоров занимает более 1 дня.</div>
+              <div class="check-item">✅ Руководители тратят более 2 часов в день на проверку рутинных задач.</div>
+              <div class="check-item">✅ Бывают случаи, когда клиент или внутренний запрос теряется между отделами.</div>
+            </div>
+
+            <div class="article-cta-box">
+              <h4>Хотите автоматизировать процессы в вашей компании?</h4>
+              <p>Мы проведем бесплатный аудит ваших текущих процессов, найдем "узкие места" и спроектируем архитектуру БП в Битрикс24.</p>
+              <a href="https://wa.me/77070601980?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D0%B2%20%D0%91%D0%B8%D1%82%D1%80%D0%B8%D0%BA%D1%8124" target="_blank" class="btn-primary btn-lg">Заказать бесплатный аудит БП</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ===== FAQ ===== -->
     <section class="section" id="faq">
