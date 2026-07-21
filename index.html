@@ -1237,6 +1237,69 @@
     </div>
   </footer>
 
+  <!-- ===== AI CONSULTANT WIDGET ===== -->
+  <div class="ai-widget-wrapper" id="aiWidgetWrapper">
+    <!-- Floating Trigger Button -->
+    <button class="ai-trigger-btn" id="aiTriggerBtn" aria-label="Открыть ИИ-консультанта">
+      <div class="ai-trigger-avatar">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="11" width="18" height="10" rx="3"/>
+          <circle cx="9" cy="16" r="1.5" fill="currentColor"/>
+          <circle cx="15" cy="16" r="1.5" fill="currentColor"/>
+          <path d="M12 2v6M9 5h6"/>
+        </svg>
+      </div>
+      <span class="ai-trigger-status"></span>
+      <span class="ai-trigger-badge">ИИ БП</span>
+    </button>
+
+    <!-- AI Chat Window -->
+    <div class="ai-chat-window" id="aiChatWindow" aria-hidden="true">
+      <div class="ai-chat-header">
+        <div class="ai-chat-header-info">
+          <div class="ai-chat-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="10" rx="3"/>
+              <circle cx="9" cy="16" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="16" r="1.5" fill="currentColor"/>
+              <path d="M12 2v6M9 5h6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ai-chat-title">ИИ-консультант Shebercraft</div>
+            <div class="ai-chat-status"><span class="status-dot">●</span> онлайн</div>
+          </div>
+        </div>
+        <button class="ai-chat-close" id="aiChatClose" aria-label="Закрыть консультанта">&times;</button>
+      </div>
+
+      <div class="ai-chat-messages" id="aiChatMessages">
+        <!-- Welcome Message -->
+        <div class="ai-msg ai-msg--bot">
+          <div class="ai-msg-bubble">
+            Привет! Я ИИ-консультант Shebercraft — знаю всё про сквозные бизнес-процессы и настройку Битрикс24. Спросите про автоматизацию продаж, согласование счетов, кадровый документооборот или разработку — помогу разобраться. Пока идёт бета: доступно 3 бесплатных вопроса. Для подробного разбора — бесплатная консультация с нашим специалистом.
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Prompt Tags -->
+      <div class="ai-quick-prompts" id="aiQuickPrompts">
+        <button class="ai-prompt-chip" data-prompt="Как автоматизировать согласование счетов?">Как автоматизировать счета?</button>
+        <button class="ai-prompt-chip" data-prompt="Как ускорить согласование договоров?">Согласование договоров</button>
+        <button class="ai-prompt-chip" data-prompt="Автоматизация кадрового учета и отпусков">Кадровый Onboarding</button>
+        <button class="ai-prompt-chip" data-prompt="Сколько стоит внедрение БП в Битрикс24?">Стоимость БП</button>
+      </div>
+
+      <!-- Input Area -->
+      <form class="ai-chat-input-form" id="aiChatForm">
+        <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ваш вопрос..." autocomplete="off" />
+        <button type="submit" class="ai-chat-send" id="aiChatSend" aria-label="Отправить">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- ===== FLOATING BUTTONS ===== -->
   <div class="float-buttons" id="floatButtons">
     <a href="https://wa.me/77070601980" target="_blank" class="float-btn float-btn--wa" aria-label="WhatsApp">

@@ -357,5 +357,109 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ===== AI CONSULTANT WIDGET LOGIC =====
+  const aiTriggerBtn = document.getElementById('aiTriggerBtn');
+  const aiChatWindow = document.getElementById('aiChatWindow');
+  const aiChatClose = document.getElementById('aiChatClose');
+  const aiChatMessages = document.getElementById('aiChatMessages');
+  const aiChatForm = document.getElementById('aiChatForm');
+  const aiChatInput = document.getElementById('aiChatInput');
+  const aiQuickPrompts = document.getElementById('aiQuickPrompts');
+
+  let aiQuestionCount = 0;
+  const MAX_FREE_QUESTIONS = 3;
+
+  const toggleAiChat = (open) => {
+    if (!aiChatWindow) return;
+    const isOpen = open !== undefined ? open : !aiChatWindow.classList.contains('open');
+    aiChatWindow.classList.toggle('open', isOpen);
+    aiChatWindow.setAttribute('aria-hidden', !isOpen);
+  };
+
+  if (aiTriggerBtn) aiTriggerBtn.addEventListener('click', () => toggleAiChat());
+  if (aiChatClose) aiChatClose.addEventListener('click', () => toggleAiChat(false));
+
+  const appendAiMessage = (sender, text) => {
+    if (!aiChatMessages) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `ai-msg ai-msg--${sender}`;
+    msgDiv.innerHTML = `<div class="ai-msg-bubble">${text}</div>`;
+    aiChatMessages.appendChild(msgDiv);
+    aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+    return msgDiv;
+  };
+
+  const getAiAnswer = (query) => {
+    const q = query.toLowerCase();
+    if (q.includes('счет') || q.includes('оплат') || q.includes('финанс') || q.includes('лимит') || q.includes('деньг')) {
+      return 'В Битрикс24 согласование счетов автоматизируется через БП: система проверяет лимит (например, счета до 500 тыс. ₸ утверждаются автоматически), сама находит ответственного и передает данные в 1С Бухгалтерию без ручного контроля!';
+    }
+    if (q.includes('договор') || q.includes('документ') || q.includes('юрист') || q.includes('акт')) {
+      return 'Бизнес-процессы сокращают время согласования договоров с 5 дней до 30 минут. Договор автоматически генерируется по шаблону из CRM, уходит параллельно юристу и бухгалтеру, а при задержке эскалирует задачу руководителю.';
+    }
+    if (q.includes('кадр') || q.includes('отпуск') || q.includes('прием') || q.includes('onboard') || q.includes('сотрудник')) {
+      return 'Кадровый БП берет на себя все бланки: отпуск оформляется в 1 клик. При выходе нового сотрудника система автоматически создает учетки, заказывает технику у IT и назначает пошаговый план адаптации.';
+    }
+    if (q.includes('цена') || q.includes('стоим') || q.includes('сколько') || q.includes('тариф') || q.includes('прайс')) {
+      return 'Стоимость настройки бизнес-процессов зависит от сложности: базовые роботы и автоматизация от 200 000 ₸, а комплексное внедрение БП для всей компании под ключ — от 450 000 ₸. Включает проектирование, интеграции и обучение.';
+    }
+    if (q.includes('привет') || q.includes('здравствуй') || q.includes('добрый')) {
+      return 'Здравствуйте! Я готов проконсультировать вас по любым вопросам автоматизации бизнес-процессов в Битрикс24. О чем вы хотели бы узнать?';
+    }
+    return 'Бизнес-процессы в Битрикс24 связывают все отделы компании в единый механизм без необходимости вручную ставить задачи каждому сотруднику. Мы проектируем индивидуальные сценарии под ваш бизнес!';
+  };
+
+  const handleUserMessage = (userText) => {
+    if (!userText.trim() || aiQuestionCount >= MAX_FREE_QUESTIONS) return;
+
+    appendAiMessage('user', userText);
+    aiQuestionCount++;
+
+    if (aiQuickPrompts) aiQuickPrompts.style.display = 'none';
+
+    // Show Typing indicator
+    const typingMsg = appendAiMessage('bot', '<div class="typing-dots"><span></span><span></span><span></span></div>');
+
+    setTimeout(() => {
+      if (typingMsg) typingMsg.remove();
+      const answerText = getAiAnswer(userText);
+      appendAiMessage('bot', answerText);
+
+      if (aiQuestionCount >= MAX_FREE_QUESTIONS) {
+        setTimeout(() => {
+          const limitMsg = `
+            <strong>Вы использовали 3 бесплатных вопроса бета-версии!</strong><br />
+            Для подробного разбора и аудита процессов вашей компании свяжитесь с нашим ведущим экспертом:<br /><br />
+            <a href="https://wa.me/77070601980?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%B8%D0%B7%20%D0%98%D0%98-%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D0%BD%D1%82%D0%B0.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%91%D0%9F" target="_blank" class="btn-primary btn-sm" style="display:inline-block;margin-top:6px;width:100%;text-align:center">Консультация в WhatsApp →</a>
+          `;
+          appendAiMessage('bot', limitMsg);
+          if (aiChatInput) {
+            aiChatInput.disabled = true;
+            aiChatInput.placeholder = 'Бесплатные вопросы исчерпаны';
+          }
+        }, 600);
+      }
+    }, 1000);
+  };
+
+  if (aiChatForm) {
+    aiChatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!aiChatInput) return;
+      const text = aiChatInput.value;
+      aiChatInput.value = '';
+      handleUserMessage(text);
+    });
+  }
+
+  if (aiQuickPrompts) {
+    aiQuickPrompts.querySelectorAll('.ai-prompt-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const promptText = chip.dataset.prompt;
+        handleUserMessage(promptText);
+      });
+    });
+  }
+
   console.log('%c Shebercraft ', 'background:#38bdf8;color:#0b0c0a;font-weight:700;padding:4px 8px;border-radius:4px;font-size:14px;', 'Цифровые решения для бизнеса Казахстана');
 });
