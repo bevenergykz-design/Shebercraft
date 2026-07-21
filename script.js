@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Configure Telegram Bot
     const TELEGRAM_BOT_TOKEN = '8953811443:AAHKxOKpIPM26NLim0eKuLFJL_U1fWOlcKo';
-    const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID'; // Замените на ваш численный Chat ID (например, 582910392)
+    const TELEGRAM_CHAT_ID = '1994851440'; // Численный Chat ID пользователя sheber_craft
 
     const telegramText = `<b>Новая заявка с сайта Shebercraft!</b>\n\n👤 <b>Имя:</b> ${name || 'Не указано'}\n🏢 <b>Компания:</b> ${company || 'Не указана'}\n📞 <b>Телефон:</b> ${phone}\n⚙️ <b>Решение:</b> ${serviceText || 'Не выбрано'}\n📝 <b>Описание:</b> ${message || 'Не описана'}`;
 
