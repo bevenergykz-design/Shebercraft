@@ -232,17 +232,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSpan = submitBtn.querySelector('span');
     if (btnSpan) btnSpan.textContent = 'Отправляем...';
 
-    // Construct Telegram redirect URL
-    const telegramText = `Новая заявка с сайта Shebercraft!\n\n👤 Имя: ${name || 'Не указано'}\n🏢 Компания: ${company || 'Не указана'}\n📞 Телефон: ${phone}\n⚙️ Решение: ${serviceText || 'Не выбрано'}\n📝 Описание: ${message || 'Не описана'}`;
-    
-    await new Promise(resolve => setTimeout(resolve, 800));
+    // Configure Telegram Bot
+    const TELEGRAM_BOT_TOKEN = '8953811443:AAHKxOKpIPM26NLim0eKuLFJL_U1fWOlcKo';
+    const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID'; // Замените на ваш численный Chat ID (например, 582910392)
 
-    window.open(`https://t.me/sheber_craf?text=${encodeURIComponent(telegramText)}`, '_blank');
+    const telegramText = `<b>Новая заявка с сайта Shebercraft!</b>\n\n👤 <b>Имя:</b> ${name || 'Не указано'}\n🏢 <b>Компания:</b> ${company || 'Не указана'}\n📞 <b>Телефон:</b> ${phone}\n⚙️ <b>Решение:</b> ${serviceText || 'Не выбрано'}\n📝 <b>Описание:</b> ${message || 'Не описана'}`;
 
-    if (toast) {
-      toast.querySelector('span').textContent = 'Заявка сформирована! Открываем Telegram...';
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4000);
+    if (TELEGRAM_CHAT_ID && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID') {
+      try {
+        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: telegramText,
+            parse_mode: 'HTML'
+          })
+        });
+
+        if (response.ok) {
+          if (toast) {
+            toast.querySelector('span').textContent = 'Заявка успешно отправлена!';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4000);
+          }
+        } else {
+          throw new Error('Telegram API error');
+        }
+      } catch (err) {
+        console.error('Ошибка отправки через Telegram Bot API, перенаправляем напрямую:', err);
+        window.open(`https://t.me/sheber_craf?text=${encodeURIComponent(telegramText.replace(/<[^>]*>/g, ''))}`, '_blank');
+      }
+    } else {
+      // Fallback redirect if Chat ID is not configured yet
+      window.open(`https://t.me/sheber_craf?text=${encodeURIComponent(telegramText.replace(/<[^>]*>/g, ''))}`, '_blank');
+      if (toast) {
+        toast.querySelector('span').textContent = 'Заявка сформирована! Открываем Telegram...';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+      }
     }
 
     contactForm.reset();
