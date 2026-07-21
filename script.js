@@ -213,7 +213,12 @@ document.addEventListener('DOMContentLoaded', () => {
   contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const name = document.getElementById('name').value.trim();
+    const company = document.getElementById('company').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const serviceSelect = document.getElementById('service');
+    const serviceText = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
+    const message = document.getElementById('message').value.trim();
 
     if (!phone) {
       const phoneEl = document.getElementById('phone');
@@ -227,9 +232,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSpan = submitBtn.querySelector('span');
     if (btnSpan) btnSpan.textContent = 'Отправляем...';
 
-    await new Promise(resolve => setTimeout(resolve, 1200));
+    // Construct Telegram redirect URL
+    const telegramText = `Новая заявка с сайта Shebercraft!\n\n👤 Имя: ${name || 'Не указано'}\n🏢 Компания: ${company || 'Не указана'}\n📞 Телефон: ${phone}\n⚙️ Решение: ${serviceText || 'Не выбрано'}\n📝 Описание: ${message || 'Не описана'}`;
+    
+    await new Promise(resolve => setTimeout(resolve, 800));
+
+    window.open(`https://t.me/sheber_craf?text=${encodeURIComponent(telegramText)}`, '_blank');
 
     if (toast) {
+      toast.querySelector('span').textContent = 'Заявка сформирована! Открываем Telegram...';
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 4000);
     }
