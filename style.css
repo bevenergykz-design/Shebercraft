@@ -242,7 +242,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
    NAVBAR
    ===================================================== */
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 1rem;
   left: 50%;
   transform: translateX(-50%);
