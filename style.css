@@ -1591,7 +1591,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .container { padding: 0 var(--space-4); }
 
   /* --- Hero --- */
-  .hero { padding: 6.5rem 0 var(--space-16); min-height: auto; }
+  .hero { padding: 7.8rem 0 var(--space-16); min-height: auto; }
   .hero-container { padding: 0 var(--space-4); }
   .hero-badge { margin-bottom: var(--space-4); }
   .hero-stats {
@@ -2855,9 +2855,19 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
     left: 1.5rem;
   }
   .ai-chat-window {
-    bottom: 70px;
-    left: 0;
-    width: calc(100vw - 3rem);
-    height: 460px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translate(-50%, -50%) scale(0.92);
+    width: calc(100vw - 24px);
+    height: calc(100vh - 80px);
+    max-height: 540px;
+    z-index: 100001;
+    border-radius: var(--radius-xl);
+  }
+  .ai-chat-window.open {
+    transform: translate(-50%, -50%) scale(1);
   }
 }
