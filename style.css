@@ -2104,7 +2104,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
    ===================================================== */
 .back-to-top {
   position: fixed;
-  bottom: 7rem;
+  bottom: 11.5rem;
   right: 2.5rem;
   width: 46px;
   height: 46px;
@@ -2132,10 +2132,11 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 }
 
 .back-to-top:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  color: hsl(220, 25%, 5%);
-  box-shadow: 0 4px 24px var(--color-primary-glow);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px var(--color-primary-glow);
 }
 
 @media (max-width: 768px) {
