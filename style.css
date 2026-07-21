@@ -243,24 +243,21 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
    ===================================================== */
 .navbar {
   position: fixed;
-  top: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 2rem);
-  max-width: 1260px;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: hsla(220, 25%, 5%, 0.7);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-bottom: 1px solid var(--color-border);
   z-index: 1000;
   transition: all var(--ease-base);
   box-sizing: border-box;
 }
 
 .navbar.scrolled {
-  background: hsla(220, 25%, 5%, 0.92);
-  border-color: var(--color-border-light);
+  background: hsla(220, 25%, 5%, 0.94);
+  border-bottom-color: var(--color-border-light);
   box-shadow: var(--shadow-lg);
 }
 
