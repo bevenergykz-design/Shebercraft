@@ -1572,6 +1572,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
   /* --- Navbar: hide all action buttons, keep only burger --- */
   .navbar {
+    position: absolute;
     top: 0.5rem;
     left: 0.5rem;
     right: 0.5rem;
