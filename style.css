@@ -1684,8 +1684,8 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .footer-tagline { max-width: 100%; }
 
   /* --- Float buttons (horizontal on mobile to prevent clipping/overlapping) --- */
-  .float-btn { width: 48px; height: 48px; }
-  .float-buttons { bottom: 1.5rem; right: 1.5rem; flex-direction: row; gap: var(--space-2); }
+  .float-btn { width: 46px; height: 46px; }
+  .float-buttons { bottom: 1.5rem !important; right: 1.5rem; flex-direction: row; gap: var(--space-2); }
   .float-btn__tooltip { display: none; }
 }
 
@@ -1722,8 +1722,9 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .mobile-menu a { font-size: 1.5rem; }
 
   /* Float buttons size override */
-  .float-btn { width: 44px; height: 44px; }
-  .float-buttons { bottom: 1rem; right: 1rem; flex-direction: row; gap: var(--space-2); }
+  .float-btn { width: 42px; height: 42px; }
+  .float-buttons { bottom: 1rem !important; right: 1rem; flex-direction: row; gap: var(--space-2); }
+  .back-to-top { bottom: 1rem !important; width: 42px; height: 42px; }
 }
 
 /* =====================================================
@@ -2140,7 +2141,7 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 1.5rem;
+    bottom: 1.5rem !important;
     left: 50%;
     right: auto;
     transform: translateX(-50%) translateY(16px);
@@ -2851,8 +2852,21 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 /* RESPONSIVE AI WIDGET */
 @media (max-width: 768px) {
   .ai-widget-wrapper {
-    bottom: 1.5rem;
+    bottom: 1.5rem !important;
     left: 1.5rem;
+  }
+  .ai-trigger-btn {
+    width: 46px;
+    height: 46px;
+  }
+  .ai-trigger-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+  .ai-trigger-badge {
+    font-size: 0.55rem;
+    padding: 1px 4px;
+    bottom: -4px;
   }
   .ai-chat-window {
     position: fixed;
@@ -2878,8 +2892,8 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
     left: 1rem !important;
   }
   .ai-trigger-btn {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
   .ai-trigger-btn svg {
     width: 20px;
