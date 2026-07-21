@@ -187,7 +187,7 @@ input, textarea, select { font-family: inherit; }
   z-index: 0;
 }
 
-body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toast):not(.mobile-menu):not(.back-to-top) { position: relative; z-index: 1; }
+body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toast):not(.mobile-menu):not(.back-to-top):not(.navbar) { position: relative; z-index: 1; }
 
 .blob {
   position: absolute;
