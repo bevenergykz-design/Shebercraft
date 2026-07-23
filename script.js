@@ -125,13 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <path d="M18 6 6 18M6 6l12 12"/>
       </svg>
     </button>
-    <a href="#services" class="mobile-nav-link">Услуги</a>
-    <a href="#crm" class="mobile-nav-link">CRM & БП</a>
-    <a href="#catalog" class="mobile-nav-link">Каталог</a>
-    <a href="#cases" class="mobile-nav-link">Кейсы</a>
-    <a href="#articles" class="mobile-nav-link">Статьи</a>
-    <a href="#faq" class="mobile-nav-link">FAQ</a>
-    <a href="#contact" class="btn-primary btn-lg" style="margin-top:1.5rem">Получить решение</a>
+    <a href="/sozdanie-saitov/" class="mobile-nav-link">Создание сайтов</a>
+    <a href="/bitrix24-avtomatizaciya-bp/" class="mobile-nav-link">CRM & БП</a>
+    <a href="/cases/" class="mobile-nav-link">Кейсы</a>
+    <a href="/blog/" class="mobile-nav-link">Блог</a>
+    <a href="/#faq" class="mobile-nav-link">FAQ</a>
   `;
   document.body.appendChild(mobileMenu);
 
