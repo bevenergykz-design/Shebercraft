@@ -151,8 +151,8 @@
     .faq-block details[open] summary::after{content:'−';}
     .faq-block details p{color:var(--color-text-muted);margin-top:1rem;line-height:1.7;font-size:0.95rem;}
     .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem;}
-    .portfolio-item{background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:var(--radius-xl);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;color:var(--color-text-muted);font-size:0.85rem;}
-    .portfolio-item svg{opacity:0.3;}
+    .portfolio-item{background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:2rem 1.5rem;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.4rem;color:var(--color-text-muted);font-size:0.85rem;text-decoration:none;transition:all 0.3s ease;text-align:center;}
+    .portfolio-item:hover{border-color:var(--color-primary);transform:translateY(-4px);box-shadow:var(--shadow-md);}
     @media(max-width:768px){.hub-cards,.steps-grid,.case-block,.portfolio-grid{grid-template-columns:1fr;}.case-stats{grid-template-columns:1fr 1fr;}}
   </style>
 </head>
@@ -294,22 +294,35 @@
 
     <!-- Блок 5: Портфолио -->
     <h2 style="color:#fff;font-family:var(--font-display);font-size:1.6rem;margin-top:4rem;margin-bottom:0.5rem;">Примеры реализованных сайтов</h2>
-    <p style="color:var(--color-text-muted);margin-bottom:0;">Сайты для юридических, медицинских и строительных компаний Казахстана.</p>
+    <p style="color:var(--color-text-muted);margin-bottom:0;">Примеры разработанных сайтов для компаний в Казахстане.</p>
 
     <div class="portfolio-grid">
-      <!-- TODO: добавить скриншоты кейсов -->
-      <div class="portfolio-item">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Юридические услуги</span>
-      </div>
-      <div class="portfolio-item">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Медицина и клиники</span>
-      </div>
-      <div class="portfolio-item">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Строительство и ремонт</span>
-      </div>
+      <!-- verumpraxis.kz -->
+      <a href="https://verumpraxis.kz" target="_blank" rel="noopener" class="portfolio-item">
+        <div style="background:rgba(56,189,248,0.1);color:#38bdf8;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:0.5rem;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 7l9-4 9 4M3 7l4 8M21 7l-4 8M5 15h4M15 15h4"/></svg>
+        </div>
+        <span style="color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:0.2rem;">Юридические услуги</span>
+        <span style="color:var(--color-primary);font-family:var(--font-mono);font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">verumpraxis.kz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+      </a>
+
+      <!-- dentalclinic.kz -->
+      <a href="https://dentalclinic.kz/" target="_blank" rel="noopener" class="portfolio-item">
+        <div style="background:rgba(129,140,248,0.1);color:#818cf8;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:0.5rem;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M12 6a6 6 0 0 1 6 6M6 12a6 6 0 0 1 6-6"/></svg>
+        </div>
+        <span style="color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:0.2rem;">Медицина и клиники</span>
+        <span style="color:var(--color-primary);font-family:var(--font-mono);font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">dentalclinic.kz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+      </a>
+
+      <!-- rslv.live -->
+      <a href="https://rslv.live" target="_blank" rel="noopener" class="portfolio-item">
+        <div style="background:rgba(74,222,128,0.1);color:#4ade80;width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:0.5rem;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></svg>
+        </div>
+        <span style="color:#fff;font-weight:700;font-size:1.1rem;margin-bottom:0.2rem;">Путешествия и экспедиции</span>
+        <span style="color:var(--color-primary);font-family:var(--font-mono);font-size:0.9rem;display:inline-flex;align-items:center;gap:4px;">rslv.live <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+      </a>
     </div>
 
     <!-- Блок 6: Кейс -->
