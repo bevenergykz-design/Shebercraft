@@ -1572,7 +1572,8 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
   /* --- Navbar: hide all action buttons, keep only burger --- */
   .navbar {
-    position: absolute;
+    position: fixed;
+    z-index: 1000;
     top: 0.5rem;
     left: 0.5rem;
     right: 0.5rem;
@@ -2903,5 +2904,23 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
     font-size: 0.52rem;
     padding: 1px 4px;
     bottom: -4px;
+  }
+}
+
+
+/* --- table-mobile-responsive-fix --- */
+@media (max-width: 768px) {
+  table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .hub-cards, .steps-grid, .case-block, .portfolio-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .case-stats {
+    grid-template-columns: 1fr 1fr !important;
   }
 }
