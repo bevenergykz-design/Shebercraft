@@ -394,6 +394,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ===== SMART FAB CONTACT WIDGET LOGIC =====
+  const smartFabContainer = document.getElementById('smartFabContainer');
+  const smartFabTrigger = document.getElementById('smartFabTrigger');
+  const smartFabBackdrop = document.getElementById('smartFabBackdrop');
+  const smartFabAi = document.getElementById('smartFabAi');
+
+  const toggleSmartFabMenu = (open) => {
+    if (!smartFabContainer) return;
+    const isActive = open !== undefined ? open : !smartFabContainer.classList.contains('active');
+    smartFabContainer.classList.toggle('active', isActive);
+    if (smartFabBackdrop) smartFabBackdrop.classList.toggle('active', isActive);
+  };
+
+  if (smartFabTrigger) {
+    smartFabTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleSmartFabMenu();
+    });
+  }
+
+  if (smartFabBackdrop) {
+    smartFabBackdrop.addEventListener('click', () => {
+      toggleSmartFabMenu(false);
+    });
+  }
+
   // ===== AI CONSULTANT WIDGET LOGIC =====
   const aiTriggerBtn = document.getElementById('aiTriggerBtn');
   const aiChatWindow = document.getElementById('aiChatWindow');
@@ -412,6 +438,13 @@ document.addEventListener('DOMContentLoaded', () => {
     aiChatWindow.classList.toggle('open', isOpen);
     aiChatWindow.setAttribute('aria-hidden', !isOpen);
   };
+
+  if (smartFabAi) {
+    smartFabAi.addEventListener('click', () => {
+      toggleSmartFabMenu(false);
+      toggleAiChat(true);
+    });
+  }
 
   if (aiTriggerBtn) aiTriggerBtn.addEventListener('click', () => toggleAiChat());
   if (aiChatClose) aiChatClose.addEventListener('click', () => toggleAiChat(false));
