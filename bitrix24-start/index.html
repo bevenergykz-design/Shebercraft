@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Внедрение Битрикс24 «Старт продаж» в Алматы, Казахстане — Shebercraft</title>
   <meta name="description" content="Базовая настройка Битрикс24 под ключ. Настройка стадий сделок, интеграция WhatsApp и телефонии, обучение сотрудников.">
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shebercraft.kz/bitrix24-start/" />
+  <meta property="og:site_name" content="Shebercraft" />
+  <meta property="og:title" content="Внедрение Битрикс24 «Старт продаж» в Алматы, Казахстане — Shebercraft" />
+  <meta property="og:description" content="Базовая настройка Битрикс24 под ключ. Настройка стадий сделок, интеграция WhatsApp и телефонии, обучение сотрудников." />
+  <meta property="og:image" content="https://shebercraft.kz/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ru_RU" />
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Внедрение Битрикс24 «Старт продаж» в Алматы, Казахстане — Shebercraft" />
+  <meta name="twitter:description" content="Базовая настройка Битрикс24 под ключ. Настройка стадий сделок, интеграция WhatsApp и телефонии, обучение сотрудников." />
+  <meta name="twitter:image" content="https://shebercraft.kz/assets/og-image.jpg" />
   <link rel="canonical" href="https://shebercraft.kz/bitrix24-start/">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -14,21 +29,43 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="../style.css" />
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Внедрение Битрикс24 Старт продаж",
-  "description": "Базовая настройка CRM Битрикс24 в Казахстане",
-  "offers": {
-    "@type": "Offer",
-    "price": "150000",
-    "priceCurrency": "KZT"
+  <script type="application/ld+json">
+  [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://shebercraft.kz/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Битрикс24 Старт",
+        "item": "https://shebercraft.kz/bitrix24-start/"
+      }
+    ]
   },
-  "provider": {
-    "@type": "Organization",
-    "name": "Shebercraft"
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Внедрение Битрикс24 Старт продаж",
+    "description": "Базовая настройка CRM Битрикс24 в Казахстане",
+    "offers": {
+      "@type": "Offer",
+      "price": "150000",
+      "priceCurrency": "KZT"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "Shebercraft"
+    }
   }
-}</script>
+]
+  </script>
 </head>
 <body style="padding-top: 80px;">
 
@@ -228,7 +265,7 @@
             <div class="ai-chat-status"><span class="status-dot">●</span> онлайн</div>
           </div>
         </div>
-        <button class="ai-chat-close" id="aiChatClose" aria-label="Закрыть консультанта">&times;</button>
+        <button class="ai-chat-close" id="aiChatClose" aria-label="Закрыть консультанта" tabindex="-1">&times;</button>
       </div>
 
       <div class="ai-chat-messages" id="aiChatMessages">
@@ -240,15 +277,15 @@
       </div>
 
       <div class="ai-quick-prompts" id="aiQuickPrompts">
-        <button class="ai-prompt-chip" data-prompt="Как автоматизировать согласование счетов?">Как автоматизировать счета?</button>
-        <button class="ai-prompt-chip" data-prompt="Как ускорить согласование договоров?">Согласование договоров</button>
-        <button class="ai-prompt-chip" data-prompt="Автоматизация кадрового учета и отпусков">Кадровый Onboarding</button>
-        <button class="ai-prompt-chip" data-prompt="Сколько стоит внедрение БП в Битрикс24?">Стоимость БП</button>
+        <button class="ai-prompt-chip" data-prompt="Как автоматизировать согласование счетов?" tabindex="-1">Как автоматизировать счета?</button>
+        <button class="ai-prompt-chip" data-prompt="Как ускорить согласование договоров?" tabindex="-1">Согласование договоров</button>
+        <button class="ai-prompt-chip" data-prompt="Автоматизация кадрового учета и отпусков" tabindex="-1">Кадровый Onboarding</button>
+        <button class="ai-prompt-chip" data-prompt="Сколько стоит внедрение БП в Битрикс24?" tabindex="-1">Стоимость БП</button>
       </div>
 
       <form class="ai-chat-input-form" id="aiChatForm">
-        <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ваш вопрос..." autocomplete="off" />
-        <button type="submit" class="ai-chat-send" id="aiChatSend" aria-label="Отправить">
+        <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ваш вопрос..." autocomplete="off" / tabindex="-1">
+        <button type="submit" class="ai-chat-send" id="aiChatSend" aria-label="Отправить" tabindex="-1">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         </button>
       </form>
