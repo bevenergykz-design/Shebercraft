@@ -388,12 +388,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (closeArticleBtn) closeArticleBtn.addEventListener('click', () => toggleArticleModal(false));
   if (articleOverlay) articleOverlay.addEventListener('click', () => toggleArticleModal(false));
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && articleModal && articleModal.classList.contains('open')) {
-      toggleArticleModal(false);
-    }
-  });
-
   // ===== SMART FAB CONTACT WIDGET LOGIC =====
   const smartFabContainer = document.getElementById('smartFabContainer');
   const smartFabTrigger = document.getElementById('smartFabTrigger');
@@ -421,7 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== AI CONSULTANT WIDGET LOGIC =====
-  const aiTriggerBtn = document.getElementById('aiTriggerBtn');
   const aiChatWindow = document.getElementById('aiChatWindow');
   const aiChatClose = document.getElementById('aiChatClose');
   const aiChatMessages = document.getElementById('aiChatMessages');
@@ -446,8 +439,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (aiTriggerBtn) aiTriggerBtn.addEventListener('click', () => toggleAiChat());
   if (aiChatClose) aiChatClose.addEventListener('click', () => toggleAiChat(false));
+
+  // Escape key handler (placed after all declarations)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (articleModal && articleModal.classList.contains('open')) {
+        toggleArticleModal(false);
+      }
+      if (aiChatWindow && aiChatWindow.classList.contains('open')) {
+        toggleAiChat(false);
+      }
+      if (smartFabContainer && smartFabContainer.classList.contains('active')) {
+        toggleSmartFabMenu(false);
+      }
+    }
+  });
 
   const appendAiMessage = (sender, text) => {
     if (!aiChatMessages) return;
