@@ -1,4 +1,4 @@
-﻿/* =======================================================
+/* =======================================================
    SELF-HOSTED FONTS — Inter + JetBrains Mono
    ======================================================= */
 @font-face {
@@ -495,10 +495,29 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 }
 
 .btn-primary {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(135deg, var(--color-primary), hsl(199, 89%, 40%));
   color: hsl(220, 25%, 5%);
   border: 1px solid transparent;
   box-shadow: 0 4px 24px var(--color-primary-glow), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%);
+  transform: rotate(30deg) translateX(-100%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after {
+  transform: rotate(30deg) translateX(100%);
 }
 
 .btn-primary:hover {
@@ -836,7 +855,12 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--color-text-muted);
+  transition: all var(--ease-fast);
 }
+
+.tag--green  { background: hsla(158, 64%, 52%, 0.12); color: var(--color-success); border-color: hsla(158, 64%, 52%, 0.25); }
+.tag--purple { background: hsla(246, 84%, 72%, 0.12); color: var(--color-accent);  border-color: hsla(246, 84%, 72%, 0.25); }
+.tag--blue   { background: hsla(199, 89%, 55%, 0.12); color: var(--color-primary); border-color: hsla(199, 89%, 55%, 0.25); }
 
 .service-card__cta {
   display: inline-flex;
@@ -870,9 +894,10 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 }
 
 .bento-card:hover {
-  border-color: var(--color-border-light);
+  border-color: hsla(246, 84%, 72%, 0.35);
   background: var(--color-bg-card-hover);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 30px hsla(246, 84%, 72%, 0.15);
 }
 
 .bento-card--wide { grid-column: span 2; }
@@ -1148,7 +1173,11 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   transition: opacity var(--ease-base);
 }
 
-.advantage-card:hover { border-color: var(--color-border-light); transform: translateY(-3px); }
+.advantage-card:hover { 
+  border-color: hsla(199, 89%, 55%, 0.3); 
+  transform: translateY(-4px); 
+  box-shadow: var(--shadow-md), 0 0 25px var(--color-primary-glow); 
+}
 .advantage-card:hover::before { opacity: 1; }
 
 .advantage-icon {
@@ -1189,7 +1218,11 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   transition: all var(--ease-base);
 }
 
-.case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-border-light); }
+.case-card:hover { 
+  transform: translateY(-6px); 
+  box-shadow: var(--shadow-lg), var(--shadow-glow-primary); 
+  border-color: hsla(199, 89%, 55%, 0.35); 
+}
 
 .case-card__metric {
   background: linear-gradient(135deg, hsla(199, 89%, 55%, 0.15), hsla(246, 84%, 72%, 0.1));
@@ -1276,6 +1309,15 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
 .faq-item {
   border-bottom: 1px solid var(--color-border);
+  transition: background var(--ease-fast), border-color var(--ease-fast), padding var(--ease-fast);
+  border-radius: var(--radius-md);
+}
+
+.faq-item[open] {
+  background: hsla(199, 89%, 55%, 0.04);
+  border-color: hsla(199, 89%, 55%, 0.25);
+  padding: 0 var(--space-4);
+  margin: var(--space-2) 0;
 }
 
 .faq-item[open] .faq-icon { transform: rotate(45deg); }
@@ -1401,6 +1443,10 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 }
 
 .form-input::placeholder, .form-textarea::placeholder { color: var(--color-text-faint); }
+
+.form-input:hover, .form-select:hover, .form-textarea:hover {
+  border-color: var(--color-border-light);
+}
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   border-color: var(--color-primary);
@@ -1742,16 +1788,16 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   .hero-container { padding: 0 var(--space-4); }
   .hero-badge { margin-bottom: var(--space-4); }
   .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-4);
-    padding: var(--space-4) var(--space-5);
-    flex-wrap: wrap;
-    justify-content: center;
+    padding: var(--space-5);
     width: 100%;
     box-sizing: border-box;
   }
   .stat-divider { display: none; }
-  .stat { min-width: 80px; }
-  .stat-number { font-size: 1.5rem; }
+  .stat { min-width: 0; text-align: center; }
+  .stat-number { font-size: 1.6rem; }
   .hero-scroll-indicator { display: none; }
 
   /* --- Sections --- */
@@ -1999,9 +2045,9 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 }
 
 .crm-card:hover {
-  border-color: var(--color-border-light);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  border-color: hsla(199, 89%, 55%, 0.35);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-primary);
 }
 
 .crm-card--highlight {
@@ -2354,11 +2400,15 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
 
 .bp-tab-panel {
   display: none;
-  animation: fadeIn 0.4s ease;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bp-tab-panel.active {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .bp-panel-grid {
