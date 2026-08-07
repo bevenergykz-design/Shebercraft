@@ -1,4 +1,4 @@
-﻿/* =======================================================
+/* =======================================================
    SELF-HOSTED FONTS — Inter + JetBrains Mono
    ======================================================= */
 @font-face {
@@ -333,7 +333,7 @@ input, textarea, select { font-family: inherit; }
   z-index: 0;
 }
 
-body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toast):not(.mobile-menu):not(.back-to-top):not(.navbar):not(.ai-widget-wrapper) { position: relative; z-index: 1; }
+body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toast):not(.mobile-menu):not(.back-to-top):not(.navbar):not(.smart-fab-backdrop):not(.smart-fab-container):not(.ai-chat-window) { position: relative; z-index: 1; }
 
 .blob {
   position: absolute;
