@@ -384,14 +384,14 @@
       box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
     }
 
-    /* Catalog Grid */
+    /* Niche Catalog Cards (No conflict with style.css) */
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.75rem;
       margin-top: 1.5rem;
     }
-    .catalog-card {
+    .niche-card {
       background: var(--color-bg-card);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-xl);
@@ -399,61 +399,69 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      position: relative;
     }
-    .catalog-card:hover {
+    .niche-card:hover {
       transform: translateY(-6px);
       border-color: var(--color-primary);
       box-shadow: 0 12px 30px rgba(56, 189, 248, 0.15);
     }
-    .catalog-card__header {
+    .niche-card__header {
+      display: block !important;
       padding: 1.5rem 1.5rem 1rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      position: relative;
     }
-    .catalog-card__badge {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
+    .niche-card__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .niche-card__category {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+    }
+    .niche-card__badge {
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
       border-radius: 6px;
       background: rgba(16, 185, 129, 0.15);
       color: #10b981;
       border: 1px solid rgba(16, 185, 129, 0.3);
       white-space: nowrap;
     }
-    .catalog-card__category {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.4rem;
-      padding-right: 5.5rem;
-    }
-    .catalog-card__title {
+    .niche-card__title {
+      display: block !important;
+      width: 100%;
       font-family: var(--font-display);
-      font-size: 1.25rem;
+      font-size: 1.22rem;
       font-weight: 700;
       color: #fff;
-      line-height: 1.3;
+      line-height: 1.35;
+      margin: 0;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+      hyphens: none !important;
     }
-    .catalog-card__body {
+    .niche-card__body {
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
       gap: 1rem;
     }
-    .catalog-card__desc {
+    .niche-card__desc {
       color: var(--color-text-muted);
       font-size: 0.9rem;
       line-height: 1.55;
     }
-    .catalog-card__features {
+    .niche-card__features {
       list-style: none;
       padding: 0;
       margin: 0;
@@ -463,18 +471,18 @@
       font-size: 0.85rem;
       color: #cbd5e1;
     }
-    .catalog-card__features li {
+    .niche-card__features li {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-    .catalog-card__features li::before {
+    .niche-card__features li::before {
       content: "✓";
       color: #38bdf8;
       font-weight: bold;
       flex-shrink: 0;
     }
-    .catalog-card__footer {
+    .niche-card__footer {
       padding: 1.25rem 1.5rem 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       background: rgba(0, 0, 0, 0.2);
@@ -484,16 +492,16 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
-    .catalog-card__price-box {
+    .niche-card__price-box {
       display: flex;
       flex-direction: column;
     }
-    .catalog-card__price-label {
+    .niche-card__price-label {
       font-size: 0.75rem;
       color: var(--color-text-muted);
       font-family: var(--font-mono);
     }
-    .catalog-card__price {
+    .niche-card__price {
       font-size: 1.35rem;
       font-weight: 800;
       color: #fff;
@@ -1054,23 +1062,23 @@
         font-size: 0.76rem;
         padding: 0.35rem 0.75rem;
       }
-      .catalog-card__header {
+      .niche-card__header {
         padding: 1.25rem 1rem 0.85rem;
       }
-      .catalog-card__title {
+      .niche-card__title {
         font-size: 1.12rem;
       }
-      .catalog-card__body {
+      .niche-card__body {
         padding: 1.25rem 1rem;
       }
-      .catalog-card__footer {
+      .niche-card__footer {
         padding: 1rem;
         flex-direction: column;
         align-items: stretch;
         text-align: center;
         gap: 0.75rem;
       }
-      .catalog-card__footer .btn-primary {
+      .niche-card__footer .btn-primary {
         width: 100%;
         text-align: center;
       }
@@ -1247,150 +1255,162 @@
       <div class="catalog-grid" id="catalogGrid">
         
         <!-- Card 1: Стоматология -->
-        <div class="catalog-card" data-category="medical">
-          <div class="catalog-card__header">
-            <span class="catalog-card__badge">⚡ 1 день</span>
-            <div class="catalog-card__category">Медицина</div>
-            <h3 class="catalog-card__title">Готовый сайт для стоматологии и клиник</h3>
+        <div class="niche-card" data-category="medical">
+          <div class="niche-card__header">
+            <div class="niche-card__top">
+              <span class="niche-card__category">Медицина</span>
+              <span class="niche-card__badge">⚡ 1 день</span>
+            </div>
+            <h3 class="niche-card__title">Готовый сайт для стоматологии и клиник</h3>
           </div>
-          <div class="catalog-card__body">
-            <p class="catalog-card__desc">Сайт с онлайн-записью на приём, карточками врачей, прайс-листом на услуги и блоком отзывов пациентов.</p>
-            <ul class="catalog-card__features">
+          <div class="niche-card__body">
+            <p class="niche-card__desc">Сайт с онлайн-записью на приём, карточками врачей, прайс-листом на услуги и блоком отзывов пациентов.</p>
+            <ul class="niche-card__features">
               <li>Форма онлайн-записи к врачу</li>
               <li>Интеграция с WhatsApp клиники</li>
               <li>Прайс-лист и акции со скидками</li>
               <li>Схема проезда и интеграция 2GIS</li>
             </ul>
           </div>
-          <div class="catalog-card__footer">
-            <div class="catalog-card__price-box">
-              <span class="catalog-card__price-label">Стоимость:</span>
-              <span class="catalog-card__price">от 49 000 ₸</span>
+          <div class="niche-card__footer">
+            <div class="niche-card__price-box">
+              <span class="niche-card__price-label">Стоимость:</span>
+              <span class="niche-card__price">от 49 000 ₸</span>
             </div>
             <a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20готовый%20сайт%20для%20стоматологии." target="_blank" class="btn-primary btn-sm" style="text-decoration:none;">Выбрать сайт</a>
           </div>
         </div>
 
         <!-- Card 2: Автосервис -->
-        <div class="catalog-card" data-category="auto">
-          <div class="catalog-card__header">
-            <span class="catalog-card__badge">⚡ 1 день</span>
-            <div class="catalog-card__category">Автобизнес</div>
-            <h3 class="catalog-card__title">Готовый сайт для автосервиса и детейлинга</h3>
+        <div class="niche-card" data-category="auto">
+          <div class="niche-card__header">
+            <div class="niche-card__top">
+              <span class="niche-card__category">Автобизнес</span>
+              <span class="niche-card__badge">⚡ 1 день</span>
+            </div>
+            <h3 class="niche-card__title">Готовый сайт для автосервиса и детейлинга</h3>
           </div>
-          <div class="catalog-card__body">
-            <p class="catalog-card__desc">Калькулятор расчёта стоимости ремонта, запись на осмотр, фото до/после и список обслуживаемых марок авто.</p>
-            <ul class="catalog-card__features">
+          <div class="niche-card__body">
+            <p class="niche-card__desc">Калькулятор расчёта стоимости ремонта, запись на осмотр, фото до/после и список обслуживаемых марок авто.</p>
+            <ul class="niche-card__features">
               <li>Калькулятор услуг и ТО</li>
               <li>Прямая запись мастера в WhatsApp</li>
               <li>Галерея выполненных работ До/После</li>
               <li>Блок гарантий и отзывов клиентов</li>
             </ul>
           </div>
-          <div class="catalog-card__footer">
-            <div class="catalog-card__price-box">
-              <span class="catalog-card__price-label">Стоимость:</span>
-              <span class="catalog-card__price">от 49 000 ₸</span>
+          <div class="niche-card__footer">
+            <div class="niche-card__price-box">
+              <span class="niche-card__price-label">Стоимость:</span>
+              <span class="niche-card__price">от 49 000 ₸</span>
             </div>
             <a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20готовый%20сайт%20для%20автосервиса." target="_blank" class="btn-primary btn-sm" style="text-decoration:none;">Выбрать сайт</a>
           </div>
         </div>
 
         <!-- Card 3: Юристы / Консалтинг -->
-        <div class="catalog-card" data-category="legal">
-          <div class="catalog-card__header">
-            <span class="catalog-card__badge">⚡ 1 день</span>
-            <div class="catalog-card__category">B2B & Консалтинг</div>
-            <h3 class="catalog-card__title">Готовый сайт для юридических и консалтинговых услуг</h3>
+        <div class="niche-card" data-category="legal">
+          <div class="niche-card__header">
+            <div class="niche-card__top">
+              <span class="niche-card__category">B2B & Консалтинг</span>
+              <span class="niche-card__badge">⚡ 1 день</span>
+            </div>
+            <h3 class="niche-card__title">Готовый сайт для юридических и консалтинговых услуг</h3>
           </div>
-          <div class="catalog-card__body">
-            <p class="catalog-card__desc">Строгий деловой дизайн, форма экспресс-оценки ситуации, презентация выигранных дел и тарифы на абонентское обслуживание.</p>
-            <ul class="catalog-card__features">
+          <div class="niche-card__body">
+            <p class="niche-card__desc">Строгий деловой дизайн, форма экспресс-оценки ситуации, презентация выигранных дел и тарифы на абонентское обслуживание.</p>
+            <ul class="niche-card__features">
               <li>Форма бесплатной консультации</li>
               <li>Презентация кейсов и практики</li>
               <li>Тарифы для физлиц и юрлиц (ТОО/ИП)</li>
               <li>Квиз-опросник для квалификации лида</li>
             </ul>
           </div>
-          <div class="catalog-card__footer">
-            <div class="catalog-card__price-box">
-              <span class="catalog-card__price-label">Стоимость:</span>
-              <span class="catalog-card__price">от 49 000 ₸</span>
+          <div class="niche-card__footer">
+            <div class="niche-card__price-box">
+              <span class="niche-card__price-label">Стоимость:</span>
+              <span class="niche-card__price">от 49 000 ₸</span>
             </div>
             <a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20готовый%20сайт%20для%20юридических%20услуг." target="_blank" class="btn-primary btn-sm" style="text-decoration:none;">Выбрать сайт</a>
           </div>
         </div>
 
         <!-- Card 4: Строительство и ремонт -->
-        <div class="catalog-card" data-category="construction">
-          <div class="catalog-card__header">
-            <span class="catalog-card__badge">⚡ 1-2 дня</span>
-            <div class="catalog-card__category">Строительство</div>
-            <h3 class="catalog-card__title">Готовый сайт для ремонта квартир и строительства</h3>
+        <div class="niche-card" data-category="construction">
+          <div class="niche-card__header">
+            <div class="niche-card__top">
+              <span class="niche-card__category">Строительство</span>
+              <span class="niche-card__badge">⚡ 1-2 дня</span>
+            </div>
+            <h3 class="niche-card__title">Готовый сайт для ремонта квартир и строительства</h3>
           </div>
-          <div class="catalog-card__body">
-            <p class="catalog-card__desc">Калькулятор расчёта сметы по квадратным метрам, этапы работы, фото объектов и форма скачивания прайса.</p>
-            <ul class="catalog-card__features">
+          <div class="niche-card__body">
+            <p class="niche-card__desc">Калькулятор расчёта сметы по квадратным метрам, этапы работы, фото объектов и форма скачивания прайса.</p>
+            <ul class="niche-card__features">
               <li>Интерактивный калькулятор сметы</li>
               <li>Портфолио с фильтрами по объектам</li>
               <li>Договор, смета и фиксация цены</li>
               <li>Форма вызова замерщика на объект</li>
             </ul>
           </div>
-          <div class="catalog-card__footer">
-            <div class="catalog-card__price-box">
-              <span class="catalog-card__price-label">Стоимость:</span>
-              <span class="catalog-card__price">от 49 000 ₸</span>
+          <div class="niche-card__footer">
+            <div class="niche-card__price-box">
+              <span class="niche-card__price-label">Стоимость:</span>
+              <span class="niche-card__price">от 49 000 ₸</span>
             </div>
             <a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20готовый%20сайт%20для%20ремонта%20и%20строительства." target="_blank" class="btn-primary btn-sm" style="text-decoration:none;">Выбрать сайт</a>
           </div>
         </div>
 
         <!-- Card 5: Клининг и сервис -->
-        <div class="catalog-card" data-category="service">
-          <div class="catalog-card__header">
-            <span class="catalog-card__badge">⚡ 1 день</span>
-            <div class="catalog-card__category">Услуги и сервис</div>
-            <h3 class="catalog-card__title">Готовый сайт для клининговой компании</h3>
+        <div class="niche-card" data-category="service">
+          <div class="niche-card__header">
+            <div class="niche-card__top">
+              <span class="niche-card__category">Услуги и сервис</span>
+              <span class="niche-card__badge">⚡ 1 день</span>
+            </div>
+            <h3 class="niche-card__title">Готовый сайт для клининговой компании</h3>
           </div>
-          <div class="catalog-card__body">
-            <p class="catalog-card__desc">Яркий конверсионный сайт с выбором типа уборки (генеральная, после ремонта, офисы) и быстрым заказом бригады в WhatsApp.</p>
-            <ul class="catalog-card__features">
+          <div class="niche-card__body">
+            <p class="niche-card__desc">Яркий конверсионный сайт с выбором типа уборки (генеральная, после ремонта, офисы) и быстрым заказом бригады в WhatsApp.</p>
+            <ul class="niche-card__features">
               <li>Быстрый калькулятор комнат/площади</li>
               <li>Кнопка мгновенного вызова в WhatsApp</li>
               <li>Оборудование и используемая химия</li>
               <li>Скидки на регулярное обслуживание</li>
             </ul>
           </div>
-          <div class="catalog-card__footer">
-            <div class="catalog-card__price-box">
-              <span class="catalog-card__price-label">Стоимость:</span>
-              <span class="catalog-card__price">от 49 000 ₸</span>
+          <div class="niche-card__footer">
+            <div class="niche-card__price-box">
+              <span class="niche-card__price-label">Стоимость:</span>
+              <span class="niche-card__price">от 49 000 ₸</span>
             </div>
             <a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20готовый%20сайт%20для%20клининга." target="_blank" class="btn-primary btn-sm" style="text-decoration:none;">Выбрать сайт</a>
           </div>
         </div>
 
         <!-- Card 6: Интернет-магазин / Каталог -->
-        <div class="catalog-card" data-category="shop">
-          <div class="catalog-card__header">
-            <span class="catalog-card__badge">⚡ 3-4 дня</span>
-            <div class="catalog-card__category">E-Commerce & Ритейл</div>
-            <h3 class="catalog-card__title">Готовый интернет-магазин / Каталог товаров</h3>
+        <div class="niche-card" data-category="shop">
+          <div class="niche-card__header">
+            <div class="niche-card__top">
+              <span class="niche-card__category">E-Commerce & Ритейл</span>
+              <span class="niche-card__badge">⚡ 3-4 дня</span>
+            </div>
+            <h3 class="niche-card__title">Готовый интернет-магазин / Каталог товаров</h3>
           </div>
-          <div class="catalog-card__body">
-            <p class="catalog-card__desc">Полноценный каталог товаров с категориями, поиском, фильтрами по параметрам, корзиной и заказом через Kaspi Pay / WhatsApp.</p>
-            <ul class="catalog-card__features">
+          <div class="niche-card__body">
+            <p class="niche-card__desc">Полноценный каталог товаров с категориями, поиском, фильтрами по параметрам, корзиной и заказом через Kaspi Pay / WhatsApp.</p>
+            <ul class="niche-card__features">
               <li>Каталог товаров с ценами и фото</li>
               <li>Корзина и оформление заказа</li>
               <li>Интеграция с Kaspi Pay / Оплата картой</li>
               <li>Панель управления товарами и остатками</li>
             </ul>
           </div>
-          <div class="catalog-card__footer">
-            <div class="catalog-card__price-box">
-              <span class="catalog-card__price-label">Стоимость:</span>
-              <span class="catalog-card__price">от 220 000 ₸</span>
+          <div class="niche-card__footer">
+            <div class="niche-card__price-box">
+              <span class="niche-card__price-label">Стоимость:</span>
+              <span class="niche-card__price">от 220 000 ₸</span>
             </div>
             <a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20готовый%20интернет-магазин." target="_blank" class="btn-primary btn-sm" style="text-decoration:none;">Выбрать сайт</a>
           </div>
@@ -1923,7 +1943,7 @@
     // 1. Catalog Filter
     document.addEventListener('DOMContentLoaded', function() {
       const filterBtns = document.querySelectorAll('#catalogFilters .filter-btn');
-      const cards = document.querySelectorAll('#catalogGrid .catalog-card');
+      const cards = document.querySelectorAll('#catalogGrid .niche-card');
 
       filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
