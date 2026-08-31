@@ -250,6 +250,27 @@
   ]</script>
 
   <style>
+    /* Global Reset & Overflow Protection */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+    main.container {
+      width: 100%;
+      max-width: 1200px;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6, p, span, li, a, button, summary, label, td, th {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+
     /* Custom styles for Ready-made sites landing */
     .ready-hero {
       padding: 3rem 0 4rem;
@@ -259,15 +280,19 @@
     .hero-badge-pill {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       background: rgba(56, 189, 248, 0.1);
       border: 1px solid rgba(56, 189, 248, 0.3);
       border-radius: 9999px;
-      padding: 0.4rem 1rem;
+      padding: 0.45rem 1rem;
       font-size: 0.85rem;
       font-family: var(--font-mono);
       color: var(--color-primary);
       margin-bottom: 1.5rem;
+      max-width: 100%;
+      text-align: center;
+      line-height: 1.35;
     }
     .hero-badge-pill .pulse-dot {
       width: 8px;
@@ -275,10 +300,11 @@
       border-radius: 50%;
       background: #10b981;
       box-shadow: 0 0 8px #10b981;
+      flex-shrink: 0;
     }
     .ready-hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(1.65rem, 5vw, 3.2rem);
       font-weight: 800;
       line-height: 1.2;
       color: #fff;
@@ -288,7 +314,7 @@
       margin-right: auto;
     }
     .ready-hero-desc {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       line-height: 1.7;
       color: var(--color-text-muted);
       max-width: 780px;
@@ -397,6 +423,7 @@
       background: rgba(16, 185, 129, 0.15);
       color: #10b981;
       border: 1px solid rgba(16, 185, 129, 0.3);
+      white-space: nowrap;
     }
     .catalog-card__category {
       font-family: var(--font-mono);
@@ -405,6 +432,7 @@
       color: var(--color-primary);
       letter-spacing: 0.05em;
       margin-bottom: 0.4rem;
+      padding-right: 5.5rem;
     }
     .catalog-card__title {
       font-family: var(--font-display);
@@ -444,6 +472,7 @@
       content: "✓";
       color: #38bdf8;
       font-weight: bold;
+      flex-shrink: 0;
     }
     .catalog-card__footer {
       padding: 1.25rem 1.5rem 1.5rem;
@@ -453,6 +482,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      flex-wrap: wrap;
     }
     .catalog-card__price-box {
       display: flex;
@@ -467,6 +497,7 @@
       font-size: 1.35rem;
       font-weight: 800;
       color: #fff;
+      white-space: nowrap;
     }
 
     /* Comparison Table */
@@ -476,9 +507,12 @@
       border: 1px solid var(--color-border);
       border-radius: var(--radius-xl);
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
     }
     .compare-table {
       width: 100%;
+      min-width: 560px;
       border-collapse: collapse;
       text-align: left;
     }
@@ -634,6 +668,7 @@
       border-radius: 9999px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      white-space: nowrap;
     }
     .tariff-title {
       font-family: var(--font-display);
@@ -653,6 +688,7 @@
       font-weight: 800;
       color: #fff;
       margin-bottom: 1.5rem;
+      white-space: nowrap;
     }
     .tariff-price span {
       font-size: 0.9rem;
@@ -738,6 +774,7 @@
     }
     .calc-option-chip input {
       accent-color: var(--color-primary);
+      flex-shrink: 0;
     }
     .calc-option-chip:hover {
       border-color: var(--color-primary);
@@ -768,6 +805,8 @@
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .calc-total-days {
       color: #10b981;
@@ -823,31 +862,15 @@
 
     /* FAQ mobile */
     .faq-block {
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding-left: 0;
+      padding-right: 0;
     }
     .faq-block .faq-inner {
       max-width: 860px;
       margin: 0 auto;
     }
-    @media (max-width: 480px) {
-      .faq-block {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-      }
-      .faq-block details {
-        padding: 1rem 1rem;
-      }
-      .faq-block summary {
-        font-size: 0.95rem;
-        gap: 0.75rem;
-      }
-      .faq-block summary::after {
-        font-size: 1.35rem;
-      }
-    }
 
-    /* Responsive */
+    /* Responsive Queries */
     @media (max-width: 1024px) {
       .catalog-grid, .features-grid-6, .tariffs-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -859,15 +882,132 @@
         grid-template-columns: 1fr;
       }
     }
+
     @media (max-width: 768px) {
+      .ready-hero {
+        padding: 2rem 0 2.5rem;
+      }
+      .ready-hero-desc {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .hero-cta-group a {
+        width: 100%;
+        text-align: center;
+        padding: 0.85rem 1.25rem !important;
+      }
       .catalog-grid, .features-grid-6, .tariffs-grid, .trust-strip {
         grid-template-columns: 1fr;
+      }
+      .trust-strip {
+        padding: 1.25rem 1rem;
+        gap: 1rem;
+      }
+      .ai-banner-card {
+        padding: 1.75rem 1.25rem;
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        margin: 2.5rem 0;
+      }
+      .calc-box {
+        padding: 1.5rem 1.25rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
       .calc-options-grid {
         grid-template-columns: 1fr;
       }
       .tariff-card.featured {
         transform: none;
+      }
+      .filter-tabs-wrap {
+        gap: 0.4rem;
+        margin: 1.75rem 0 1.5rem;
+      }
+      .filter-btn {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.82rem;
+      }
+      h2[style*="font-size"] {
+        font-size: 1.45rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main.container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .ready-hero-title {
+        font-size: 1.5rem;
+      }
+      .hero-badge-pill {
+        font-size: 0.76rem;
+        padding: 0.35rem 0.75rem;
+      }
+      .catalog-card__header {
+        padding: 1.25rem 1rem 0.85rem;
+      }
+      .catalog-card__title {
+        font-size: 1.12rem;
+      }
+      .catalog-card__body {
+        padding: 1.25rem 1rem;
+      }
+      .catalog-card__footer {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 0.75rem;
+      }
+      .catalog-card__footer .btn-primary {
+        width: 100%;
+        text-align: center;
+      }
+      .ai-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .ai-stat-box {
+        padding: 0.85rem 0.4rem;
+      }
+      .ai-stat-val {
+        font-size: 1.35rem;
+      }
+      .ai-stat-lbl {
+        font-size: 0.72rem;
+      }
+      .tariff-card {
+        padding: 1.75rem 1.25rem;
+      }
+      .tariff-title {
+        font-size: 1.2rem;
+      }
+      .tariff-price {
+        font-size: 1.65rem;
+      }
+      .calc-total-price {
+        font-size: 1.85rem;
+      }
+      .faq-block details {
+        padding: 1rem 0.85rem;
+      }
+      .faq-block summary {
+        font-size: 0.92rem;
+        gap: 0.5rem;
+      }
+      .faq-block summary::after {
+        font-size: 1.25rem;
+      }
+      .faq-block details p {
+        font-size: 0.88rem;
+        line-height: 1.6;
       }
     }
   </style>

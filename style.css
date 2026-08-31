@@ -248,6 +248,11 @@ ul, ol { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 input, textarea, select { font-family: inherit; }
 
+h1, h2, h3, h4, h5, h6, p, span, li, a, button, summary, label, td, th {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 /* =====================================================
    TYPOGRAPHY
    ===================================================== */
