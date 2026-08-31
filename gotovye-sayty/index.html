@@ -500,7 +500,7 @@
       white-space: nowrap;
     }
 
-    /* Comparison Table */
+    /* Comparison Table (Desktop) */
     .compare-wrap {
       margin-top: 2rem;
       background: var(--color-bg-card);
@@ -543,6 +543,97 @@
     .compare-table td:first-child {
       font-weight: 500;
       color: #cbd5e1;
+    }
+
+    /* Comparison Cards for Mobile */
+    .compare-cards-mobile {
+      display: none;
+    }
+    .cmp-mobile-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cmp-mobile-card--featured {
+      border-color: var(--color-primary);
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.1) 0%, rgba(15, 23, 42, 0.95) 100%);
+      box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
+    }
+    .cmp-mobile-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 0.85rem;
+    }
+    .cmp-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #0b0f19;
+      background: var(--color-primary);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+    .cmp-badge-muted {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      margin-bottom: 0.5rem;
+    }
+    .cmp-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .cmp-price {
+      font-size: 0.88rem;
+      color: var(--color-primary);
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+    .cmp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .cmp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      color: #cbd5e1;
+    }
+    .cmp-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    .cmp-icon.check {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+    .cmp-icon.cross {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
     }
 
     /* Features 6-grid */
@@ -933,6 +1024,19 @@
         padding: 0.5rem 0.9rem;
         font-size: 0.82rem;
       }
+      .compare-wrap {
+        display: none !important;
+      }
+      .compare-cards-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+      }
+      .calc-select, .calc-input {
+        font-size: 0.85rem;
+        padding: 0.75rem 0.75rem;
+      }
       h2[style*="font-size"] {
         font-size: 1.45rem !important;
       }
@@ -994,6 +1098,14 @@
       }
       .calc-total-price {
         font-size: 1.85rem;
+      }
+      .calc-select, .calc-input {
+        font-size: 0.82rem;
+        padding: 0.7rem 0.6rem;
+      }
+      .calc-option-chip {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.8rem;
       }
       .faq-block details {
         padding: 1rem 0.85rem;
@@ -1329,6 +1441,7 @@
         <p style="color:var(--color-text-muted);font-size:1rem;">Почему 85% малого и среднего бизнеса выбирают запуск на базе готовых решений.</p>
       </div>
 
+      <!-- Desktop Table -->
       <div class="compare-wrap">
         <table class="compare-table">
           <thead>
@@ -1371,6 +1484,79 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Mobile Comparison Cards -->
+      <div class="compare-cards-mobile">
+        <!-- Card 1: Shebercraft -->
+        <div class="cmp-mobile-card cmp-mobile-card--featured">
+          <div class="cmp-mobile-header">
+            <span class="cmp-badge">🚀 Рекомендуем</span>
+            <h3 class="cmp-title">Готовый сайт Shebercraft</h3>
+            <div class="cmp-price">От 49 000 ₸ · запуск от 1 дня</div>
+          </div>
+          <div class="cmp-list">
+            <div class="cmp-item">
+              <span class="cmp-icon check">✓</span>
+              <div><strong>Сроки:</strong> от 1 дня (24 часа)</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon check">✓</span>
+              <div><strong>Стоимость:</strong> от 49 000 ₸ (фикс. цена)</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon check">✓</span>
+              <div><strong>Результат:</strong> вы сразу видите готовый дизайн</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon check">✓</span>
+              <div><strong>Конверсия:</strong> протестированные блоки</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon check">✓</span>
+              <div><strong>AI сотрудник:</strong> встроен 24/7 в WhatsApp</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon check">✓</span>
+              <div><strong>Окупаемость:</strong> с 1-й недели рекламы</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Custom Studio Dev -->
+        <div class="cmp-mobile-card">
+          <div class="cmp-mobile-header">
+            <span class="cmp-badge-muted">⏳ Долго и дорого</span>
+            <h3 class="cmp-title" style="color:#94a3b8;">Разработка с нуля в студиях</h3>
+            <div class="cmp-price" style="color:#64748b;">От 300 000 ₸ · от 1–2 месяцев</div>
+          </div>
+          <div class="cmp-list">
+            <div class="cmp-item">
+              <span class="cmp-icon cross">✕</span>
+              <div style="color:#94a3b8;"><strong>Сроки:</strong> от 3 до 8 недель ожидания</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon cross">✕</span>
+              <div style="color:#94a3b8;"><strong>Стоимость:</strong> от 300 000 до 1 500 000 ₸</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon cross">✕</span>
+              <div style="color:#94a3b8;"><strong>Результат:</strong> непредсказуем до сдачи</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon cross">✕</span>
+              <div style="color:#94a3b8;"><strong>Конверсия:</strong> тесты гипотез за ваш счёт</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon cross">✕</span>
+              <div style="color:#94a3b8;"><strong>AI сотрудник:</strong> доплата от 150 000 ₸</div>
+            </div>
+            <div class="cmp-item">
+              <span class="cmp-icon cross">✕</span>
+              <div style="color:#94a3b8;"><strong>Окупаемость:</strong> через полгода</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1488,21 +1674,21 @@
           <div class="calc-field">
             <label class="calc-label">1. Тип готового решения:</label>
             <select class="calc-select" id="calcType">
-              <option value="49000" data-days="1 день">Готовый Лендинг (одностраничный) — 49 000 ₸</option>
-              <option value="120000" data-days="2-3 дня">Многостраничный сайт услуг — 120 000 ₸</option>
-              <option value="220000" data-days="3-4 дня">Интернет-магазин / Каталог товаров — 220 000 ₸</option>
+              <option value="49000" data-days="1 день">Готовый Лендинг (1 день) — 49 000 ₸</option>
+              <option value="120000" data-days="2-3 дня">Сайт услуг + AI (2–3 дня) — 120 000 ₸</option>
+              <option value="220000" data-days="3-4 дня">Каталог / Магазин (3–4 дня) — 220 000 ₸</option>
             </select>
           </div>
 
           <div class="calc-field">
             <label class="calc-label">2. Ваша сфера бизнеса:</label>
             <select class="calc-select" id="calcNiche">
-              <option value="Стоматология / Медицина">Стоматология / Медицина</option>
-              <option value="Автосервис / Детейлинг">Автосервис / Детейлинг / Автотовары</option>
-              <option value="Юридические / Консалтинговые услуги">Юридические / Консалтинговые услуги</option>
-              <option value="Строительство / Ремонт квартир">Строительство / Ремонт квартир</option>
-              <option value="Клининг / Бытовые услуги">Клининг / Бытовые услуги</option>
-              <option value="Оптовая торговля / B2B">Оптовая торговля / B2B</option>
+              <option value="Стоматология / Медицина">Стоматология / Клиники</option>
+              <option value="Автосервис / Детейлинг">Автосервис / Детейлинг</option>
+              <option value="Юридические услуги">Юридические услуги / B2B</option>
+              <option value="Строительство и ремонт">Строительство и ремонт</option>
+              <option value="Клининг и сервис">Клининг и бытовой сервис</option>
+              <option value="Интернет-магазин">Интернет-магазин / Ритейл</option>
               <option value="Другая сфера">Другая сфера бизнеса</option>
             </select>
           </div>
