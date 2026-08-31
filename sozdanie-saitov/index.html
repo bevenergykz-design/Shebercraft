@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -139,7 +139,7 @@
   }
 ]</script>
   <style>
-    .hub-cards{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem;}
+    .hub-cards{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.5rem;margin-top:1.5rem;}
     .hub-card{background:var(--color-bg-card);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:2rem;display:flex;flex-direction:column;gap:1rem;transition:border-color 0.2s,transform 0.2s;}
     .hub-card:hover{border-color:var(--color-primary);transform:translateY(-4px);}
     .hub-card__tag{font-family:var(--font-mono);font-size:0.75rem;color:var(--color-primary);text-transform:uppercase;letter-spacing:0.05em;}
@@ -231,25 +231,34 @@
 
     <!-- Блок 2: Выберите формат -->
     <h2 style="color:#fff;font-family:var(--font-display);font-size:1.6rem;margin-bottom:0.5rem;">Выберите формат сайта</h2>
-    <p style="color:var(--color-text-muted);margin-bottom:0;">Два формата под разные задачи — оба варианта полностью под ключ.</p>
+    <p style="color:var(--color-text-muted);margin-bottom:0;">Три формата под разные задачи и бюджеты — все варианты полностью под ключ.</p>
 
     <div class="hub-cards">
+      <!-- Готовые сайты -->
+      <div class="hub-card">
+        <div class="hub-card__tag">⚡ Экспресс-старт за 24ч</div>
+        <div class="hub-card__title">Готовые сайты по нишам</div>
+        <div class="hub-card__desc">Протестированные решения для стоматологий, автосервисов, юристов, клининга и торговли. Встроенный AI сотрудник 24/7.</div>
+        <div class="hub-card__price">от 49 000 ₸ <span>· запуск от 1 дня</span></div>
+        <a href="/gotovye-sayty/" class="btn-primary" style="text-decoration:none;text-align:center;margin-top:0.5rem;">Каталог готовых сайтов →</a>
+      </div>
+
       <!-- Лендинг -->
       <div class="hub-card">
-        <div class="hub-card__tag">⚡ Быстрый старт</div>
+        <div class="hub-card__tag">🚀 Индивидуальный лендинг</div>
         <div class="hub-card__title">Лендинг — для услуг и продукта</div>
-        <div class="hub-card__desc">Одностраничный сайт с высокой конверсией. Идеален для рекламных кампаний, запуска нового продукта или услуги. Запуск от 7 дней.</div>
+        <div class="hub-card__desc">Одностраничный сайт с высокой конверсией. Идеален для рекламных кампаний, запуска нового продукта или услуги.</div>
         <div class="hub-card__price">от 49 000 ₸ <span>· запуск от 7 дней</span></div>
-        <a href="/landing-sait/" class="btn-primary" style="text-decoration:none;text-align:center;margin-top:0.5rem;">Подробнее о лендинге →</a>
+        <a href="/landing-sait/" class="btn-secondary" style="text-decoration:none;text-align:center;margin-top:0.5rem;color:#fff;border:1px solid var(--color-border);">Подробнее о лендинге →</a>
       </div>
 
       <!-- Корпоративный -->
       <div class="hub-card">
         <div class="hub-card__tag">🏢 Для компании</div>
-        <div class="hub-card__title">Корпоративный сайт — для компании</div>
+        <div class="hub-card__title">Корпоративный сайт под ключ</div>
         <div class="hub-card__desc">Многостраничный сайт с блогом, каталогом, формами и SEO-продвижением. Растёт вместе с вашим бизнесом. До 15 страниц.</div>
         <div class="hub-card__price">от 250 000 ₸ <span>· запуск от 14 дней</span></div>
-        <a href="/korporativnyy-sait/" class="btn-primary" style="text-decoration:none;text-align:center;margin-top:0.5rem;">Подробнее о корпоративном сайте →</a>
+        <a href="/korporativnyy-sait/" class="btn-secondary" style="text-decoration:none;text-align:center;margin-top:0.5rem;color:#fff;border:1px solid var(--color-border);">Подробнее о корпоративном →</a>
       </div>
     </div>
 
@@ -508,6 +517,7 @@
           <div class="footer-col">
             <h5>Сайты</h5>
             <ul>
+              <li><a href="/gotovye-sayty/">Готовые сайты</a></li>
               <li><a href="/sozdanie-saitov/">Создание сайтов</a></li>
               <li><a href="/landing-sait/">Лендинг</a></li>
               <li><a href="/korporativnyy-sait/">Корпоративный сайт</a></li>
