@@ -125,11 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
         <path d="M18 6 6 18M6 6l12 12"/>
       </svg>
     </button>
+    <a href="/gotovye-sayty/" class="mobile-nav-link" style="color:var(--color-primary);font-weight:700;">⚡ Готовые сайты</a>
     <a href="/sozdanie-saitov/" class="mobile-nav-link">Создание сайтов</a>
+    <a href="/cifrovoy-sotrudnik/" class="mobile-nav-link">AI Сотрудник 24/7</a>
     <a href="/bitrix24-avtomatizaciya-bp/" class="mobile-nav-link">CRM & БП</a>
     <a href="/cases/" class="mobile-nav-link">Кейсы</a>
     <a href="/blog/" class="mobile-nav-link">Блог</a>
     <a href="/#faq" class="mobile-nav-link">FAQ</a>
+    <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;width:100%;max-width:280px;">
+      <a href="https://wa.me/77070601980" target="_blank" class="btn-primary" style="text-align:center;font-size:1rem;padding:0.75rem 1.25rem;font-weight:600;font-family:var(--font-sans);text-decoration:none;border-radius:var(--radius-md);">WhatsApp Консультация</a>
+    </div>
   `;
   document.body.appendChild(mobileMenu);
 
