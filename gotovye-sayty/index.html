@@ -236,6 +236,14 @@
           "@type": "Answer",
           "text": "Да! Все наши готовые сайты создаются с чистым, сверхбыстрым кодом (скорость загрузки < 1 секунды), правильной семантической структурой заголовков H1-H3, метатегами Title/Description, картой сайта sitemap.xml, файлом robots.txt и валидной микроразметкой Schema.org. Это дает мощный стартовый фундамент для высокого ранжирования."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "С какими системами интегрируется AI Цифровой сотрудник?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Цифровой сотрудник интегрируется с WhatsApp Business, Telegram, Instagram Direct и сайтом, а также CRM-системами: Битрикс24, AmoCRM, Google Sheets. Все заявки, контакты и история переписки автоматически фиксируются в CRM. Руководитель получает уведомление в Telegram в момент, когда клиент готов к покупке."
+        }
       }
     ]
   }
@@ -813,6 +821,32 @@
       padding-top: 1rem;
     }
 
+    /* FAQ mobile */
+    .faq-block {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .faq-block .faq-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    @media (max-width: 480px) {
+      .faq-block {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+      .faq-block details {
+        padding: 1rem 1rem;
+      }
+      .faq-block summary {
+        font-size: 0.95rem;
+        gap: 0.75rem;
+      }
+      .faq-block summary::after {
+        font-size: 1.35rem;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .catalog-grid, .features-grid-6, .tariffs-grid {
@@ -1366,11 +1400,12 @@
     </section>
 
     <!-- SECTION: EXPANDED FAQ -->
-    <section id="faq" class="faq-block" style="margin-top:5rem;">
-      <div style="text-align:center;max-width:750px;margin:0 auto 2.5rem;">
-        <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem, 3.5vw, 2.2rem);color:#fff;margin-bottom:0.75rem;">Часто задаваемые вопросы (FAQ)</h2>
-        <p style="color:var(--color-text-muted);font-size:1rem;">Подробно рассказываем о сроках, географии работы и возможностях AI Цифрового сотрудника.</p>
-      </div>
+    <section id="faq" class="faq-block" style="margin-top:5rem;padding-bottom:3rem;">
+      <div class="faq-inner">
+        <div style="text-align:center;max-width:750px;margin:0 auto 2.5rem;">
+          <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem, 3.5vw, 2.2rem);color:#fff;margin-bottom:0.75rem;">Часто задаваемые вопросы (FAQ)</h2>
+          <p style="color:var(--color-text-muted);font-size:1rem;">Подробно рассказываем о сроках, географии работы и возможностях AI Цифрового сотрудника.</p>
+        </div>
 
       <!-- FAQ 1 -->
       <details open>
@@ -1420,7 +1455,15 @@
         </p>
       </details>
 
-      <!-- FAQ 7: Что входит в стоимость -->
+      <!-- FAQ 7: Интеграции AI -->
+      <details>
+        <summary>С какими системами интегрируется AI Цифровой сотрудник?</summary>
+        <p>
+          Цифровой сотрудник интегрируется с <strong>WhatsApp Business, Telegram, Instagram Direct, сайтом</strong>, а также CRM-системами: Битрикс24, AmoCRM, Google Sheets. Все заявки, контакты и история переписки автоматически фиксируются в вашей CRM. Руководитель получает уведомление в Telegram в момент, когда клиент готов к покупке.
+        </p>
+      </details>
+
+      <!-- FAQ 8: Что входит в стоимость -->
       <details>
         <summary>Что входит в стоимость готового сайта под ключ?</summary>
         <p>
@@ -1428,7 +1471,7 @@
         </p>
       </details>
 
-      <!-- FAQ 8: Редактирование -->
+      <!-- FAQ 9: Редактирование -->
       <details>
         <summary>Смогу ли я самостоятельно менять цены, фото и тексты?</summary>
         <p>
@@ -1436,13 +1479,15 @@
         </p>
       </details>
 
-      <!-- FAQ 9: SEO и Google -->
+      <!-- FAQ 10: SEO и Google -->
       <details>
         <summary>Как готовый сайт ранжируется в Google и Яндекс?</summary>
         <p>
           Все наши решения построены на чистом коде без тяжелых и медленных плагинов. Скорость загрузки составляет менее 1 секунды (зеленая зона Google PageSpeed). На странице изначально настроена правильная семантика (H1-H3), метатеги Title/Description, микроразметка Schema.org и карта сайта sitemap.xml, что обеспечивает быструю индексацию и высокие позиции в поиске.
         </p>
       </details>
+
+      </div><!-- /faq-inner -->
     </section>
 
     <!-- SECTION: CONTACT & CTA -->
