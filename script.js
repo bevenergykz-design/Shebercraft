@@ -428,7 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const aiQuickPrompts = document.getElementById('aiQuickPrompts');
 
   let aiQuestionCount = 0;
-  const MAX_FREE_QUESTIONS = 3;
+  const MAX_FREE_QUESTIONS = 5;
 
   const toggleAiChat = (open) => {
     if (!aiChatWindow) return;
@@ -473,22 +473,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const getAiAnswer = (query) => {
     const q = query.toLowerCase();
-    if (q.includes('счет') || q.includes('оплат') || q.includes('финанс') || q.includes('лимит') || q.includes('деньг')) {
-      return 'В Битрикс24 согласование счетов автоматизируется через БП: система проверяет лимит (например, счета до 500 тыс. ₸ утверждаются автоматически), сама находит ответственного и передает данные в 1С Бухгалтерию без ручного контроля!';
+
+    // --- Приветствие ---
+    if (q.includes('привет') || q.includes('здравствуй') || q.includes('добрый') || q.includes('салем') || q.includes('hello') || q.includes('хай')) {
+      return 'Здравствуйте! 👋 Я цифровой помощник Shebercraft. Могу рассказать о наших услугах, ценах, сроках и AI-решениях. О чём хотите узнать?';
     }
-    if (q.includes('договор') || q.includes('документ') || q.includes('юрист') || q.includes('акт')) {
-      return 'Бизнес-процессы сокращают время согласования договоров с 5 дней до 30 минут. Договор автоматически генерируется по шаблону из CRM, уходит параллельно юристу и бухгалтеру, а при задержке эскалирует задачу руководителю.';
+
+    // --- Цифровой сотрудник (флагман) ---
+    if (q.includes('цифровой сотрудник') || q.includes('цифровой агент') || q.includes('ai агент') || q.includes('ai-агент') || q.includes('нейро сотрудник') || q.includes('работает пока')) {
+      return '<strong>Цифровой сотрудник 24/7</strong> — AI-агент на базе GPT, который общается с вашими клиентами в WhatsApp, Telegram и на сайте круглосуточно.<br><br>✦ Отвечает мгновенно на русском и казахском<br>✦ Записывает клиентов, квалифицирует лиды<br>✦ Передаёт горячие заявки менеджеру<br>✦ Не болеет, не увольняется, не просит повышения<br><br>💰 Тарифы: <strong>Старт — 89 000 ₸</strong>, Бизнес — 190 000 ₸, Корпоратив — от 490 000 ₸<br>⏱ Запуск базовой версии: <strong>7 дней</strong><br><br><a href="/cifrovoy-sotrudnik/" style="color:#38bdf8">Подробнее о цифровом сотруднике →</a>';
     }
-    if (q.includes('кадр') || q.includes('отпуск') || q.includes('прием') || q.includes('onboard') || q.includes('сотрудник')) {
-      return 'Кадровый БП берет на себя все бланки: отпуск оформляется в 1 клик. При выходе нового сотрудника система автоматически создает учетки, заказывает технику у IT и назначает пошаговый план адаптации.';
+
+    // --- Стоимость сайта (ИСПРАВЛЕННАЯ ОШИБКА) ---
+    if ((q.includes('сколько') || q.includes('стоим') || q.includes('цена') || q.includes('прайс')) && (q.includes('сайт') || q.includes('лендинг') || q.includes('landing') || q.includes('страниц'))) {
+      return '<strong>Стоимость создания сайта:</strong><br><br>⚡ <strong>Готовый сайт под ключ</strong> — от 49 000 ₸ (запуск за 1 день!)<br>📄 <strong>Лендинг «Профессионал»</strong> — от 49 000 ₸ (до 7 секций, уникальный дизайн)<br>🏢 <strong>Корпоративный сайт «Бизнес»</strong> — от 250 000 ₸ (до 15 страниц, SEO, CMS)<br><br>Все сайты включают: адаптивный дизайн, SEO-оптимизацию, формы заявок и хостинг.<br><br><a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20создание%20сайта" target="_blank" style="color:#38bdf8">Обсудить в WhatsApp →</a>';
     }
-    if (q.includes('цена') || q.includes('стоим') || q.includes('сколько') || q.includes('тариф') || q.includes('прайс')) {
-      return 'Стоимость настройки бизнес-процессов зависит от сложности: базовые роботы и автоматизация от 200 000 ₸, а комплексное внедрение БП для всей компании под ключ — от 450 000 ₸. Включает проектирование, интеграции и обучение.';
+
+    // --- Готовые сайты ---
+    if (q.includes('готовый') || q.includes('готовые') || q.includes('за день') || q.includes('за 1 день') || q.includes('быстрый сайт') || q.includes('24 часа') || q.includes('шаблон')) {
+      return '<strong>⚡ Готовые сайты под ключ</strong> — от 49 000 ₸<br><br>Протестированные конверсионные сайты для популярных ниш с запуском за 24 часа:<br><br>✦ Автосервисы, клиники, юристы<br>✦ Ремонт, магазины, рестораны<br>✦ Встроенный AI-сотрудник 24/7<br>✦ Адаптивный дизайн + SEO<br><br><a href="/gotovye-sayty/" style="color:#38bdf8">Смотреть каталог готовых сайтов →</a>';
     }
-    if (q.includes('привет') || q.includes('здравствуй') || q.includes('добрый')) {
-      return 'Здравствуйте! Я готов проконсультировать вас по любым вопросам автоматизации бизнес-процессов в Битрикс24. О чем вы хотели бы узнать?';
+
+    // --- Лендинг ---
+    if (q.includes('лендинг') || q.includes('посадочн') || q.includes('landing') || q.includes('одностранич')) {
+      return '<strong>Лендинг «Профессионал»</strong> — от 49 000 ₸<br><br>Одностраничный сайт с высокой конверсией:<br>✦ До 7 секций, уникальный дизайн<br>✦ Форма заявки + интеграция с CRM<br>✦ Адаптивность под все устройства<br>✦ Базовая SEO-оптимизация<br>✦ Хостинг + домен .kz на 1 год<br><br>Конверсия в заявку: +2–5× по сравнению с обычным сайтом.<br><br><a href="/landing-sait/" style="color:#38bdf8">Подробнее о лендингах →</a>';
     }
-    return 'Бизнес-процессы в Битрикс24 связывают все отделы компании в единый механизм без необходимости вручную ставить задачи каждому сотруднику. Мы проектируем индивидуальные сценарии под ваш бизнес!';
+
+    // --- Корпоративный сайт ---
+    if (q.includes('корпоратив') || q.includes('многостранич') || q.includes('бизнес сайт') || q.includes('бизнес-сайт') || q.includes('компании сайт')) {
+      return '<strong>Корпоративный сайт «Бизнес»</strong> — от 250 000 ₸<br><br>Многостраничный сайт компании:<br>✦ До 15 страниц, CMS для управления<br>✦ Блог / Портфолио / Кейсы<br>✦ SEO-оптимизация + семантическое ядро<br>✦ Интеграция с аналитикой и CRM<br>✦ 1 месяц поддержки включён<br><br>Рост органического трафика на +150% за 6 месяцев.<br><br><a href="/korporativnyy-sait/" style="color:#38bdf8">Подробнее о корпоративных сайтах →</a>';
+    }
+
+    // --- SEO-дашборд ---
+    if (q.includes('seo') || q.includes('сео') || q.includes('позици') || q.includes('трафик') || q.includes('дашборд') || q.includes('аналитик') || q.includes('мониторинг')) {
+      return '<strong>SEO-дашборд «Контроль»</strong> — от 39 000 ₸/мес<br><br>Персональный дашборд с обновлением каждый день:<br>✦ Позиции по ключевым словам<br>✦ Трафик и источники посещений<br>✦ Анализ конкурентов в реальном времени<br>✦ Еженедельные отчёты на email<br><br><a href="/seo-dashboard/" style="color:#38bdf8">Подробнее о SEO-дашборде →</a>';
+    }
+
+    // --- AI-бот / чат-бот ---
+    if (q.includes('бот') || q.includes('чат-бот') || q.includes('chatbot') || q.includes('нейро-менеджер') || q.includes('нейроменеджер') || q.includes('gpt бот')) {
+      return '<strong>AI-бот «Нейро-менеджер»</strong> — от 320 000 ₸<br><br>Умный бот на GPT, обученный на вашем продукте:<br>✦ Понимает контекст, отрабатывает возражения<br>✦ Квалифицирует лидов и закрывает на следующий шаг<br>✦ Ответы 24/7 в WhatsApp и Telegram<br>✦ Передача в CRM + аналитика диалогов<br><br>Работает как живой менеджер — без выходных и больничных.<br><br><a href="/ai-chatbot/" style="color:#38bdf8">Подробнее об AI-ботах →</a>';
+    }
+
+    // --- CRM / Битрикс24 ---
+    if (q.includes('crm') || q.includes('битрикс') || q.includes('воронк') || q.includes('автоматизац') || q.includes('бизнес-процесс')) {
+      return '<strong>Внедрение CRM Битрикс24</strong><br><br>📋 <strong>«Старт продаж»</strong> — от 150 000 ₸<br>Воронка, карточки, задачи, 1 канал коммуникации, обучение команды.<br><br>🚀 <strong>«Автоматизация + БП»</strong> — от 450 000 ₸<br>Полная настройка CRM, бизнес-процессы, роботы, триггеры, интеграции с WhatsApp, 1С, телефония.<br><br><a href="/bitrix24-start/" style="color:#38bdf8">Подробнее о Битрикс24 →</a>';
+    }
+
+    // --- Сроки ---
+    if (q.includes('срок') || q.includes('когда') || q.includes('долго') || q.includes('быстро') || q.includes('время') || q.includes('дней') || q.includes('запуск')) {
+      return '<strong>Сроки реализации:</strong><br><br>⚡ Готовый сайт под ключ — <strong>от 1 дня</strong><br>📄 Лендинг — <strong>5–7 дней</strong><br>🏢 Корпоративный сайт — <strong>14–21 день</strong><br>🤖 Цифровой сотрудник (Старт) — <strong>7 дней</strong><br>🤖 Цифровой сотрудник (Бизнес) — <strong>14 дней</strong><br>📊 SEO-дашборд — <strong>3–5 дней</strong><br>💬 AI-бот «Нейро-менеджер» — <strong>7–14 дней</strong><br>📋 CRM Битрикс24 — <strong>7–30 дней</strong>';
+    }
+
+    // --- Контакты ---
+    if (q.includes('контакт') || q.includes('телефон') || q.includes('адрес') || q.includes('связаться') || q.includes('whatsapp') || q.includes('вотсап') || q.includes('ватсап') || q.includes('telegram') || q.includes('телеграм') || q.includes('позвон') || q.includes('написать')) {
+      return '<strong>Наши контакты:</strong><br><br>📱 <strong>WhatsApp:</strong> <a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8">+7 707 060-19-80</a><br>✈️ <strong>Telegram:</strong> <a href="https://t.me/sheber_craft" target="_blank" style="color:#38bdf8">@sheber_craft</a><br>📧 <strong>Email:</strong> info@shebercraft.kz<br>📍 <strong>Офис:</strong> г. Алматы, ул. Кожабекова 19, 4 этаж, оф. 8<br><br>Перезвоним в течение 1 рабочего часа!<br><br><a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8;font-weight:700">Написать в WhatsApp →</a>';
+    }
+
+    // --- Все услуги ---
+    if (q.includes('услуг') || q.includes('что делает') || q.includes('направлен') || q.includes('каталог') || q.includes('чем заним') || q.includes('что вы') || q.includes('какие у вас')) {
+      return '<strong>Наши услуги:</strong><br><br>⚡ <strong>Готовые сайты под ключ</strong> — от 49 000 ₸ (запуск за 1 день)<br>🤖 <strong>Цифровой сотрудник 24/7</strong> — от 89 000 ₸ (AI-агент для бизнеса)<br>📄 <strong>Лендинг «Профессионал»</strong> — от 49 000 ₸<br>🏢 <strong>Корпоративный сайт «Бизнес»</strong> — от 250 000 ₸<br>📊 <strong>SEO-дашборд «Контроль»</strong> — от 39 000 ₸/мес<br>💬 <strong>AI-бот «Нейро-менеджер»</strong> — от 320 000 ₸<br>📋 <strong>Внедрение CRM Битрикс24</strong> — от 150 000 ₸<br><br>Спросите о любом решении подробнее!';
+    }
+
+    // --- Общие цены ---
+    if (q.includes('цена') || q.includes('стоим') || q.includes('сколько') || q.includes('тариф') || q.includes('прайс') || q.includes('бюджет') || q.includes('расценк')) {
+      return '<strong>Прайс-лист Shebercraft:</strong><br><br>⚡ Готовый сайт — <strong>от 49 000 ₸</strong><br>📄 Лендинг — <strong>от 49 000 ₸</strong><br>🏢 Корп. сайт — <strong>от 250 000 ₸</strong><br>🤖 Цифровой сотрудник — <strong>от 89 000 ₸</strong><br>📊 SEO-дашборд — <strong>от 39 000 ₸/мес</strong><br>💬 AI-бот — <strong>от 320 000 ₸</strong><br>📋 CRM Битрикс24 — <strong>от 150 000 ₸</strong><br><br>Точную стоимость рассчитаем после обсуждения задачи.<br><a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8">Получить расчёт в WhatsApp →</a>';
+    }
+
+    // --- О компании ---
+    if (q.includes('о компании') || q.includes('кто вы') || q.includes('shebercraft') || q.includes('шеберкрафт') || q.includes('шебер')) {
+      return '<strong>Shebercraft</strong> — это команда из Алматы, которая создаёт цифровые решения для бизнеса в Казахстане.<br><br>Наша специализация:<br>✦ Создание конверсионных сайтов<br>✦ AI-агенты и цифровые сотрудники<br>✦ SEO-аналитика и продвижение<br>✦ Автоматизация через CRM<br><br>Мы помогаем бизнесу зарабатывать больше с помощью технологий. 🚀';
+    }
+
+    // --- Fallback (по умолчанию) ---
+    return 'Shebercraft — это цифровые решения для бизнеса в Казахстане: сайты, AI-агенты, SEO-аналитика и CRM.<br><br>Спросите меня о:<br>✦ Стоимости сайта или AI-решения<br>✦ Цифровом сотруднике 24/7<br>✦ Сроках запуска<br>✦ Наших контактах<br><br>Или напишите напрямую: <a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8">WhatsApp →</a>';
   };
 
   const handleUserMessage = (userText) => {
@@ -510,9 +567,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (aiQuestionCount >= MAX_FREE_QUESTIONS) {
         setTimeout(() => {
           const limitMsg = `
-            <strong>Вы использовали 3 бесплатных вопроса бета-версии!</strong><br />
-            Для подробного разбора и аудита процессов вашей компании свяжитесь с нашим ведущим экспертом:<br /><br />
-            <a href="https://wa.me/77070601980?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%B8%D0%B7%20%D0%98%D0%98-%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D0%BD%D1%82%D0%B0.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%91%D0%9F" target="_blank" class="btn-primary btn-sm" style="display:inline-block;margin-top:6px;width:100%;text-align:center">Консультация в WhatsApp →</a>
+            <strong>Вы использовали 5 бесплатных вопросов!</strong><br />
+            Для подробного разбора вашей задачи свяжитесь с нашим экспертом — консультация бесплатная:<br /><br />
+            <a href="https://wa.me/77070601980?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%B8%D0%B7%20%D0%98%D0%98-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%BD%D0%B8%D0%BA%D0%B0.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E" target="_blank" class="btn-primary btn-sm" style="display:inline-block;margin-top:6px;width:100%;text-align:center">Бесплатная консультация в WhatsApp →</a>
           `;
           appendAiMessage('bot', limitMsg);
           if (aiChatInput) {
