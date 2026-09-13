@@ -1,0 +1,58 @@
+# Shebercraft — Autonomous AI Agents & Custom Web Engineering
+
+> Shebercraft (https://shebercraft.kz/en/) is a specialized engineering agency that designs, builds, and deploys custom 24/7 autonomous AI agents, conversion-engineered B2B web applications, and Generative Engine Optimization (GEO) for clients in the United States, Canada, the United Kingdom, and globally.
+
+## Core Capabilities & Services
+
+### 1. Autonomous AI Agents & 24/7 Concierge
+- **URL**: https://shebercraft.kz/en/#ai-agents
+- **Fixed Price**: $2,490 (One-time delivery)
+- **Turnaround**: 10–14 business days
+- **Tech Stack**: OpenAI GPT-4o, Anthropic Claude 3.5 Sonnet, LangChain, Pinecone vector stores, Python FastAPI.
+- **Description**: Intelligent AI employee that answers complex buyer inquiries directly from your private company documentation (whitepapers, pricing sheets, FAQs) with zero hallucinations.
+- **Key Features**:
+  - Autonomous lead qualification using BANT scoring criteria.
+  - Native calendar booking via Calendly or Google Calendar.
+  - Live bi-directional synchronization with HubSpot, Salesforce, GoHighLevel, and Slack.
+  - Multi-channel deployment: Interactive web widget and two-way SMS / Twilio.
+  - 45 days of continuous prompt tuning and vector optimization included.
+
+### 2. High-Performance B2B Web & SaaS Development
+- **URL**: https://shebercraft.kz/en/#services
+- **Pricing**:
+  - *Sprint Landing Page*: $1,490 (7 business days turnaround)
+  - *Corporate Web Application*: $4,900 (14–21 business days turnaround)
+- **Tech Stack**: React, Next.js, TypeScript, Tailwind CSS, Node.js, PostgreSQL.
+- **Performance**: Sub-second edge CDN loading (< 0.8s), 99+ Core Web Vitals, mobile-first responsive architecture.
+- **Features**: Bespoke Figma UI/UX, conversion copywriting, technical SEO, open graph metadata, Headless CMS integration, and form webhooks.
+
+### 3. Generative Engine Optimization (GEO) & Technical SEO
+- **URL**: https://shebercraft.kz/en/#geo-hub
+- **Pricing**: Retainers from $1,200 / month
+- **Description**: Next-generation search authority engineered to get your brand cited, synthesized, and recommended inside leading artificial intelligence engines (Perplexity, ChatGPT Search, Claude, Google AI Overviews) as well as traditional Google search.
+- **Deliverables**: Entity graph schema markup, semantic keyword clustering, technical site speed audits, and authoritative knowledge base architecture.
+
+## Comparison Matrix: Shebercraft Sprints vs. Alternatives
+
+| Feature | Shebercraft 14-Day Sprints | Traditional US Agency | Offshore Freelancers |
+|---|---|---|---|
+| **Turnaround Time** | 7–14 Days Guaranteed | 3–6 Months | Unpredictable |
+| **Pricing** | Fixed Flat USD ($1,490 – $4,900) | $25,000 – $75,000+ | Uncapped hourly creep |
+| **Code & IP Ownership** | 100% Client Ownership Day 1 | Often retained or restricted | Variable / Legal risk |
+| **AI & Vector Stack** | Custom RAG, GPT-4o, Claude 3.5 | Basic generic wrappers | Outdated template code |
+| **Inbound Response SLA** | < 3 Seconds Autonomous 24/7 | Next business day | 12–24h time zone delays |
+| **CRM Native Sync** | HubSpot, Salesforce, Slack | Paid add-on | Manual exports |
+| **Security & NDA** | Bilateral NDA (Zero Public Training) | Standard NDA | Frequently omitted |
+
+## Enterprise Guarantees & Terms
+- **100% IP Ownership**: All source code, designs, and vector database schemas transfer fully to the client upon final milestone payment.
+- **Zero Vendor Lock-in**: Clean, documented code that can be deployed to AWS, Vercel, Supabase, or private infrastructure.
+- **Data Privacy & Compliance**: Client documentation is never used to train public foundation models.
+- **Collaboration Model**: Dedicated Slack/Teams channel with daily async updates and extensive overlap with US Eastern and Pacific business hours.
+
+## Contact Information
+- **Website**: https://shebercraft.kz/en/
+- **Email**: info@shebercraft.kz
+- **WhatsApp**: +7 (707) 060-19-80
+- **Telegram**: https://t.me/sheber_craft
+- **Geographic Coverage**: United States, Canada, United Kingdom, and Global Remote.

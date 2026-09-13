@@ -483,6 +483,43 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
   flex-shrink: 0;
 }
 
+/* Language Switcher */
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  gap: 2px;
+}
+
+.lang-switcher a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 9px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  transition: all var(--ease-fast);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.lang-switcher a:hover {
+  color: var(--color-text);
+}
+
+.lang-switcher a.active {
+  background: var(--color-primary);
+  color: hsl(220, 25%, 5%);
+  font-weight: 700;
+}
+
 /* =====================================================
    BUTTONS
    ===================================================== */
@@ -3693,6 +3730,131 @@ body > *:not(.blob-container):not(.float-buttons):not(.scroll-progress):not(.toa
     width: 46px;
     height: 46px;
   }
+}
+
+/* =====================================================
+   GEO & COMPARISON MATRIX STYLES (US MARKET)
+   ===================================================== */
+.comparison-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: var(--space-8) 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-lg);
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.comparison-table th {
+  background: var(--color-bg-elevated);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.comparison-table th.col-highlight {
+  background: hsla(199, 89%, 55%, 0.12);
+  color: var(--color-primary);
+  border-left: 1px solid var(--color-primary-glow);
+  border-right: 1px solid var(--color-primary-glow);
+}
+
+.comparison-table td.col-highlight {
+  background: hsla(199, 89%, 55%, 0.05);
+  font-weight: 600;
+  color: #fff;
+  border-left: 1px solid var(--color-primary-glow);
+  border-right: 1px solid var(--color-primary-glow);
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.badge-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.badge-cross {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-faint);
+}
+
+/* GEO Knowledge Hub */
+.geo-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.geo-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  position: relative;
+  transition: all var(--ease-base);
+}
+
+.geo-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.geo-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+}
+
+.geo-card p {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.geo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: hsla(246, 84%, 72%, 0.15);
+  color: var(--color-accent);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 

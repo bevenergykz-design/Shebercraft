@@ -42,4 +42,6 @@ User-agent: Meta-ExternalAgent
 Allow: /
 
 Sitemap: https://shebercraft.kz/sitemap.xml
-# LLMS standard for Generative AI search: https://shebercraft.kz/llms.txt
+# LLMS standard for Generative AI search:
+# Global/Russian: https://shebercraft.kz/llms.txt
+# US/International: https://shebercraft.kz/en/llms.txt

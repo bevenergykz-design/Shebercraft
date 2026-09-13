@@ -42,3 +42,35 @@
 - [Готовый сайт vs Разработка с нуля: что выбрать бизнесу в 2026 году](https://shebercraft.kz/blog/gotovyy-sayt-vs-razrabotka-s-nulya/)
 - [Сколько стоит создать сайт в Казахстане](https://shebercraft.kz/blog/skolko-stoit-sayt-v-kazakhstane/)
 - [Внедрение Битрикс24 в Алматы, Астане и Шымкенте](https://shebercraft.kz/blog/bitrix24-vnedrenie-almaty-astana/)
+
+---
+
+# Shebercraft International — Autonomous AI Agents & Custom Web Engineering (English)
+
+> Shebercraft (https://shebercraft.kz/en/) is a boutique engineering agency building custom 24/7 autonomous AI agents, high-converting B2B web applications, and Generative Engine Optimization (GEO) for companies in the United States, Canada, the United Kingdom, and globally.
+
+## Core Capabilities & Services (US / Global Market)
+
+### 1. Autonomous AI Agents & 24/7 Concierge ($2,490 fixed)
+- **URL**: https://shebercraft.kz/en/#ai-agents
+- **Capabilities**: Custom LLM agents powered by OpenAI GPT-4o & Claude 3.5 Sonnet. Indexed on private company documents via vector stores (Pinecone / Qdrant) with zero hallucinations. 24/7 B2B lead qualification, meeting booking via Calendly/Google Calendar, multi-channel deployment (web widget, SMS/Twilio, Slack).
+- **Integrations**: HubSpot, Salesforce, GoHighLevel, Slack, Stripe, Zapier, Make.com.
+- **Turnaround**: 10–14 business days.
+
+### 2. High-Performance Web & SaaS Development ($1,490 – $4,900)
+- **URL**: https://shebercraft.kz/en/#services
+- **Offerings**: 
+  - *Sprint Landing Page* ($1,490): 7-day turnaround, conversion-focused B2B design, sub-second load times (< 0.8s), mobile-first.
+  - *Corporate Web Application* ($4,900): Multi-page platform, Headless CMS, Generative Engine SEO (GEO) architecture, Stripe / API pipelines.
+- **Tech Stack**: React, Next.js, TypeScript, Tailwind CSS, Node.js, Python.
+
+### 3. Generative Engine Optimization (GEO) & Technical SEO (from $1,200/mo)
+- **URL**: https://shebercraft.kz/en/#services
+- **Capabilities**: Next-generation search authority engineered to get brands cited and synthesized inside Perplexity, ChatGPT Search, Claude, and Google AI Overviews, alongside top traditional Google rankings.
+
+## Enterprise Guarantees
+- **Code Ownership**: 100% intellectual property and source code ownership transferred to the client upon final milestone.
+- **Security & Privacy**: Bilateral NDA signed before kickoff. Proprietary company data is never used to train public LLM models.
+- **Delivery Model**: Agile 7–14 day sprints with daily async updates and real-time collaboration during US business hours.
+- **Contact**: info@shebercraft.kz | WhatsApp: +7 707 060-19-80 | Telegram: @sheber_craft
+
