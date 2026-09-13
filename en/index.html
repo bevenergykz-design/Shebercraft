@@ -1115,7 +1115,7 @@
             <ul>
               <li><a href="#ai-agents">Autonomous AI Agents</a></li>
               <li><a href="#services">B2B Web Applications</a></li>
-              <li><a href="#services">Generative Engine SEO (GEO)</a></li>
+              <li><a href="#geo-hub">Generative Engine SEO (GEO)</a></li>
               <li><a href="#pricing">Pricing & Packages</a></li>
             </ul>
           </div>
@@ -1151,9 +1151,9 @@
       <div class="footer-bottom">
         <p>© 2026 Shebercraft Engineering. All rights reserved. Global Digital Solutions.</p>
         <div class="footer-legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Security & NDA</a>
+          <a href="#privacyModal" id="openPrivacyBtn">Privacy Policy</a>
+          <a href="#termsModal" id="openTermsBtn">Terms of Service</a>
+          <a href="#trust">Security & NDA</a>
         </div>
       </div>
     </div>
@@ -1261,6 +1261,108 @@
       <path d="M18 15l-6-6-6 6"/>
     </svg>
   </button>
+
+  <!-- ===== PRIVACY POLICY MODAL ===== -->
+  <div class="article-modal" id="privacyModal" aria-hidden="true" role="dialog" aria-label="Privacy Policy">
+    <div class="article-modal__overlay"></div>
+    <div class="article-modal__container">
+      <button class="article-modal__close" aria-label="Close Privacy Policy">&times;</button>
+      <div class="article-modal__content">
+        <div class="article-modal__header">
+          <div class="article-tags">
+            <span class="tag tag--green">Compliance</span>
+            <span class="tag">Data Protection</span>
+            <span class="tag">Enterprise Grade</span>
+          </div>
+          <h2>Shebercraft Privacy Policy & Data Governance</h2>
+          <div class="article-author-info">
+            <span>Effective 2026</span> • <span>Governing US & Global Engagements</span>
+          </div>
+        </div>
+
+        <div class="article-modal__body">
+          <p class="lead-text">At Shebercraft Engineering, we treat your business data, software specifications, and customer interactions with strict enterprise confidentiality. This Privacy Policy outlines how we collect, handle, protect, and isolate data during technical discovery, development sprints, and system operation.</p>
+
+          <h3>1. Zero AI Training Guarantee on Proprietary Client Data</h3>
+          <div class="article-quote">
+            <p>«We strictly enforce contractual zero-data-retention agreements with foundational LLM providers (including OpenAI Enterprise, Anthropic, and AWS Bedrock). Your proprietary knowledge bases, vector embeddings, and customer conversations are NEVER used to train public or foundational models.»</p>
+          </div>
+          <p>All Retrieval-Augmented Generation (RAG) vector embeddings created for your enterprise are isolated in private, tenant-segregated namespaces with granular access control.</p>
+
+          <h3>2. Information We Collect</h3>
+          <p>We only collect information required to evaluate your requirements and deliver engineering services:</p>
+          <ul>
+            <li><strong>Contact Details:</strong> Name, work email address, company name, and phone/messaging handle provided through our strategy consultation forms or AI consultant widget.</li>
+            <li><strong>Technical Requirements:</strong> Architecture specifications, codebase references, API schemas, and SLA targets shared under mutual NDA.</li>
+            <li><strong>Usage & Analytics:</strong> Aggregate, anonymized performance metrics across our digital properties to optimize load times and security.</li>
+          </ul>
+
+          <h3>3. Data Storage & Cryptographic Standards</h3>
+          <p>All data exchanged between your systems and Shebercraft-engineered pipelines is protected with modern cryptographic controls:</p>
+          <ul>
+            <li><strong>In Transit:</strong> Mandatory TLS 1.3 encryption across all API endpoints, webhooks, and communication channels.</li>
+            <li><strong>At Rest:</strong> AES-256 encryption across all databases, vector partitions, and cloud backup instances.</li>
+            <li><strong>Infrastructure Isolation:</strong> Dedicated VPCs, role-based access control (RBAC), and multi-factor authentication (MFA) across all staging and production environments.</li>
+          </ul>
+
+          <h3>4. Third-Party Integrations & Sub-Processors</h3>
+          <p>We work exclusively with SOC2 Type II, ISO 27001, or GDPR-compliant infrastructure partners (e.g., AWS, Cloudflare, Pinecone, Bitrix24). No client data is sold, rented, or monetized under any circumstance.</p>
+
+          <h3>5. Data Rights & Inquiries</h3>
+          <p>You maintain full ownership of your data. You may request data export, audit logs, or complete purging of development logs at any time by contacting our engineering privacy team at <a href="mailto:info@shebercraft.kz" style="color:var(--color-primary);">info@shebercraft.kz</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TERMS OF SERVICE MODAL ===== -->
+  <div class="article-modal" id="termsModal" aria-hidden="true" role="dialog" aria-label="Terms of Service">
+    <div class="article-modal__overlay"></div>
+    <div class="article-modal__container">
+      <button class="article-modal__close" aria-label="Close Terms of Service">&times;</button>
+      <div class="article-modal__content">
+        <div class="article-modal__header">
+          <div class="article-tags">
+            <span class="tag tag--green">Enterprise Terms</span>
+            <span class="tag">Master Services Agreement</span>
+            <span class="tag">IP Ownership</span>
+          </div>
+          <h2>Shebercraft Terms of Service & Master Services Terms</h2>
+          <div class="article-author-info">
+            <span>Effective 2026</span> • <span>Standard Commercial Terms</span>
+          </div>
+        </div>
+
+        <div class="article-modal__body">
+          <p class="lead-text">These Terms of Service govern the engineering, development, AI agent deployment, and technical consulting engagements between Shebercraft Engineering («Shebercraft») and client organizations («Client»).</p>
+
+          <h3>1. Engagement Structure & Statements of Work (SOW)</h3>
+          <p>All engineering projects are executed under customized Statements of Work defining sprint deliverables, architectural milestones, fixed or consumption-based pricing in USD, and formal acceptance criteria. SOW terms supersede general website marketing descriptions.</p>
+
+          <h3>2. 100% Intellectual Property Assignment</h3>
+          <div class="article-quote">
+            <p>«Upon full settlement of project invoices according to the agreed milestone schedule, 100% of bespoke source code, prompt engineering assets, vector schemas, custom microservices, and design artifacts transfer exclusively to the Client. Shebercraft retains no proprietary rights or backdoors.»</p>
+          </div>
+          <p>Any open-source components utilized remain governed by their respective permissive licenses (e.g., MIT, Apache 2.0).</p>
+
+          <h3>3. Milestone Sprints & Acceptance Testing</h3>
+          <p>Engineering work is delivered in 1-2 week sprints. Clients receive staging access, automated test suites, and documentation for User Acceptance Testing (UAT). Work items are considered accepted upon written sign-off or within 7 business days if no blocking defects are reported.</p>
+
+          <h3>4. Service Levels & Support Window Overlap</h3>
+          <p>For active SLA contracts, Shebercraft provides guaranteed engineering support with daily synchronous working hour overlap for <strong>US Eastern (EST/EDT)</strong> and <strong>US Pacific (PST/PDT)</strong> business hours. Critical production incidents receive priority response within 2 hours.</p>
+
+          <h3>5. Confidentiality & Non-Disclosure (NDA)</h3>
+          <p>Both parties agree to treat all business plans, financial data, technical schemas, and trade secrets as strictly confidential under bilateral non-disclosure terms extending 3 years beyond engagement completion.</p>
+
+          <h3>6. Invoicing, Currency & Payment Terms</h3>
+          <p>International client invoices are denominated in United States Dollars (USD) and payable via international wire (SWIFT) or authorized corporate credit card. Standard payment milestones: 50% initial sprint commitment, 25% mid-sprint beta release, 25% final deployment sign-off.</p>
+
+          <h3>7. Contact & Legal Inquiries</h3>
+          <p>For custom Master Service Agreements (MSA), vendor onboarding documentation, or legal inquiries, reach our legal counsel and management team at <a href="mailto:info@shebercraft.kz" style="color:var(--color-primary);">info@shebercraft.kz</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="/en/script.js" defer></script>
 </body>

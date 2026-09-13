@@ -372,5 +372,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ===== LEGAL MODALS (PRIVACY & TERMS) =====
+  const openPrivacyBtn = document.getElementById('openPrivacyBtn');
+  const openTermsBtn = document.getElementById('openTermsBtn');
+  const privacyModal = document.getElementById('privacyModal');
+  const termsModal = document.getElementById('termsModal');
+
+  const toggleLegalModal = (modal, open) => {
+    if (!modal) return;
+    modal.classList.toggle('open', open);
+    modal.setAttribute('aria-hidden', !open);
+    document.body.style.overflowY = open ? 'hidden' : '';
+  };
+
+  if (openPrivacyBtn) {
+    openPrivacyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleLegalModal(privacyModal, true);
+    });
+  }
+
+  if (openTermsBtn) {
+    openTermsBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleLegalModal(termsModal, true);
+    });
+  }
+
+  [privacyModal, termsModal].forEach(modal => {
+    if (!modal) return;
+    const closeBtn = modal.querySelector('.article-modal__close');
+    const overlay = modal.querySelector('.article-modal__overlay');
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleLegalModal(modal, false));
+    if (overlay) overlay.addEventListener('click', () => toggleLegalModal(modal, false));
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      toggleLegalModal(privacyModal, false);
+      toggleLegalModal(termsModal, false);
+    }
+  });
+
   console.log('%c Shebercraft International ', 'background:#38bdf8;color:#0b0c0a;font-weight:700;padding:4px 8px;border-radius:4px;font-size:14px;', 'Autonomous AI Agents & Web Engineering for US & Global Markets');
 });
