@@ -213,72 +213,143 @@ document.addEventListener('DOMContentLoaded', () => {
   const toast = document.getElementById('toast');
   const submitBtn = document.getElementById('submitBtn');
 
+  // Handle clicking "Получить решение" from catalog cards to preselect niche
+  document.querySelectorAll('.btn-choose-site, [data-service-select]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const serviceVal = btn.dataset.serviceSelect || btn.dataset.service;
+      const niche = btn.dataset.niche;
+      const serviceSelect = document.getElementById('service');
+      if (serviceSelect) {
+        let optionFound = false;
+        if (serviceVal) {
+          for (let opt of serviceSelect.options) {
+            if (opt.value === serviceVal) {
+              serviceSelect.value = opt.value;
+              optionFound = true;
+              break;
+            }
+          }
+        }
+        if (!optionFound && niche) {
+          for (let opt of serviceSelect.options) {
+            if (opt.text.toLowerCase().includes(niche.toLowerCase())) {
+              serviceSelect.value = opt.value;
+              optionFound = true;
+              break;
+            }
+          }
+        }
+      }
+      if (niche) {
+        const messageEl = document.getElementById('message');
+        if (messageEl && !messageEl.value.includes(niche)) {
+          messageEl.value = `Интересует готовое решение: ${niche}`;
+        }
+      }
+    });
+  });
+
   contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const company = document.getElementById('company').value.trim();
-    const phone = document.getElementById('phone').value.trim();
+    const name = document.getElementById('name')?.value.trim() || '';
+    const company = document.getElementById('company')?.value.trim() || '';
+    const phone = document.getElementById('phone')?.value.trim() || '';
     const serviceSelect = document.getElementById('service');
-    const serviceText = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
-    const message = document.getElementById('message').value.trim();
+    const serviceText = serviceSelect?.options[serviceSelect.selectedIndex]?.text || '';
+    const message = document.getElementById('message')?.value.trim() || '';
 
     if (!phone) {
       const phoneEl = document.getElementById('phone');
-      phoneEl.focus();
-      phoneEl.style.borderColor = 'var(--color-danger)';
-      setTimeout(() => { phoneEl.style.borderColor = ''; }, 2000);
+      if (phoneEl) {
+        phoneEl.focus();
+        phoneEl.style.borderColor = 'var(--color-danger)';
+        setTimeout(() => { phoneEl.style.borderColor = ''; }, 2000);
+      }
       return;
     }
 
-    submitBtn.disabled = true;
-    const btnSpan = submitBtn.querySelector('span');
-    if (btnSpan) btnSpan.textContent = 'Отправляем...';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      const btnSpan = submitBtn.querySelector('span');
+      if (btnSpan) btnSpan.textContent = 'Отправляем...';
+    }
 
-    // Configure Telegram Bot
+    // Prepare email payload for info@shebercraft.kz
+    const emailPayload = {
+      name: name || 'Не указано',
+      company: company || 'Не указана',
+      phone: phone,
+      service: serviceText || 'Не выбрано',
+      message: message || 'Без дополнительного комментария',
+      _subject: `Новая заявка с сайта Shebercraft: ${name ? name + ' ' : ''}(${phone})`,
+      _replyto: 'info@shebercraft.kz',
+      _template: 'table',
+      _captcha: 'false'
+    };
+
+    let sent = false;
+
+    // 1. Primary: Send email to info@shebercraft.kz via FormSubmit
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/info@shebercraft.kz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(emailPayload)
+      });
+      if (res.ok) {
+        sent = true;
+      }
+    } catch (err) {
+      console.warn('FormSubmit network notice:', err);
+    }
+
+    // 2. Secondary: Netlify Forms native POST (if hosted on Netlify)
+    try {
+      const formData = new FormData(contactForm);
+      if (!formData.has('form-name')) {
+        formData.append('form-name', 'contact');
+      }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).catch(() => {});
+    } catch (e) {}
+
+    // 3. Silent Telegram notification in background (NO window.open)
     const TELEGRAM_BOT_TOKEN = '8953811443:AAHKxOKpIPM26NLim0eKuLFJL_U1fWOlcKo';
-    const TELEGRAM_CHAT_ID = '1994851440'; // Численный Chat ID пользователя sheber_craft
+    const TELEGRAM_CHAT_ID = '1994851440';
+    if (TELEGRAM_CHAT_ID) {
+      const telegramText = `<b>Новая заявка с сайта Shebercraft!</b>\n\n👤 <b>Имя:</b> ${name || 'Не указано'}\n🏢 <b>Компания:</b> ${company || 'Не указана'}\n📞 <b>Телефон:</b> ${phone}\n⚙️ <b>Решение:</b> ${serviceText || 'Не выбрано'}\n📝 <b>Описание:</b> ${message || 'Не описана'}`;
+      fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: telegramText,
+          parse_mode: 'HTML'
+        })
+      }).catch(() => {});
+    }
 
-    const telegramText = `<b>Новая заявка с сайта Shebercraft!</b>\n\n👤 <b>Имя:</b> ${name || 'Не указано'}\n🏢 <b>Компания:</b> ${company || 'Не указана'}\n📞 <b>Телефон:</b> ${phone}\n⚙️ <b>Решение:</b> ${serviceText || 'Не выбрано'}\n📝 <b>Описание:</b> ${message || 'Не описана'}`;
-
-    if (TELEGRAM_CHAT_ID && TELEGRAM_CHAT_ID !== 'YOUR_CHAT_ID') {
-      try {
-        const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
-            text: telegramText,
-            parse_mode: 'HTML'
-          })
-        });
-
-        if (response.ok) {
-          if (toast) {
-            toast.querySelector('span').textContent = 'Заявка успешно отправлена!';
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 4000);
-          }
-        } else {
-          throw new Error('Telegram API error');
-        }
-      } catch (err) {
-        console.error('Ошибка отправки через Telegram Bot API, перенаправляем напрямую:', err);
-        window.open(`https://t.me/sheber_craf?text=${encodeURIComponent(telegramText.replace(/<[^>]*>/g, ''))}`, '_blank');
-      }
-    } else {
-      // Fallback redirect if Chat ID is not configured yet
-      window.open(`https://t.me/sheber_craf?text=${encodeURIComponent(telegramText.replace(/<[^>]*>/g, ''))}`, '_blank');
-      if (toast) {
-        toast.querySelector('span').textContent = 'Заявка сформирована! Открываем Telegram...';
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 4000);
-      }
+    // Always show success feedback to user without any Telegram popup
+    if (toast) {
+      const span = toast.querySelector('span');
+      if (span) span.textContent = 'Заявка успешно отправлена! Мы свяжемся с вами в течение 1 часа.';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4500);
     }
 
     contactForm.reset();
-    submitBtn.disabled = false;
-    if (btnSpan) btnSpan.textContent = 'Отправить заявку';
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      const btnSpan = submitBtn.querySelector('span');
+      if (btnSpan) btnSpan.textContent = 'Получить решение';
+    }
   });
 
   // ===== FAQ ACCORDION =====

@@ -164,14 +164,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSpan = submitBtn.querySelector('span');
     if (btnSpan) btnSpan.textContent = 'Submitting...';
 
-    // Telegram Bot Notifications
+    // Prepare email payload for info@shebercraft.kz
+    const emailPayload = {
+      name: name || 'N/A',
+      company: company || 'N/A',
+      contact: phone,
+      interest: serviceText || 'General Architecture',
+      scope: message || 'No scope provided',
+      _subject: `🇺🇸 New US / International Lead: ${name} (${phone})`,
+      _replyto: 'info@shebercraft.kz',
+      _template: 'table',
+      _captcha: 'false'
+    };
+
+    // 1. Primary: Send email to info@shebercraft.kz via FormSubmit
+    try {
+      await fetch('https://formsubmit.co/ajax/info@shebercraft.kz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(emailPayload)
+      });
+    } catch (err) {
+      console.warn('FormSubmit notice:', err);
+    }
+
+    // 2. Secondary: Netlify Forms native POST
+    try {
+      const formData = new FormData(contactForm);
+      if (!formData.has('form-name')) formData.append('form-name', 'contact');
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).catch(() => {});
+    } catch (e) {}
+
+    // 3. Silent Telegram notification in background
     const TELEGRAM_BOT_TOKEN = '8953811443:AAHKxOKpIPM26NLim0eKuLFJL_U1fWOlcKo';
     const TELEGRAM_CHAT_ID = '1994851440';
-
-    const telegramText = `🇺🇸 <b>New US / International Lead from Shebercraft!</b>\n\n👤 <b>Name:</b> ${name}\n🏢 <b>Company:</b> ${company || 'N/A'}\n📧 <b>Contact:</b> ${phone}\n⚙️ <b>Interest:</b> ${serviceText || 'General Architecture'}\n📝 <b>Scope:</b> ${message || 'No description provided'}`;
-
-    try {
-      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    if (TELEGRAM_CHAT_ID) {
+      const telegramText = `🇺🇸 <b>New US / International Lead from Shebercraft!</b>\n\n👤 <b>Name:</b> ${name}\n🏢 <b>Company:</b> ${company || 'N/A'}\n📧 <b>Contact:</b> ${phone}\n⚙️ <b>Interest:</b> ${serviceText || 'General Architecture'}\n📝 <b>Scope:</b> ${message || 'No description provided'}`;
+      fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -179,24 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
           text: telegramText,
           parse_mode: 'HTML'
         })
-      });
+      }).catch(() => {});
+    }
 
-      if (response.ok) {
-        if (toast) {
-          toast.querySelector('span').textContent = 'Inquiry received! Our technical lead will contact you within 2 business hours.';
-          toast.classList.add('show');
-          setTimeout(() => toast.classList.remove('show'), 4500);
-        }
-      } else {
-        throw new Error('Telegram error');
-      }
-    } catch (err) {
-      console.warn('Telegram notification fallback:', err);
-      if (toast) {
-        toast.querySelector('span').textContent = 'Inquiry received! Our team will contact you shortly.';
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 4500);
-      }
+    if (toast) {
+      toast.querySelector('span').textContent = 'Inquiry received! Our technical lead will contact you within 2 business hours.';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4500);
     }
 
     contactForm.reset();
