@@ -275,68 +275,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btnSpan) btnSpan.textContent = 'Отправляем...';
     }
 
-    // Prepare email payload for info@shebercraft.kz
-    const emailPayload = {
+    // Отправляем на PHP-обработчик → письмо на info@shebercraft.kz
+    const payload = {
       name: name || 'Не указано',
       company: company || 'Не указана',
       phone: phone,
       service: serviceText || 'Не выбрано',
       message: message || 'Без дополнительного комментария',
-      _subject: `Новая заявка с сайта Shebercraft: ${name ? name + ' ' : ''}(${phone})`,
-      _replyto: 'info@shebercraft.kz',
-      _template: 'table',
-      _captcha: 'false'
+      page: window.location.href
     };
 
-    let sent = false;
-
-    // 1. Primary: Send email to info@shebercraft.kz via FormSubmit
     try {
-      const res = await fetch('https://formsubmit.co/ajax/info@shebercraft.kz', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(emailPayload)
-      });
-      if (res.ok) {
-        sent = true;
-      }
-    } catch (err) {
-      console.warn('FormSubmit network notice:', err);
-    }
-
-    // 2. Secondary: Netlify Forms native POST (if hosted on Netlify)
-    try {
-      const formData = new FormData(contactForm);
-      if (!formData.has('form-name')) {
-        formData.append('form-name', 'contact');
-      }
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      }).catch(() => {});
-    } catch (e) {}
-
-    // 3. Silent Telegram notification in background (NO window.open)
-    const TELEGRAM_BOT_TOKEN = '8953811443:AAHKxOKpIPM26NLim0eKuLFJL_U1fWOlcKo';
-    const TELEGRAM_CHAT_ID = '1994851440';
-    if (TELEGRAM_CHAT_ID) {
-      const telegramText = `<b>Новая заявка с сайта Shebercraft!</b>\n\n👤 <b>Имя:</b> ${name || 'Не указано'}\n🏢 <b>Компания:</b> ${company || 'Не указана'}\n📞 <b>Телефон:</b> ${phone}\n⚙️ <b>Решение:</b> ${serviceText || 'Не выбрано'}\n📝 <b>Описание:</b> ${message || 'Не описана'}`;
-      fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      await fetch('/send_form.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: telegramText,
-          parse_mode: 'HTML'
-        })
-      }).catch(() => {});
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn('Form send error:', err);
     }
 
-    // Always show success feedback to user without any Telegram popup
+    // Показываем успех пользователю
     if (toast) {
       const span = toast.querySelector('span');
       if (span) span.textContent = 'Заявка успешно отправлена! Мы свяжемся с вами в течение 1 часа.';

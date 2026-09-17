@@ -164,58 +164,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSpan = submitBtn.querySelector('span');
     if (btnSpan) btnSpan.textContent = 'Submitting...';
 
-    // Prepare email payload for info@shebercraft.kz
-    const emailPayload = {
+    // Send to PHP handler → email to info@shebercraft.kz
+    const payload = {
       name: name || 'N/A',
       company: company || 'N/A',
-      contact: phone,
-      interest: serviceText || 'General Architecture',
-      scope: message || 'No scope provided',
-      _subject: `🇺🇸 New US / International Lead: ${name} (${phone})`,
-      _replyto: 'info@shebercraft.kz',
-      _template: 'table',
-      _captcha: 'false'
+      phone: phone,
+      service: serviceText || 'General Architecture',
+      message: message || 'No scope provided',
+      page: window.location.href
     };
 
-    // 1. Primary: Send email to info@shebercraft.kz via FormSubmit
     try {
-      await fetch('https://formsubmit.co/ajax/info@shebercraft.kz', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(emailPayload)
-      });
-    } catch (err) {
-      console.warn('FormSubmit notice:', err);
-    }
-
-    // 2. Secondary: Netlify Forms native POST
-    try {
-      const formData = new FormData(contactForm);
-      if (!formData.has('form-name')) formData.append('form-name', 'contact');
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      }).catch(() => {});
-    } catch (e) {}
-
-    // 3. Silent Telegram notification in background
-    const TELEGRAM_BOT_TOKEN = '8953811443:AAHKxOKpIPM26NLim0eKuLFJL_U1fWOlcKo';
-    const TELEGRAM_CHAT_ID = '1994851440';
-    if (TELEGRAM_CHAT_ID) {
-      const telegramText = `🇺🇸 <b>New US / International Lead from Shebercraft!</b>\n\n👤 <b>Name:</b> ${name}\n🏢 <b>Company:</b> ${company || 'N/A'}\n📧 <b>Contact:</b> ${phone}\n⚙️ <b>Interest:</b> ${serviceText || 'General Architecture'}\n📝 <b>Scope:</b> ${message || 'No description provided'}`;
-      fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      await fetch('/send_form.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: telegramText,
-          parse_mode: 'HTML'
-        })
-      }).catch(() => {});
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn('Form send error:', err);
     }
 
     if (toast) {
