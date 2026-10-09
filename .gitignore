@@ -6,3 +6,6 @@ config.php
 form_errors.log
 .mail_state.json
 .mail_state.lock
+launch_chrome_debug.bat
+run_plesk_sync.py
+
