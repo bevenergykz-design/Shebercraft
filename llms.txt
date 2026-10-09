@@ -31,7 +31,7 @@
 
 ## Контактная информация
 - **Сайт**: https://shebercraft.kz
-- **Телефон / WhatsApp**: +7 (707) 060-19-80 (https://wa.me/77070601980)
+- **Телефон / WhatsApp**: +7 (707) 250-66-80 (https://wa.me/77072506680)
 - **Telegram**: https://t.me/sheber_craft
 - **Email**: info@shebercraft.kz
 - **Адрес**: Казахстан, г. Алматы, ул. Кожабекова 19, 4 этаж, оф. 8
@@ -72,5 +72,5 @@
 - **Code Ownership**: 100% intellectual property and source code ownership transferred to the client upon final milestone.
 - **Security & Privacy**: Bilateral NDA signed before kickoff. Proprietary company data is never used to train public LLM models.
 - **Delivery Model**: Agile 7–14 day sprints with daily async updates and real-time collaboration during US business hours.
-- **Contact**: info@shebercraft.kz | WhatsApp: +7 707 060-19-80 | Telegram: @sheber_craft
+- **Contact**: info@shebercraft.kz | WhatsApp: +7 707 250-66-80 | Telegram: @sheber_craft
 

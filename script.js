@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <a href="/blog/" class="mobile-nav-link">Блог</a>
     <a href="/#faq" class="mobile-nav-link">FAQ</a>
     <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;width:100%;max-width:280px;">
-      <a href="https://wa.me/77070601980" target="_blank" class="btn-primary" style="text-align:center;font-size:1rem;padding:0.75rem 1.25rem;font-weight:600;font-family:var(--font-sans);text-decoration:none;border-radius:var(--radius-md);">WhatsApp Консультация</a>
+      <a href="https://wa.me/77072506680" target="_blank" class="btn-primary" style="text-align:center;font-size:1rem;padding:0.75rem 1.25rem;font-weight:600;font-family:var(--font-sans);text-decoration:none;border-radius:var(--radius-md);">WhatsApp Консультация</a>
     </div>
   `;
   document.body.appendChild(mobileMenu);
@@ -275,35 +275,45 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btnSpan) btnSpan.textContent = 'Отправляем...';
     }
 
-    // Отправляем на PHP-обработчик → письмо на info@shebercraft.kz
+    // Отправляем на PHP-обработчик → Telegram + письмо на info@shebercraft.kz
     const payload = {
       name: name || 'Не указано',
       company: company || 'Не указана',
       phone: phone,
       service: serviceText || 'Не выбрано',
       message: message || 'Без дополнительного комментария',
-      page: window.location.href
+      page: window.location.href,
+      website: contactForm.querySelector('[name="website"]')?.value || '' // honeypot
     };
 
+    let ok = false;
+    let errorText = '';
     try {
-      await fetch('/send_form.php', {
+      const res = await fetch('/send_form.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      const data = await res.json().catch(() => ({}));
+      ok = res.ok && data.success !== false;
+      errorText = data.error || '';
     } catch (err) {
       console.warn('Form send error:', err);
     }
 
-    // Показываем успех пользователю
     if (toast) {
       const span = toast.querySelector('span');
-      if (span) span.textContent = 'Заявка успешно отправлена! Мы свяжемся с вами в течение 1 часа.';
+      if (span) {
+        span.textContent = ok
+          ? 'Заявка успешно отправлена! Мы свяжемся с вами в течение 1 часа.'
+          : (errorText || 'Не удалось отправить заявку.') + ' Напишите нам в WhatsApp: +7 707 250-66-80';
+      }
+      toast.classList.toggle('toast--error', !ok);
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4500);
+      setTimeout(() => toast.classList.remove('show'), ok ? 4500 : 8000);
     }
 
-    contactForm.reset();
+    if (ok) contactForm.reset();
     if (submitBtn) {
       submitBtn.disabled = false;
       const btnSpan = submitBtn.querySelector('span');
@@ -516,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Стоимость сайта (ИСПРАВЛЕННАЯ ОШИБКА) ---
     if ((q.includes('сколько') || q.includes('стоим') || q.includes('цена') || q.includes('прайс')) && (q.includes('сайт') || q.includes('лендинг') || q.includes('landing') || q.includes('страниц'))) {
-      return '<strong>Стоимость создания сайта:</strong><br><br>⚡ <strong>Готовый сайт под ключ</strong> — от 49 000 ₸ (запуск за 1 день!)<br>📄 <strong>Лендинг «Профессионал»</strong> — от 49 000 ₸ (до 7 секций, уникальный дизайн)<br>🏢 <strong>Корпоративный сайт «Бизнес»</strong> — от 250 000 ₸ (до 15 страниц, SEO, CMS)<br><br>Все сайты включают: адаптивный дизайн, SEO-оптимизацию, формы заявок и хостинг.<br><br><a href="https://wa.me/77070601980?text=Здравствуйте!%20Интересует%20создание%20сайта" target="_blank" style="color:#38bdf8">Обсудить в WhatsApp →</a>';
+      return '<strong>Стоимость создания сайта:</strong><br><br>⚡ <strong>Готовый сайт под ключ</strong> — от 49 000 ₸ (запуск за 1 день!)<br>📄 <strong>Лендинг «Профессионал»</strong> — от 49 000 ₸ (до 7 секций, уникальный дизайн)<br>🏢 <strong>Корпоративный сайт «Бизнес»</strong> — от 250 000 ₸ (до 15 страниц, SEO, CMS)<br><br>Все сайты включают: адаптивный дизайн, SEO-оптимизацию, формы заявок и хостинг.<br><br><a href="https://wa.me/77072506680?text=Здравствуйте!%20Интересует%20создание%20сайта" target="_blank" style="color:#38bdf8">Обсудить в WhatsApp →</a>';
     }
 
     // --- Готовые сайты ---
@@ -556,7 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Контакты ---
     if (q.includes('контакт') || q.includes('телефон') || q.includes('адрес') || q.includes('связаться') || q.includes('whatsapp') || q.includes('вотсап') || q.includes('ватсап') || q.includes('telegram') || q.includes('телеграм') || q.includes('позвон') || q.includes('написать')) {
-      return '<strong>Наши контакты:</strong><br><br>📱 <strong>WhatsApp:</strong> <a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8">+7 707 060-19-80</a><br>✈️ <strong>Telegram:</strong> <a href="https://t.me/sheber_craft" target="_blank" style="color:#38bdf8">@sheber_craft</a><br>📧 <strong>Email:</strong> info@shebercraft.kz<br>📍 <strong>Офис:</strong> г. Алматы, ул. Кожабекова 19, 4 этаж, оф. 8<br><br>Перезвоним в течение 1 рабочего часа!<br><br><a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8;font-weight:700">Написать в WhatsApp →</a>';
+      return '<strong>Наши контакты:</strong><br><br>📱 <strong>WhatsApp:</strong> <a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8">+7 707 250-66-80</a><br>✈️ <strong>Telegram:</strong> <a href="https://t.me/sheber_craft" target="_blank" style="color:#38bdf8">@sheber_craft</a><br>📧 <strong>Email:</strong> info@shebercraft.kz<br>📍 <strong>Офис:</strong> г. Алматы, ул. Кожабекова 19, 4 этаж, оф. 8<br><br>Перезвоним в течение 1 рабочего часа!<br><br><a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8;font-weight:700">Написать в WhatsApp →</a>';
     }
 
     // --- Все услуги ---
@@ -566,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Общие цены ---
     if (q.includes('цена') || q.includes('стоим') || q.includes('сколько') || q.includes('тариф') || q.includes('прайс') || q.includes('бюджет') || q.includes('расценк')) {
-      return '<strong>Прайс-лист Shebercraft:</strong><br><br>⚡ Готовый сайт — <strong>от 49 000 ₸</strong><br>📄 Лендинг — <strong>от 49 000 ₸</strong><br>🏢 Корп. сайт — <strong>от 250 000 ₸</strong><br>🤖 Цифровой сотрудник — <strong>от 89 000 ₸</strong><br>📊 SEO-дашборд — <strong>от 39 000 ₸/мес</strong><br>💬 AI-бот — <strong>от 320 000 ₸</strong><br>📋 CRM Битрикс24 — <strong>от 150 000 ₸</strong><br><br>Точную стоимость рассчитаем после обсуждения задачи.<br><a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8">Получить расчёт в WhatsApp →</a>';
+      return '<strong>Прайс-лист Shebercraft:</strong><br><br>⚡ Готовый сайт — <strong>от 49 000 ₸</strong><br>📄 Лендинг — <strong>от 49 000 ₸</strong><br>🏢 Корп. сайт — <strong>от 250 000 ₸</strong><br>🤖 Цифровой сотрудник — <strong>от 89 000 ₸</strong><br>📊 SEO-дашборд — <strong>от 39 000 ₸/мес</strong><br>💬 AI-бот — <strong>от 320 000 ₸</strong><br>📋 CRM Битрикс24 — <strong>от 150 000 ₸</strong><br><br>Точную стоимость рассчитаем после обсуждения задачи.<br><a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8">Получить расчёт в WhatsApp →</a>';
     }
 
     // --- О компании ---
@@ -575,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Fallback (по умолчанию) ---
-    return 'Shebercraft — это цифровые решения для бизнеса в Казахстане: сайты, AI-агенты, SEO-аналитика и CRM.<br><br>Спросите меня о:<br>✦ Стоимости сайта или AI-решения<br>✦ Цифровом сотруднике 24/7<br>✦ Сроках запуска<br>✦ Наших контактах<br><br>Или напишите напрямую: <a href="https://wa.me/77070601980" target="_blank" style="color:#38bdf8">WhatsApp →</a>';
+    return 'Shebercraft — это цифровые решения для бизнеса в Казахстане: сайты, AI-агенты, SEO-аналитика и CRM.<br><br>Спросите меня о:<br>✦ Стоимости сайта или AI-решения<br>✦ Цифровом сотруднике 24/7<br>✦ Сроках запуска<br>✦ Наших контактах<br><br>Или напишите напрямую: <a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8">WhatsApp →</a>';
   };
 
   const handleUserMessage = (userText) => {
@@ -599,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const limitMsg = `
             <strong>Вы использовали 5 бесплатных вопросов!</strong><br />
             Для подробного разбора вашей задачи свяжитесь с нашим экспертом — консультация бесплатная:<br /><br />
-            <a href="https://wa.me/77070601980?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%B8%D0%B7%20%D0%98%D0%98-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%BD%D0%B8%D0%BA%D0%B0.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E" target="_blank" class="btn-primary btn-sm" style="display:inline-block;margin-top:6px;width:100%;text-align:center">Бесплатная консультация в WhatsApp →</a>
+            <a href="https://wa.me/77072506680?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D0%B8%D0%B7%20%D0%98%D0%98-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D0%BD%D0%B8%D0%BA%D0%B0.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8E" target="_blank" class="btn-primary btn-sm" style="display:inline-block;margin-top:6px;width:100%;text-align:center">Бесплатная консультация в WhatsApp →</a>
           `;
           appendAiMessage('bot', limitMsg);
           if (aiChatInput) {

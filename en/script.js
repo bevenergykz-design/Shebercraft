@@ -164,33 +164,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnSpan = submitBtn.querySelector('span');
     if (btnSpan) btnSpan.textContent = 'Submitting...';
 
-    // Send to PHP handler → email to info@shebercraft.kz
+    // Send to PHP handler → Telegram + email to info@shebercraft.kz
     const payload = {
       name: name || 'N/A',
       company: company || 'N/A',
       phone: phone,
       service: serviceText || 'General Architecture',
       message: message || 'No scope provided',
-      page: window.location.href
+      page: window.location.href,
+      website: contactForm.querySelector('[name="website"]')?.value || '' // honeypot
     };
 
+    let ok = false;
     try {
-      await fetch('/send_form.php', {
+      const res = await fetch('/send_form.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      const data = await res.json().catch(() => ({}));
+      ok = res.ok && data.success !== false;
     } catch (err) {
       console.warn('Form send error:', err);
     }
 
     if (toast) {
-      toast.querySelector('span').textContent = 'Inquiry received! Our technical lead will contact you within 2 business hours.';
+      toast.querySelector('span').textContent = ok
+        ? 'Inquiry received! Our technical lead will contact you within 2 business hours.'
+        : 'Could not send your inquiry. Please message us on WhatsApp: +7 707 250-66-80';
+      toast.classList.toggle('toast--error', !ok);
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 4500);
+      setTimeout(() => toast.classList.remove('show'), ok ? 4500 : 8000);
     }
 
-    contactForm.reset();
+    if (ok) contactForm.reset();
     submitBtn.disabled = false;
     if (btnSpan) btnSpan.textContent = 'Request Strategy Roadmap';
   });
@@ -305,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Contact & Booking
     if (q.includes('contact') || q.includes('call') || q.includes('book') || q.includes('talk') || q.includes('email') || q.includes('phone') || q.includes('meeting') || q.includes('schedule')) {
-      return "<strong>Schedule A Technical Strategy Session:</strong><br><br>📧 <strong>Email:</strong> <a href='mailto:info@shebercraft.kz' style='color:#38bdf8'>info@shebercraft.kz</a><br>💬 <strong>WhatsApp:</strong> <a href='https://wa.me/77070601980?text=Hello%20Shebercraft!%20I%20would%20like%20to%20schedule%20a%20strategy%20call.' target='_blank' style='color:#38bdf8'>+7 707 060-19-80</a><br>✈️ <strong>Telegram:</strong> <a href='https://t.me/sheber_craft' target='_blank' style='color:#38bdf8'>@sheber_craft</a><br><br>Or fill out the form below on this page for a detailed architectural proposal within 2 hours!";
+      return "<strong>Schedule A Technical Strategy Session:</strong><br><br>📧 <strong>Email:</strong> <a href='mailto:info@shebercraft.kz' style='color:#38bdf8'>info@shebercraft.kz</a><br>💬 <strong>WhatsApp:</strong> <a href='https://wa.me/77072506680?text=Hello%20Shebercraft!%20I%20would%20like%20to%20schedule%20a%20strategy%20call.' target='_blank' style='color:#38bdf8'>+7 707 250-66-80</a><br>✈️ <strong>Telegram:</strong> <a href='https://t.me/sheber_craft' target='_blank' style='color:#38bdf8'>@sheber_craft</a><br><br>Or fill out the form below on this page for a detailed architectural proposal within 2 hours!";
     }
 
     // Fallback

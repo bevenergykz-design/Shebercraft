@@ -2,3 +2,7 @@ node_modules/
 *.zip
 .DS_Store
 Thumbs.db
+config.php
+form_errors.log
+.mail_state.json
+.mail_state.lock
