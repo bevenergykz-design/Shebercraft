@@ -8,4 +8,6 @@ form_errors.log
 .mail_state.lock
 launch_chrome_debug.bat
 run_plesk_sync.py
+HANDOVER_FOR_AI_AGENT.md
+
 
