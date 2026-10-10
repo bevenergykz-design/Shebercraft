@@ -566,7 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Контакты ---
     if (q.includes('контакт') || q.includes('телефон') || q.includes('адрес') || q.includes('связаться') || q.includes('whatsapp') || q.includes('вотсап') || q.includes('ватсап') || q.includes('telegram') || q.includes('телеграм') || q.includes('позвон') || q.includes('написать')) {
-      return '<strong>Наши контакты:</strong><br><br>📱 <strong>WhatsApp:</strong> <a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8">+7 707 250-66-80</a><br>✈️ <strong>Telegram:</strong> <a href="https://t.me/sheber_craft" target="_blank" style="color:#38bdf8">@sheber_craft</a><br>📧 <strong>Email:</strong> info@shebercraft.kz<br>📍 <strong>Офис:</strong> г. Алматы, ул. Кожабекова 19, 4 этаж, оф. 8<br><br>Перезвоним в течение 1 рабочего часа!<br><br><a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8;font-weight:700">Написать в WhatsApp →</a>';
+      return '<strong>Наши контакты:</strong><br><br>📱 <strong>WhatsApp:</strong> <a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8">+7 707 250-66-80</a><br>✈️ <strong>Telegram:</strong> <a href="https://t.me/sheber_craft" target="_blank" style="color:#38bdf8">@sheber_craft</a><br>📧 <strong>Email:</strong> info@shebercraft.kz<br><br>Перезвоним в течение 1 рабочего часа!<br><br><a href="https://wa.me/77072506680" target="_blank" style="color:#38bdf8;font-weight:700">Написать в WhatsApp →</a>';
     }
 
     // --- Все услуги ---

@@ -73,18 +73,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://shebercraft.kz/cases/legal-company/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://shebercraft.kz/cases/restaurant-bot/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://shebercraft.kz/blog/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
