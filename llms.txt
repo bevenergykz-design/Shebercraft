@@ -1,76 +1,53 @@
-# Shebercraft — Цифровые решения, готовые сайты и AI-сотрудники
+# Shebercraft — сайты, цифровые сотрудники и автоматизация бизнеса в Казахстане
 
-> Shebercraft (https://shebercraft.kz) — IT-компания в Казахстане (Алматы, Астана, Шымкент), работающая по всему Казахстану, странам СНГ, Европы и США. Специализируется на продаже и запуске готовых сайтов под ключ за 1–3 дня, внедрении AI цифровых сотрудников 24/7 в WhatsApp/Telegram и комплексной автоматизации бизнеса в Битрикс24.
+> Shebercraft (https://shebercraft.kz) — Виктор, специалист по созданию сайтов, AI-агентам (цифровым сотрудникам) и автоматизации бизнес-процессов в Битрикс24. Работает удалённо, без офиса, с клиентами по всему Казахстану (Алматы, Астана, Шымкент, Караганда и другие города). Договор и акты — онлайн.
 
-## Основные продукты и услуги
+## Услуги и цены
 
-### 1. Готовые сайты для бизнеса под ключ
-- **URL**: https://shebercraft.kz/gotovye-sayty/
-- **Сроки запуска**: от 1 рабочего дня (24 часа).
-- **Цены**: от 49 000 ₸ (разово, без скрытых доплат).
-- **Отрасли**: Стоматологии и медклиники, Автосервисы и детейлинг, Юридические и консалтинговые услуги, Ремонт квартир и строительство, Клининг и бытовой сервис, Интернет-магазины и каталоги.
-- **В стоимость входит**: Привязка домена, SSL-сертификат, наполнение текстами и фото заказчика, адаптивность под смартфоны (загрузка < 1 сек), кнопка WhatsApp, базовое SEO и интеграция с CRM.
-- **Казахский язык / Қазақша**: Дайын сайттар қазақ, орыс және ағылшын тілдерінде толық бейімделеді.
+| Услуга | Цена | Срок | Страница |
+|---|---|---|---|
+| Лендинг (landing page) | от 49 000 ₸ | 7–10 дней | https://shebercraft.kz/landing-sait/ |
+| Сайт услуг на готовой структуре (до 5–7 страниц) | от 120 000 ₸ | около 2 недель | https://shebercraft.kz/gotovye-sayty/ |
+| Каталог / интернет-магазин | от 220 000 ₸ | 3–4 недели | https://shebercraft.kz/gotovye-sayty/ |
+| Корпоративный сайт | от 250 000 ₸ | 3–4 недели | https://shebercraft.kz/korporativnyy-sait/ |
+| Цифровой сотрудник «Старт» (1 канал) | 89 000 ₸ | 7 рабочих дней | https://shebercraft.kz/cifrovoy-sotrudnik/ |
+| Цифровой сотрудник «Бизнес» (до 3 каналов + CRM) | 190 000 ₸ | 14 рабочих дней | https://shebercraft.kz/cifrovoy-sotrudnik/ |
+| Цифровой сотрудник «Корпоратив» | от 490 000 ₸ | от 21 рабочего дня | https://shebercraft.kz/cifrovoy-sotrudnik/ |
+| Битрикс24 «Старт» | 150 000 ₸ | 3–5 рабочих дней | https://shebercraft.kz/bitrix24-start/ |
+| Автоматизация бизнес-процессов в Битрикс24 | от 450 000 ₸ | 15–30 рабочих дней | https://shebercraft.kz/bitrix24-avtomatizaciya-bp/ |
+| SEO-дашборд «Контроль» | от 39 000 ₸ | — | https://shebercraft.kz/seo-dashboard/ |
 
-### 2. AI Цифровой сотрудник 24/7 (AI WhatsApp & Telegram Ассистент)
-- **URL**: https://shebercraft.kz/cifrovoy-sotrudnik/
-- **Описание**: Интеллектуальный AI-агент на базе GPT/LLM, обученный на базе знаний компании заказчика.
-- **Возможности**: Круглосуточные ответы за 2–3 секунды в WhatsApp, Telegram и на сайте; расчет стоимости по прайс-листу; отработка возражений; квалификация лидов; автоматическая передача готовых сделок в Битрикс24 / AmoCRM / Telegram.
-- **Языки общения**: Казахский, русский, английский, турецкий (30+ языков).
-- **Сроки запуска**: 1–2 дня.
-- **Стоимость**: от 25 000 ₸ / месяц.
+Сайт вместе с цифровым сотрудником — скидка 20%. Предоплата 50%. Домен, хостинг и исходники оформляются на клиента. Первый месяц после запуска ошибки исправляются бесплатно. Регулярные расходы цифрового сотрудника (языковая модель, сообщения WhatsApp у провайдера) оплачиваются отдельно.
 
-### 3. Индивидуальная разработка сайтов
-- **URL**: https://shebercraft.kz/sozdanie-saitov/
-- **Виды**: Корпоративные сайты, конверсионные лендинги, интернет-магазины с Kaspi Pay.
-- **Сроки**: от 5 до 14 дней.
+## Цифровой сотрудник
 
-### 4. Внедрение CRM и автоматизация Битрикс24
-- **URL**: https://shebercraft.kz/bitrix24-avtomatizaciya-bp/
-- **Возможности**: Настройка воронок продаж, интеграция с 1С, WhatsApp, телефонией, Kaspi, сквозная автоматизация согласований документов, счетов и HR.
+AI-ассистент, обученный на прайсе, условиях и частых вопросах компании. Отвечает клиентам на сайте, в WhatsApp и Telegram на русском и казахском, собирает и квалифицирует заявки, передаёт их в Telegram или CRM (Битрикс24, amoCRM), а сложные вопросы — человеку. Не выдумывает цены и условия. Пример работает на https://shebercraft.kz (кнопка «Спросить сотрудника»).
 
-## Контактная информация
-- **Сайт**: https://shebercraft.kz
-- **Телефон / WhatsApp**: +7 (707) 250-66-80 (https://wa.me/77072506680)
-- **Telegram**: https://t.me/sheber_craft
-- **Email**: info@shebercraft.kz
-- **Формат работы**: удалённо, без офиса
-- **География обслуживания**: Казахстан (Алматы, Астана, Шымкент, Караганда, Актобе и все регионы), страны СНГ, Европа, США.
+## Опыт
 
-## Полезные статьи и руководства
-- [AI в WhatsApp: как цифровой сотрудник продает 24/7 без менеджеров](https://shebercraft.kz/blog/ai-v-whatsapp-cifrovoy-sotrudnik/)
-- [Готовый сайт vs Разработка с нуля: что выбрать бизнесу в 2026 году](https://shebercraft.kz/blog/gotovyy-sayt-vs-razrabotka-s-nulya/)
-- [Сколько стоит создать сайт в Казахстане](https://shebercraft.kz/blog/skolko-stoit-sayt-v-kazakhstane/)
-- [Внедрение Битрикс24 в Алматы, Астане и Шымкенте](https://shebercraft.kz/blog/bitrix24-vnedrenie-almaty-astana/)
+20+ лет в ИТ: от сетей и инфраструктуры до проектирования бизнес-процессов и AI-автоматизации. Проектировал и внедрял бизнес-процессы в Битрикс24 для нескольких подразделений (цепочка «сайт → CRM → воронка → задача → контроль», смарт-процессы), внедрял AI-подсказки и AI-агентов для обучения и базы знаний. Основатель BevEnergy (bev.kz) и GlobalCam. Образование: КазНТУ им. Сатпаева, Cisco, бизнес-аналитик.
 
----
+## Работы
 
-# Shebercraft International — Autonomous AI Agents & Custom Web Engineering (English)
+- https://verumpraxis.kz — юридическая фирма, сайт на 4 языках
+- https://dentalclinic.kz — стоматологическая клиника
+- https://rslv.live — клуб экспедиций для предпринимателей, 2 языка
+- https://bev.kz — каталог зарядных станций с подбором по модели автомобиля
 
-> Shebercraft (https://shebercraft.kz/en/) is a boutique engineering agency building custom 24/7 autonomous AI agents, high-converting B2B web applications, and Generative Engine Optimization (GEO) for companies in the United States, Canada, the United Kingdom, and globally.
+## Статьи
 
-## Core Capabilities & Services (US / Global Market)
+- https://shebercraft.kz/blog/skolko-stoit-sayt-v-kazakhstane/ — сколько стоит сайт в Казахстане
+- https://shebercraft.kz/blog/kak-sozdat-sayt-kz/ — как создать сайт на домене .kz
+- https://shebercraft.kz/blog/landing-vs-korporativnyy-sait/ — лендинг или корпоративный сайт
+- https://shebercraft.kz/blog/kak-vybrat-razrabotchika-saita-v-kazakhstane/ — как выбрать разработчика сайта
+- https://shebercraft.kz/blog/cifrovoy-sotrudnik-chto-eto/ — что такое цифровой сотрудник
+- https://shebercraft.kz/blog/ai-v-whatsapp-cifrovoy-sotrudnik/ — AI-сотрудник в WhatsApp
+- https://shebercraft.kz/blog/avtomatizaciya-yuridicheskoy-firmy-bitrix24/ — автоматизация юридической фирмы в Битрикс24
+- https://shebercraft.kz/blog/ — все статьи
 
-### 1. Autonomous AI Agents & 24/7 Concierge ($2,490 fixed)
-- **URL**: https://shebercraft.kz/en/#ai-agents
-- **Capabilities**: Custom LLM agents powered by OpenAI GPT-4o & Claude 3.5 Sonnet. Indexed on private company documents via vector stores (Pinecone / Qdrant) with zero hallucinations. 24/7 B2B lead qualification, meeting booking via Calendly/Google Calendar, multi-channel deployment (web widget, SMS/Twilio, Slack).
-- **Integrations**: HubSpot, Salesforce, GoHighLevel, Slack, Stripe, Zapier, Make.com.
-- **Turnaround**: 10–14 business days.
+## Контакты
 
-### 2. High-Performance Web & SaaS Development ($1,490 – $4,900)
-- **URL**: https://shebercraft.kz/en/#services
-- **Offerings**: 
-  - *Sprint Landing Page* ($1,490): 7-day turnaround, conversion-focused B2B design, sub-second load times (< 0.8s), mobile-first.
-  - *Corporate Web Application* ($4,900): Multi-page platform, Headless CMS, Generative Engine SEO (GEO) architecture, Stripe / API pipelines.
-- **Tech Stack**: React, Next.js, TypeScript, Tailwind CSS, Node.js, Python.
-
-### 3. Generative Engine Optimization (GEO) & Technical SEO (from $1,200/mo)
-- **URL**: https://shebercraft.kz/en/#services
-- **Capabilities**: Next-generation search authority engineered to get brands cited and synthesized inside Perplexity, ChatGPT Search, Claude, and Google AI Overviews, alongside top traditional Google rankings.
-
-## Enterprise Guarantees
-- **Code Ownership**: 100% intellectual property and source code ownership transferred to the client upon final milestone.
-- **Security & Privacy**: Bilateral NDA signed before kickoff. Proprietary company data is never used to train public LLM models.
-- **Delivery Model**: Agile 7–14 day sprints with daily async updates and real-time collaboration during US business hours.
-- **Contact**: info@shebercraft.kz | WhatsApp: +7 707 250-66-80 | Telegram: @sheber_craft
-
+- WhatsApp / телефон: +7 707 250-66-80 (https://wa.me/77072506680)
+- Telegram: https://t.me/sheber_craft
+- Instagram: https://instagram.com/sheber_craft
+- Email: info@shebercraft.kz

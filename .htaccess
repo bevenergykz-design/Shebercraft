@@ -3,6 +3,10 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.shebercraft\.kz$ [NC]
 RewriteRule ^(.*)$ https://shebercraft.kz/$1 [R=301,L]
 
+# Старые кейсы → честные статьи по той же теме
+RedirectMatch 301 ^/cases/legal-company/?$ /blog/avtomatizaciya-yuridicheskoy-firmy-bitrix24/
+RedirectMatch 301 ^/cases/restaurant-bot/?$ /blog/ai-chatbot-dlya-kazakhstana/
+
 # Объединение страниц: AI чат-бот = цифровой сотрудник
 RedirectMatch 301 ^/ai-chatbot/?$ /cifrovoy-sotrudnik/
 
