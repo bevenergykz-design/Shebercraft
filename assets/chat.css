@@ -1,4 +1,5 @@
 /* чат цифрового сотрудника (использует переменные live.css) */
+.chat{--ink:#1f1b16;--paper:#fff;--bg:#faf7f2;--line:#e6dfd3;--muted:#6b6257;--accent:#c4501f;--accent-dark:#9f3d14;--sans:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 .hp{position:absolute;left:-9999px}
 .chat-launch{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--ink);color:#fff;border:0;border-radius:99px;padding:13px 20px;font:600 .95rem var(--sans);cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.25);display:flex;align-items:center;gap:9px}
 .chat-launch:hover{background:#000}

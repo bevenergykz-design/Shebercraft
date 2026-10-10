@@ -108,3 +108,22 @@ footer a{color:var(--muted)}
 }
 
 .facts{padding-left:1.1em;margin:0 0 1em}.facts li{margin-bottom:.6em}
+
+/* статьи блога */
+.article{max-width:760px;padding-top:40px;padding-bottom:70px}
+.article h1{font-size:clamp(1.9rem,4.4vw,2.8rem)}
+.article h2{margin-top:2.2em}
+.article h3{margin-top:1.6em}
+.article .lead{font-size:1.2rem;color:var(--muted)}
+.article .byline{font-size:.9rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:2rem}
+.article ul,.article ol{padding-left:1.3em;margin:0 0 1.2em}
+.article li{margin-bottom:.5em}
+.article blockquote{margin:1.4em 0;padding:.2em 0 .2em 1.1em;border-left:3px solid var(--accent);color:var(--muted);font-family:var(--serif);font-size:1.1rem}
+.article table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.95rem;display:block;overflow-x:auto}
+.article th,.article td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.article th{background:var(--soft)}
+.crumbs{font-size:.88rem;color:var(--muted);margin-bottom:1rem}
+.cta-box{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:26px;margin:2.6em 0}
+.cta-box h3{margin-top:0}
+.related{list-style:none;padding:0!important}
+.related li{margin-bottom:.4em}
