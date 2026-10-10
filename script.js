@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <a href="https://wa.me/77072506680" target="_blank" class="btn-primary" style="text-align:center;font-size:1rem;padding:0.75rem 1.25rem;font-weight:600;font-family:var(--font-sans);text-decoration:none;border-radius:var(--radius-md);">WhatsApp Консультация</a>
     </div>
   `;
-  document.body.appendChild(mobileMenu);
+  // старое мобильное меню больше не нужно: шапка общая (assets/shell.js); оверлей создаём, только если есть старая кнопка
+  if (document.getElementById('navToggle')) document.body.appendChild(mobileMenu);
 
   const toggleMenu = (open) => {
     mobileMenu.classList.toggle('open', open);
