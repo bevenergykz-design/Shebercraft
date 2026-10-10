@@ -11,8 +11,24 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <link rel="stylesheet" href="/style.css" />
   <link rel="stylesheet" href="/assets/light-override.css" />
+  <link rel="stylesheet" href="/assets/shell.css" />
 </head>
-<body style="padding-top:40px;">
+<body class="has-shell">
+<header class="sh-header">
+  <div class="sh-wrap">
+    <a class="sh-brand" href="/">Sheber<span>craft</span></a>
+    <button class="sh-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="shNav">☰</button>
+    <nav class="sh-nav" id="shNav" aria-label="Основная навигация">
+      <a href="/sozdanie-saitov/" data-sec="/sozdanie-saitov,/landing-sait,/korporativnyy-sait">Сайты</a>
+      <a href="/gotovye-sayty/" data-sec="/gotovye-sayty">Готовые сайты</a>
+      <a href="/cifrovoy-sotrudnik/" data-sec="/cifrovoy-sotrudnik,/ai-chatbot">Цифровой сотрудник</a>
+      <a href="/bitrix24-start/" data-sec="/bitrix24,/seo-dashboard">Битрикс24</a>
+      <a href="/cases/" data-sec="/cases">Работы</a>
+      <a href="/blog/" data-sec="/blog">Блог</a>
+      <a class="sh-btn" href="/#contact">Обсудить проект</a>
+    </nav>
+  </div>
+</header>
   <main class="container" style="max-width:820px;padding:2rem 1rem 4rem;line-height:1.7;">
     <p><a href="/">← На главную</a></p>
     <h1 class="heading-1" style="font-family:var(--font-display);">Политика конфиденциальности</h1>
@@ -39,5 +55,50 @@
     <h2>7. Файлы cookie</h2>
     <p>Сайт может использовать аналитические cookie для оценки посещаемости. Вы можете отключить их в настройках браузера.</p>
   </main>
+<footer class="sh-footer">
+  <div class="sh-wrap">
+    <div class="sh-cols">
+      <div>
+        <a class="sh-brand" href="/">Sheber<span>craft</span></a>
+        <p class="sh-about">Сайты, цифровые сотрудники и автоматизация бизнеса в Казахстане. Работаю удалённо, напрямую с клиентом.</p>
+      </div>
+      <div>
+        <h5>Сайты</h5>
+        <ul>
+          <li><a href="/sozdanie-saitov/">Создание сайтов</a></li>
+          <li><a href="/landing-sait/">Лендинг</a></li>
+          <li><a href="/korporativnyy-sait/">Корпоративный сайт</a></li>
+          <li><a href="/gotovye-sayty/">Готовые сайты</a></li>
+          <li><a href="/sozdanie-saitov-almaty/">Сайты в Алматы</a></li>
+          <li><a href="/sozdanie-saitov-astana/">Сайты в Астане</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Автоматизация</h5>
+        <ul>
+          <li><a href="/cifrovoy-sotrudnik/">Цифровой сотрудник</a></li>
+          <li><a href="/ai-chatbot/">AI чат-бот</a></li>
+          <li><a href="/bitrix24-start/">Битрикс24 «Старт»</a></li>
+          <li><a href="/bitrix24-avtomatizaciya-bp/">Бизнес-процессы</a></li>
+          <li><a href="/seo-dashboard/">SEO-дашборд</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <ul>
+          <li><a href="https://wa.me/77072506680">WhatsApp +7 707 250-66-80</a></li>
+          <li><a href="https://t.me/sheber_craft">Telegram @sheber_craft</a></li>
+          <li><a href="https://instagram.com/sheber_craft">Instagram</a></li>
+          <li><a href="mailto:info@shebercraft.kz">info@shebercraft.kz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sh-bottom">
+      <span>© Shebercraft, Казахстан · работаю удалённо</span>
+      <span><a href="/cases/">Работы</a> · <a href="/blog/">Блог</a> · <a href="/politika-konfidencialnosti/">Политика конфиденциальности</a> · <a href="/en/">English</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/shell.js" defer></script>
 </body>
 </html>

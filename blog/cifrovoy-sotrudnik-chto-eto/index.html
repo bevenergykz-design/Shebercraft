@@ -21,22 +21,25 @@
   <link rel="stylesheet" href="/assets/fonts/fonts.css" />
   <link rel="stylesheet" href="/assets/live.css" />
   <link rel="stylesheet" href="/assets/chat.css" />
+  <link rel="stylesheet" href="/assets/shell.css" />
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Цифровой сотрудник: что это такое и чем он отличается от чат-бота", "description": "Простое объяснение: что такое цифровой сотрудник (AI-агент), как он работает, чем отличается от обычного чат-бота, что умеет и где не подойдёт.", "datePublished": "2026-08-31", "dateModified": "2026-10-10", "mainEntityOfPage": "https://shebercraft.kz/blog/cifrovoy-sotrudnik-chto-eto/", "author": {"@type": "Person", "name": "Виктор Малахов", "url": "https://shebercraft.kz/"}, "publisher": {"@type": "Organization", "name": "Shebercraft", "url": "https://shebercraft.kz/"}, "image": "https://shebercraft.kz/assets/og-image.jpg", "inLanguage": "ru"}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://shebercraft.kz/"}, {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://shebercraft.kz/blog/"}, {"@type": "ListItem", "position": 3, "name": "Цифровой сотрудник: что это такое и чем он отличается от чат-бота", "item": "https://shebercraft.kz/blog/cifrovoy-sotrudnik-chto-eto/"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Цифровой сотрудник — это просто чат-бот?", "acceptedAnswer": {"@type": "Answer", "text": "Обычный чат-бот ведёт по заранее заданным кнопкам и сценариям. Цифровой сотрудник понимает свободный вопрос, отвечает по вашей базе знаний, уточняет детали и может выполнять действия, например, создать заявку. Но он тоже ограничен вашими правилами."}}, {"@type": "Question", "name": "Он может ошибаться?", "acceptedAnswer": {"@type": "Answer", "text": "Да, любая языковая модель может ошибаться. Поэтому его обучают на ваших материалах, ограничивают темой, запрещают выдумывать цены и условия и в сложных случаях передают разговор человеку."}}, {"@type": "Question", "name": "Сколько стоит цифровой сотрудник?", "acceptedAnswer": {"@type": "Answer", "text": "У меня от 89 000 ₸. Цена зависит от каналов (сайт, WhatsApp, Telegram), объёма базы знаний и интеграций с CRM. Сайт и сотрудник вместе — со скидкой 20%."}}, {"@type": "Question", "name": "Заменит ли он менеджера?", "acceptedAnswer": {"@type": "Answer", "text": "Нет, это не цель. Он берёт на себя повторяющиеся вопросы и первичную квалификацию, чтобы менеджер занимался переговорами и продажей."}}]}</script>
 </head>
-<body>
+<body class="has-shell">
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/">Sheber<span>craft</span></a>
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="/sozdanie-saitov/">Сайты</a>
-      <a href="/cifrovoy-sotrudnik/">Цифровой сотрудник</a>
-      <a class="hide-m" href="/bitrix24-start/">Битрикс24</a>
-      <a href="/cases/">Работы</a>
-      <a class="hide-m" href="/blog/">Блог</a>
-      <a class="btn small" href="/#contact">Обсудить проект</a>
+<header class="sh-header">
+  <div class="sh-wrap">
+    <a class="sh-brand" href="/">Sheber<span>craft</span></a>
+    <button class="sh-burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="shNav">☰</button>
+    <nav class="sh-nav" id="shNav" aria-label="Основная навигация">
+      <a href="/sozdanie-saitov/" data-sec="/sozdanie-saitov,/landing-sait,/korporativnyy-sait">Сайты</a>
+      <a href="/gotovye-sayty/" data-sec="/gotovye-sayty">Готовые сайты</a>
+      <a href="/cifrovoy-sotrudnik/" data-sec="/cifrovoy-sotrudnik,/ai-chatbot">Цифровой сотрудник</a>
+      <a href="/bitrix24-start/" data-sec="/bitrix24,/seo-dashboard">Битрикс24</a>
+      <a href="/cases/" data-sec="/cases">Работы</a>
+      <a href="/blog/" data-sec="/blog">Блог</a>
+      <a class="sh-btn" href="/#contact">Обсудить проект</a>
     </nav>
   </div>
 </header>
@@ -110,13 +113,52 @@
   </article>
 </main>
 
-<footer>
-  <div class="wrap">
-    <div>© Shebercraft, Казахстан · работаю удалённо<br><a href="/politika-konfidencialnosti/">Политика конфиденциальности</a></div>
-    <div>WhatsApp: <a href="https://wa.me/77072506680">+7 707 250-66-80</a> · <a href="https://t.me/sheber_craft">Telegram</a> · <a href="mailto:info@shebercraft.kz">info@shebercraft.kz</a></div>
+<footer class="sh-footer">
+  <div class="sh-wrap">
+    <div class="sh-cols">
+      <div>
+        <a class="sh-brand" href="/">Sheber<span>craft</span></a>
+        <p class="sh-about">Сайты, цифровые сотрудники и автоматизация бизнеса в Казахстане. Работаю удалённо, напрямую с клиентом.</p>
+      </div>
+      <div>
+        <h5>Сайты</h5>
+        <ul>
+          <li><a href="/sozdanie-saitov/">Создание сайтов</a></li>
+          <li><a href="/landing-sait/">Лендинг</a></li>
+          <li><a href="/korporativnyy-sait/">Корпоративный сайт</a></li>
+          <li><a href="/gotovye-sayty/">Готовые сайты</a></li>
+          <li><a href="/sozdanie-saitov-almaty/">Сайты в Алматы</a></li>
+          <li><a href="/sozdanie-saitov-astana/">Сайты в Астане</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Автоматизация</h5>
+        <ul>
+          <li><a href="/cifrovoy-sotrudnik/">Цифровой сотрудник</a></li>
+          <li><a href="/ai-chatbot/">AI чат-бот</a></li>
+          <li><a href="/bitrix24-start/">Битрикс24 «Старт»</a></li>
+          <li><a href="/bitrix24-avtomatizaciya-bp/">Бизнес-процессы</a></li>
+          <li><a href="/seo-dashboard/">SEO-дашборд</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Контакты</h5>
+        <ul>
+          <li><a href="https://wa.me/77072506680">WhatsApp +7 707 250-66-80</a></li>
+          <li><a href="https://t.me/sheber_craft">Telegram @sheber_craft</a></li>
+          <li><a href="https://instagram.com/sheber_craft">Instagram</a></li>
+          <li><a href="mailto:info@shebercraft.kz">info@shebercraft.kz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sh-bottom">
+      <span>© Shebercraft, Казахстан · работаю удалённо</span>
+      <span><a href="/cases/">Работы</a> · <a href="/blog/">Блог</a> · <a href="/politika-konfidencialnosti/">Политика конфиденциальности</a> · <a href="/en/">English</a></span>
+    </div>
   </div>
 </footer>
 
 <script src="/assets/chat.js" defer></script>
+<script src="/assets/shell.js" defer></script>
 </body>
 </html>
