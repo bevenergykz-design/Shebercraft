@@ -106,3 +106,5 @@ footer a{color:var(--muted)}
   section{padding:52px 0}
   body{font-size:16px}
 }
+
+.facts{padding-left:1.1em;margin:0 0 1em}.facts li{margin-bottom:.6em}
