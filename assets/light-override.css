@@ -1,0 +1,31 @@
+/* Светлая тёплая тема поверх старого style.css (переопределяет переменные) */
+:root{
+  --color-primary:#c4501f; --color-primary-light:#d8683a; --color-primary-dark:#9f3d14;
+  --color-primary-glow:transparent; --color-accent:#9f3d14; --color-accent-glow:transparent;
+  --color-bg:#faf7f2; --color-bg-elevated:#f4efe6; --color-bg-card:#ffffff; --color-bg-card-hover:#fbf8f3;
+  --color-border:#e6dfd3; --color-border-light:#d9d0c1;
+  --color-text:#1f1b16; --color-text-muted:#6b6257; --color-text-faint:#8c8376;
+  --color-success:#2f7d4f; --color-warning:#b7791f; --color-danger:#b3261e;
+  --font-sans:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  --font-display:'Iowan Old Style','Palatino Linotype',Georgia,serif;
+  --font-mono:'Inter',system-ui,sans-serif;
+}
+body{background:var(--color-bg)!important;color:var(--color-text)!important}
+h1,h2,h3,.heading-1,.heading-2,.heading-3,.section-title{font-family:var(--font-display)!important;font-weight:600!important;letter-spacing:-.01em}
+*{text-shadow:none!important}
+.hero-bg,.hero-glow,.bg-grid,.noise,.orb,.glow,[class*="glow"],[class*="orb"],.scroll-progress,#scrollProgress{display:none!important}
+.navbar,.navbar.scrolled{background:rgba(250,247,242,.95)!important;border-color:var(--color-border)!important;box-shadow:none!important}
+.card,.pricing-card,.faq-item,[class$="-card"]{box-shadow:none!important}
+.btn-primary,.btn.btn-primary{background:var(--color-primary)!important;color:#fff!important;box-shadow:none!important;background-image:none!important}
+[style*="gradient"],.gradient-text,.text-gradient{background-image:none!important;-webkit-text-fill-color:currentColor!important;color:var(--color-primary)!important}
+footer,.footer{background:var(--color-bg-elevated)!important}
+img{filter:none}
+
+/* жёстко прописанный белый текст из тёмной темы */
+h1[style*="#fff"],h2[style*="#fff"],h3[style*="#fff"],h4[style*="#fff"],p[style*="#fff"],li[style*="#fff"],span[style*="#fff"],div[style*="#fff"],strong[style*="#fff"],
+[class*="title"],[class*="heading"],[class*="__name"],.step-title,.faq-question,summary{color:var(--color-text)!important}
+a[style*="#fff"]:not(.btn-primary),.btn-secondary,.btn-ghost{color:var(--color-text)!important;border-color:var(--color-border-light)!important}
+.btn-secondary,.btn-ghost{background:transparent!important}
+.btn-primary,.btn-primary *{color:#fff!important}
+.sec-h2,.niche-card__price,.sec-h3,[class^="sec-"][class*="h"]{color:var(--color-text)!important}
+.niche-card__price{color:var(--color-primary)!important}
