@@ -1,0 +1,9 @@
+# Не отдавать служебные файлы по HTTP (логи, состояние почты, конфиги, исходники)
+<FilesMatch "(^\.|\.(log|md|zip|bat|py|example\.php)$|^config\.php$|^\.mail_state)">
+  Require all denied
+</FilesMatch>
+# Исключение: .well-known должен открываться (проверка доменов, сертификаты)
+<FilesMatch "^\.well-known$">
+  Require all granted
+</FilesMatch>
+Options -Indexes
