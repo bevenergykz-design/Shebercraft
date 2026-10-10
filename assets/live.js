@@ -9,9 +9,11 @@
     var f = new FormData(form);
     var phone = String(f.get('phone') || '').replace(/\D/g, '');
     status.className = 'status';
+    status.textContent = '';
     if (phone.length < 10) {
       status.textContent = 'Укажите телефон — минимум 10 цифр.';
       status.classList.add('err');
+      status.scrollIntoView({ block: 'center', behavior: 'smooth' });
       return;
     }
     btn.disabled = true;
@@ -43,6 +45,7 @@
       status.innerHTML = (err || 'Не получилось отправить.') + ' Напишите в <a href="https://wa.me/77072506680">WhatsApp</a> — отвечу там.';
       status.classList.add('err');
     }
+    status.scrollIntoView({ block: 'center', behavior: 'smooth' });
     btn.disabled = false;
     btn.textContent = 'Отправить';
   });

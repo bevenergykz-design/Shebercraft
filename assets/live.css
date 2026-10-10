@@ -127,3 +127,8 @@ footer a{color:var(--muted)}
 .cta-box h3{margin-top:0}
 .related{list-style:none;padding:0!important}
 .related li{margin-bottom:.4em}
+
+.status:empty{display:none}
+.status{margin:0 0 14px;padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--paper);font-size:.95rem}
+.status.ok{border-color:#9ccfae;background:#eef8f1}
+.status.err{border-color:#e3a8a3;background:#fdf0ee}
