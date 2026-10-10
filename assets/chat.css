@@ -15,7 +15,7 @@
 .msg.bot{background:var(--paper);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px}
 .msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .msg.typing{color:var(--muted);font-style:italic}
-.chat-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px;background:var(--bg)}
+.chat-chips{display:flex;flex-wrap:wrap;gap:6px;padding:2px 0 4px}
 .chat-chips:empty{display:none}
 .chat-chips button{font:.85rem var(--sans);background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:6px 12px;cursor:pointer;color:var(--ink)}
 .chat-chips button:hover{border-color:var(--accent);color:var(--accent-dark)}
@@ -29,4 +29,3 @@
 .chat-hbtns{display:flex;align-items:center;gap:6px}
 .chat-menu{background:rgba(255,255,255,.15);border:0;color:#fff;border-radius:99px;padding:6px 12px;font:600 .82rem var(--sans);cursor:pointer}
 .chat-menu:hover{background:rgba(255,255,255,.28)}
-.chat-chips{max-height:132px;overflow-y:auto}

@@ -27,7 +27,6 @@
       '<div class="chat-hbtns"><button type="button" class="chat-menu" aria-label="Главное меню">☰ Меню</button>' +
       '<button type="button" class="chat-close" aria-label="Закрыть">×</button></div></header>' +
       '<div class="chat-log" aria-live="polite"></div>' +
-      '<div class="chat-chips"></div>' +
       '<form class="chat-form"><input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       '<input type="text" name="q" placeholder="Напишите вопрос…" maxlength="500" autocomplete="off" aria-label="Ваше сообщение">' +
       '<button type="submit" aria-label="Отправить">→</button></form>' +
@@ -38,7 +37,7 @@
   var launch = root.querySelector('.chat-launch');
   var panel = root.querySelector('.chat-panel');
   var log = root.querySelector('.chat-log');
-  var chips = root.querySelector('.chat-chips');
+  var chips = null;
   var form = root.querySelector('.chat-form');
   var input = form.elements.q;
 
@@ -60,10 +59,17 @@
     launch.classList.add('hidden');
     if (!log.children.length) {
       add('bot', GREETING);
+      newChips();
       CHIPS.forEach(function (c) { chip(c, function () { send(c); }); });
       chip('☰ Меню', showMenu);
     }
     setTimeout(function () { input.focus(); }, 50);
+  }
+  function newChips() {
+    if (chips && chips.parentNode) chips.parentNode.removeChild(chips);
+    chips = document.createElement('div');
+    chips.className = 'chat-chips';
+    log.appendChild(chips);
   }
   function chip(label, fn) {
     var b = document.createElement('button');
@@ -72,20 +78,20 @@
     chips.appendChild(b);
   }
   function showMenu() {
-    chips.innerHTML = '';
+    newChips();
     MENU.forEach(function (m) { chip(m[0], function () { send(m[1]); }); });
     chip('↺ Начать заново', reset);
-    log.scrollTop = log.scrollHeight;
+    log.scrollTop = Math.max(0, chips.offsetTop - 12);
   }
   function showFollowUps() {
-    chips.innerHTML = '';
+    newChips();
     chip('☰ Меню', showMenu);
     chip('✍️ Оставить заявку', function () { send('Хочу оставить заявку'); });
   }
   function reset() {
     history = [];
     log.innerHTML = '';
-    chips.innerHTML = '';
+    chips = null;
     add('bot', GREETING);
     showMenu();
   }
@@ -95,7 +101,7 @@
     text = (text || '').trim();
     if (!text || busy) return;
     busy = true;
-    chips.innerHTML = '';
+    if (chips && chips.parentNode) chips.parentNode.removeChild(chips);
     add('user', text);
     history.push({ role: 'user', content: text });
     var typing = add('bot typing', 'печатает…');
