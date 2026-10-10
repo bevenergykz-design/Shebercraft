@@ -1,3 +1,8 @@
+# Один адрес сайта: www → без www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.shebercraft\.kz$ [NC]
+RewriteRule ^(.*)$ https://shebercraft.kz/$1 [R=301,L]
+
 # Объединение страниц: AI чат-бот = цифровой сотрудник
 RedirectMatch 301 ^/ai-chatbot/?$ /cifrovoy-sotrudnik/
 
