@@ -34,7 +34,12 @@
     d.className = 'msg ' + role;
     d.textContent = text;
     log.appendChild(d);
-    log.scrollTop = log.scrollHeight;
+    if (role === 'bot') {
+      // ответ показываем с первой строки: если он выше окна, не прокручиваем к самому низу
+      log.scrollTop = d.offsetHeight > log.clientHeight - 16 ? Math.max(0, d.offsetTop - 10) : log.scrollHeight;
+    } else {
+      log.scrollTop = log.scrollHeight;
+    }
     return d;
   }
   function open() {
