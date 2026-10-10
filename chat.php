@@ -61,14 +61,32 @@ foreach (array_slice($in['messages'], -14) as $m) {
 while ($messages && $messages[0]['role'] !== 'user') array_shift($messages);
 if (!$messages || end($messages)['role'] !== 'user') fail(400, 'Нужно сообщение пользователя');
 $page = mb_substr(strip_tags((string) ($in['page'] ?? '')), 0, 300, 'UTF-8');
+$lang = ($in['lang'] ?? '') === 'kk' ? 'kk' : 'ru';
 
 // ======================================================================
 //  База знаний: поиск наиболее подходящих тем
+//  chat_kb.json — русская база, chat_kb_kk.json — казахская
 // ======================================================================
 const KB_STOP = 'и в во на а но что как у с со по для это эта этот эти ли мне вам вас вы я мы он она они к ко от до из за же бы ну да нет не ни или то так тут там уже еще есть быть будет можно нужно надо при про под над о об если когда где какой какая какие какое чем чей мой моя мои ваш ваша ваши свой хочу хотел хотела хотим можете могу ж';
 const KB_ENDS = 'ами ями ого его ому ему ыми ими ов ев ом ем ах ях ая яя ое ее ые ие ый ий ой ую юю ам ям ы и а я у ю е о ь й';
+const KB_STOP_KK = 'және мен бен пен да де та те ма ме ба бе па пе ғой бұл сол осы ол сіз сізге сіздің сізде менің маған біз ғана үшін туралы еді ше';
 
-function kb_tokens($text) {
+/** Казахский: окончаний много, поэтому сравниваем первые 4 буквы слова. */
+function kb_tokens_kk($text) {
+    static $stop = null;
+    if ($stop === null) $stop = array_flip(explode(' ', KB_STOP_KK));
+    $t = str_replace('ё', 'е', mb_strtolower($text, 'UTF-8'));
+    $t = preg_replace('/[^а-яәғқңөұүһіa-z0-9]+/u', ' ', $t);
+    $out = [];
+    foreach (preg_split('/\s+/u', trim($t), -1, PREG_SPLIT_NO_EMPTY) as $w) {
+        if (isset($stop[$w])) continue;
+        $out[] = mb_strlen($w) > 4 ? mb_substr($w, 0, 4) : $w;
+    }
+    return $out;
+}
+
+function kb_tokens($text, $kk = false) {
+    if ($kk) return kb_tokens_kk($text);
     static $stop = null, $ends = null;
     if ($stop === null) {
         $stop = array_flip(explode(' ', KB_STOP));
@@ -92,19 +110,19 @@ function kb_tokens($text) {
     return $out;
 }
 
-function kb_load() {
-    static $kb = null;
-    if ($kb !== null) return $kb;
-    $file = __DIR__ . '/chat_kb.json';
+function kb_load($kk = false) {
+    static $cache = [];
+    if (isset($cache[$kk ? 1 : 0])) return $cache[$kk ? 1 : 0];
+    $file = __DIR__ . ($kk ? '/chat_kb_kk.json' : '/chat_kb.json');
     $raw = is_file($file) ? json_decode(file_get_contents($file), true) : null;
     $kb = ['entries' => [], 'df' => [], 'n' => 0];
-    if (!is_array($raw)) return $kb;
+    if (!is_array($raw)) return $cache[$kk ? 1 : 0] = $kb;
     foreach ($raw as $e) {
-        $kw = array_flip(kb_tokens(($e['k'] ?? '') . ' ' . ($e['t'] ?? '')));
+        $kw = array_flip(kb_tokens(($e['k'] ?? '') . ' ' . ($e['t'] ?? ''), $kk));
         $qs = [];
         $qn = [];
         foreach ($e['q'] ?? [] as $q) {
-            $tk = kb_tokens($q);
+            $tk = kb_tokens($q, $kk);
             foreach ($tk as $s) $qs[$s] = 1;
             $qn[] = $tk;
         }
@@ -113,13 +131,13 @@ function kb_load() {
         $kb['entries'][] = $e;
     }
     $kb['n'] = count($kb['entries']);
-    return $kb;
+    return $cache[$kk ? 1 : 0] = $kb;
 }
 
 /** Возвращает [[score, entry], ...] по убыванию. */
-function kb_search($query, $limit = 6) {
-    $kb = kb_load();
-    $qt = kb_tokens($query);
+function kb_search($query, $limit = 6, $kk = false) {
+    $kb = kb_load($kk);
+    $qt = kb_tokens($query, $kk);
     if (!$qt || !$kb['n']) return [];
     $qset = array_flip($qt);
     $qn = implode(' ', $qt);
@@ -157,6 +175,20 @@ if ($prevUser && ($hits ? $hits[0][0] < 18 : true)) {
     if ($ctx && (!$hits || $ctx[0][0] > $hits[0][0])) $hits = $ctx;
 }
 
+// Казахский: если в тексте есть казахские буквы или клиент на казахской версии сайта
+$hasKk = (bool) preg_match('/[әғқңөұүһі]/iu', $lastUser);
+$hitsKk = [];
+if ($hasKk || $lang === 'kk') {
+    $hitsKk = kb_search($lastUser, 4, true);
+    if ($prevUser && ($hitsKk ? $hitsKk[0][0] < 18 : true)) {
+        $ctx = kb_search($prevUser . ' ' . $lastUser, 4, true);
+        if ($ctx && (!$hitsKk || $ctx[0][0] > $hitsKk[0][0])) $hitsKk = $ctx;
+    }
+}
+$ruBest = $hits ? $hits[0][0] : 0;
+$kkBest = $hitsKk ? $hitsKk[0][0] : 0;
+$replyKk = $hasKk || ($lang === 'kk' && ($ruBest < 18 || ($kkBest >= 18 && $kkBest >= $ruBest)));
+
 // ======================================================================
 //  Заявка в Telegram
 // ======================================================================
@@ -190,16 +222,28 @@ function save_lead($config, $logFile, $args, $page) {
 // ======================================================================
 //  Режим без модели: ответ из базы знаний
 // ======================================================================
-function offline_reply($config, $logFile, $hits, $lastUser, $page) {
+function offline_reply($config, $logFile, $hits, $lastUser, $page, $kk = false) {
     $leadSaved = false;
     if (preg_match('/(\+?\d[\d\s\-()]{8,}\d)/u', $lastUser, $m) && strlen(preg_replace('/\D+/', '', $m[1])) >= 10) {
         $name = '';
-        if (preg_match('/(?:меня зовут|я|имя)\s+([А-ЯЁA-Z][а-яёa-z]{1,20})/u', $lastUser, $n)) $name = $n[1];
+        if (preg_match('/(?:меня зовут|я|имя|атым|есімім)\s+([А-ЯЁӘҒҚҢӨҰҮҺІA-Z][а-яёәғқңөұүһіa-z]{1,20})/u', $lastUser, $n)) $name = $n[1];
         [$ok] = save_lead($config, $logFile, ['phone' => $m[1], 'name' => $name, 'task' => mb_substr($lastUser, 0, 300, 'UTF-8')], $page);
         $leadSaved = $ok;
+        if ($kk) return [$ok
+            ? 'Рахмет! Өтініміңізді Викторға жеткіздім, ол жұмыс күні ішінде хабарласады. Ыңғайлы болса, WhatsApp-қа жазыңыз: +7 707 250-66-80.'
+            : 'Рахмет! Өтінімді автоматты түрде жеткізу мүмкін болмады, Викторға WhatsApp-қа жазыңызшы: +7 707 250-66-80, ол жауап береді.', $leadSaved];
         return [$ok
             ? 'Спасибо! Передал вашу заявку Виктору, он свяжется с вами в течение рабочего дня. Если удобнее, напишите ему в WhatsApp: +7 707 250-66-80.'
             : 'Спасибо! Автоматически передать заявку не получилось, поэтому напишите, пожалуйста, Виктору в WhatsApp: +7 707 250-66-80, он ответит.', $leadSaved];
+    }
+    if ($kk) {
+        if ($hits && $hits[0][0] >= 18) {
+            $e = $hits[0][1];
+            $tail = in_array($e['t'], ['Сәлемдесу', 'Рахмет', 'Өтінім қалдыру', 'Байланыс'], true)
+                ? '' : "\n\nӨтініміңізді Викторға жеткізейін бе? Атыңыз бен телефоныңызды жазыңыз.";
+            return [$e['a'] . $tail, false];
+        }
+        return ['Бұл сұраққа нақты жауабым жоқ, болжағым келмейді. Сайттар, цифрлық қызметкерлер, Битрикс24, бағалар мен мерзімдер туралы айта аламын немесе сұрағыңызды Викторға жеткіземін: атыңыз бен телефоныңызды жазыңыз. Не бірден WhatsApp-қа: +7 707 250-66-80.', false];
     }
     if ($hits && $hits[0][0] >= 18) {
         $e = $hits[0][1];
@@ -211,7 +255,7 @@ function offline_reply($config, $logFile, $hits, $lastUser, $page) {
 }
 
 if (!$config['anthropic_key']) {
-    [$reply, $leadSaved] = offline_reply($config, $logFile, $hits, $lastUser, $page);
+    [$reply, $leadSaved] = offline_reply($config, $logFile, $replyKk ? $hitsKk : $hits, $lastUser, $page, $replyKk);
     echo json_encode(['reply' => $reply, 'lead_saved' => $leadSaved, 'mode' => 'kb'], JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -240,6 +284,16 @@ if ($hits) {
         if ($sc <= 0) continue;
         $system .= "\n[" . ($i + 1) . "] Тема: " . $e['t'] . "\n" . $e['a'] . "\n";
     }
+}
+if ($hitsKk) {
+    $system .= "\n\nВЫДЕРЖКИ НА КАЗАХСКОМ (те же факты, готовые формулировки):\n";
+    foreach ($hitsKk as $i => [$sc, $e]) {
+        if ($sc <= 0) continue;
+        $system .= "\n[kk" . ($i + 1) . "] " . $e['t'] . "\n" . $e['a'] . "\n";
+    }
+}
+if ($lang === 'kk') {
+    $system .= "\n\nКлиент на казахской версии сайта. Отвечай на казахском языке простым живым языком; если клиент пишет по-русски, отвечай по-русски. Ссылки на страницы давай на казахские версии: /kk/, /kk/sayt-zhasau/, /kk/landing/, /kk/korporativtik-sayt/, /kk/dayyn-sayttar/, /kk/chat-bot/, /kk/bitrix24/, /kk/zhumystar/.";
 }
 if ($page) $system .= "\nСтраница, на которой сейчас клиент: " . $page;
 
@@ -313,7 +367,7 @@ for ($turn = 0; $turn < 3; $turn++) {
 
 if ($apiFailed && $reply === '') {
     // Запасной режим: отвечаем из базы знаний, чтобы клиент не остался без ответа
-    [$reply, $leadSaved] = offline_reply($config, $logFile, $hits, $lastUser, $page);
+    [$reply, $leadSaved] = offline_reply($config, $logFile, $replyKk ? $hitsKk : $hits, $lastUser, $page, $replyKk);
     echo json_encode(['reply' => $reply, 'lead_saved' => $leadSaved, 'mode' => 'kb-fallback'], JSON_UNESCAPED_UNICODE);
     exit;
 }

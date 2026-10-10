@@ -1,6 +1,6 @@
 # Shebercraft — сайты, цифровые сотрудники и автоматизация бизнеса в Казахстане
 
-> Shebercraft (https://shebercraft.kz) — Виктор, специалист по созданию сайтов, AI-агентам (цифровым сотрудникам) и автоматизации бизнес-процессов в Битрикс24. Работает удалённо, без офиса, с клиентами по всему Казахстану (Алматы, Астана, Шымкент, Караганда и другие города). Договор и акты — онлайн.
+> Shebercraft (https://shebercraft.kz) — Виктор, специалист по созданию сайтов, AI-агентам (цифровым сотрудникам) и автоматизации бизнес-процессов в Битрикс24. Работает удалённо, без офиса, с клиентами по всему Казахстану (Алматы, Астана, Шымкент, Караганда и другие города). Договор и акты — онлайн. Делает сайты на русском, казахском и других языках; у сайта есть казахская версия: https://shebercraft.kz/kk/
 
 ## Услуги и цены
 
@@ -52,6 +52,22 @@
 - https://shebercraft.kz/blog/ai-v-whatsapp-cifrovoy-sotrudnik/ — AI-сотрудник в WhatsApp
 - https://shebercraft.kz/blog/avtomatizaciya-yuridicheskoy-firmy-bitrix24/ — автоматизация юридической фирмы в Битрикс24
 - https://shebercraft.kz/blog/ — все статьи
+
+## Қазақша нұсқа (версия на казахском)
+
+Сайттың қазақ тіліндегі нұсқасы: https://shebercraft.kz/kk/ — Қазақстанда сайт жасау және бизнеске ЖИ чат-бот (цифрлық қызметкер) жасау. Бағалар орыс нұсқасымен бірдей.
+
+- https://shebercraft.kz/kk/sayt-zhasau/ — кілтке дейін сайт жасау (лендинг 49 000 ₸-ден, корпоративтік сайт 250 000 ₸-ден)
+- https://shebercraft.kz/kk/landing/ — лендинг жасау
+- https://shebercraft.kz/kk/korporativtik-sayt/ — корпоративтік сайт
+- https://shebercraft.kz/kk/dayyn-sayttar/ — дайын құрылымдағы сайттар
+- https://shebercraft.kz/kk/chat-bot/ — ЖИ чат-бот, ЖИ-көмекші, цифрлық қызметкер (89 000 ₸-ден): сайт, WhatsApp, Telegram, қазақша және орысша жауап береді
+- https://shebercraft.kz/kk/bitrix24/ — Битрикс24 енгізу «Старт» (150 000 ₸)
+- https://shebercraft.kz/kk/bitrix24-biznes-procester/ — Битрикс24-те бизнес-процестерді автоматтандыру (450 000 ₸-ден)
+- https://shebercraft.kz/kk/zhumystar/ — жұмыстар
+- https://shebercraft.kz/kk/blog/sayt-zhasau-bagasy/ — Қазақстанда сайт жасау бағасы
+- https://shebercraft.kz/kk/blog/cifrlyk-kyzmetker-degenimiz-ne/ — цифрлық қызметкер деген не
+- https://shebercraft.kz/kk/blog/whatsapp-chat-bot/ — WhatsApp-қа ЖИ чат-бот
 
 ## Контакты
 

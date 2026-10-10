@@ -13,6 +13,8 @@
 .sh-nav a{color:var(--sh-ink);text-decoration:none;font-size:.95rem;font-weight:400}
 .sh-nav a:hover{color:var(--sh-accent)}
 .sh-nav a.sh-active{color:var(--sh-accent);font-weight:600}
+.sh-nav a.sh-lang{border:1px solid var(--sh-line);border-radius:6px;padding:3px 9px;font-size:.85rem;font-weight:600;color:var(--sh-muted)}
+.sh-nav a.sh-lang:hover{color:var(--sh-accent);border-color:var(--sh-accent)}
 .sh-nav a.sh-btn{background:var(--sh-accent);color:#fff!important;padding:9px 16px;border-radius:8px;font-weight:600;font-size:.9rem;white-space:nowrap}
 .sh-nav a.sh-btn:hover{background:var(--sh-accent-dark)}
 .sh-burger{display:none;background:none;border:1px solid var(--sh-line);border-radius:8px;width:42px;height:42px;font-size:1.3rem;color:var(--sh-ink);cursor:pointer}
@@ -21,6 +23,7 @@
   .sh-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--sh-bg);border-bottom:1px solid var(--sh-line);flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 16px}
   .sh-nav.sh-open{display:flex}
   .sh-nav a{padding:12px 0;border-bottom:1px solid var(--sh-line);font-size:1rem}
+  .sh-nav a.sh-lang{border:0;border-bottom:1px solid var(--sh-line);border-radius:0;padding:12px 0;font-size:1rem}
   .sh-nav a.sh-btn{margin-top:12px;text-align:center;border:0;padding:12px}
 }
 /* подвал */
