@@ -174,7 +174,7 @@ function save_lead($config, $logFile, $args, $page) {
     if ($config['tg_token'] && $config['tg_chat_id']) {
         foreach (array_filter(array_map('trim', explode(',', $config['tg_chat_id']))) as $chatId) {
             $ch = curl_init("https://api.telegram.org/bot{$config['tg_token']}/sendMessage");
-            curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 8,
+            curl_setopt_array($ch, [CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 25, CURLOPT_CONNECTTIMEOUT => 10, CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
                 CURLOPT_POSTFIELDS => http_build_query(['chat_id' => $chatId, 'text' => $text, 'parse_mode' => 'HTML', 'disable_web_page_preview' => 'true'])]);
             $r = json_decode((string) curl_exec($ch), true);
             curl_close($ch);
@@ -271,6 +271,7 @@ function call_claude($config, $system, $messages, $tools, $logFile) {
         CURLOPT_POSTFIELDS => $payload,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT => 40,
+        CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
         CURLOPT_HTTPHEADER => [
             'content-type: application/json',
             'x-api-key: ' . $config['anthropic_key'],

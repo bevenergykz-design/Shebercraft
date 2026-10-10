@@ -162,7 +162,7 @@ function tg_send(array $config, string $text, string $logFile): bool {
     foreach (array_filter(array_map('trim', explode(',', $config['tg_chat_id']))) as $chatId) {
         $ch = curl_init("https://api.telegram.org/bot{$config['tg_token']}/sendMessage");
         curl_setopt_array($ch, [
-            CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 10,
+            CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 25, CURLOPT_CONNECTTIMEOUT => 10, CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
             CURLOPT_POSTFIELDS => http_build_query([
                 'chat_id' => $chatId, 'text' => $text, 'parse_mode' => 'HTML', 'disable_web_page_preview' => 'true',
             ]),

@@ -104,7 +104,9 @@ if ($config['tg_token'] && $config['tg_chat_id']) {
                 CURLOPT_POST           => true,
                 CURLOPT_POSTFIELDS     => $data,
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT        => 8,
+                CURLOPT_TIMEOUT        => 25,
+                CURLOPT_CONNECTTIMEOUT => 10,
+                CURLOPT_IPRESOLVE      => CURL_IPRESOLVE_V4,
             ]);
             $resp = curl_exec($ch);
             $err  = curl_error($ch);
