@@ -24,7 +24,7 @@
       '<span class="chat-dot"></span>Спросить сотрудника</button>' +
     '<section class="chat-panel" role="dialog" aria-label="Чат с цифровым сотрудником" hidden>' +
       '<header><div><b>Цифровой сотрудник</b><small>AI-ассистент Виктора</small></div>' +
-      '<div class="chat-hbtns"><button type="button" class="chat-menu" aria-label="Главное меню">☰ Меню</button>' +
+      '<div class="chat-hbtns"><button type="button" class="chat-menu" aria-label="Назад к темам">← Назад</button>' +
       '<button type="button" class="chat-close" aria-label="Закрыть">×</button></div></header>' +
       '<div class="chat-log" aria-live="polite"></div>' +
       '<form class="chat-form"><input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
@@ -61,7 +61,7 @@
       add('bot', GREETING);
       newChips();
       CHIPS.forEach(function (c) { chip(c, function () { send(c); }); });
-      chip('☰ Меню', showMenu);
+      chip('← Назад', showMenu);
     }
     setTimeout(function () { input.focus(); }, 50);
   }
@@ -85,7 +85,7 @@
   }
   function showFollowUps() {
     newChips();
-    chip('☰ Меню', showMenu);
+    chip('← Назад', showMenu);
     chip('✍️ Оставить заявку', function () { send('Хочу оставить заявку'); });
   }
   function reset() {
