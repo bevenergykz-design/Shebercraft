@@ -132,3 +132,21 @@ footer a{color:var(--muted)}
 .status{margin:0 0 14px;padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--paper);font-size:.95rem}
 .status.ok{border-color:#9ccfae;background:#eef8f1}
 .status.err{border-color:#e3a8a3;background:#fdf0ee}
+
+/* сетка работ */
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:1.5em 0 2em}
+.case-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.case-card img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-bottom:1px solid var(--line)}
+.case-card h3,.case-card p{padding:0 18px}
+.case-card h3{margin-top:16px;font-size:1.15rem}
+@media(max-width:700px){.case-grid{grid-template-columns:1fr}}
+.article:has(.case-grid){max-width:1000px}
+/* список статей блога */
+.post-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 1.5em}
+.post-card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 20px;text-decoration:none;color:var(--ink)}
+.post-card:hover{border-color:var(--accent)}
+.post-card h3{margin:0 0 .4em;font-size:1.08rem}
+.post-card p{margin:0 0 .6em;color:var(--muted);font-size:.93rem}
+.post-card span{color:var(--accent-dark);font-weight:600;font-size:.9rem}
+@media(max-width:700px){.post-list{grid-template-columns:1fr}}
+.article:has(.post-list){max-width:1000px}
