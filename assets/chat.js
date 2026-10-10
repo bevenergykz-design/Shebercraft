@@ -2,6 +2,18 @@
 (function () {
   var GREETING = 'Здравствуйте! Я цифровой сотрудник Виктора — AI-ассистент, а не человек. Могу рассказать про сайты, цифровых сотрудников и Битрикс24, прикинуть бюджет и передать вашу заявку Виктору. С чего начнём?';
   var CHIPS = ['Сколько стоит сайт?', 'Что умеет цифровой сотрудник?', 'Вы работаете удалённо?', 'Нужен ли он моему бизнесу?'];
+  var MENU = [
+    ['💰 Цены', 'Сколько стоят ваши услуги?'],
+    ['⏱ Сроки', 'Как быстро вы работаете?'],
+    ['🌐 Сайты', 'Какой сайт мне нужен: лендинг или корпоративный?'],
+    ['🤖 Цифровой сотрудник', 'Что такое цифровой сотрудник?'],
+    ['📊 Битрикс24', 'Что такое Битрикс24 и нужна ли мне CRM?'],
+    ['🔎 SEO и поиск', 'Делаете ли вы SEO и продвижение?'],
+    ['🧑‍💻 О Викторе', 'Расскажите о себе, какой у вас опыт?'],
+    ['🖼 Примеры работ', 'Покажите примеры работ'],
+    ['📞 Контакты', 'Как с вами связаться?'],
+    ['✍️ Оставить заявку', 'Хочу оставить заявку']
+  ];
   var history = [];
   var busy = false;
 
@@ -12,7 +24,8 @@
       '<span class="chat-dot"></span>Спросить сотрудника</button>' +
     '<section class="chat-panel" role="dialog" aria-label="Чат с цифровым сотрудником" hidden>' +
       '<header><div><b>Цифровой сотрудник</b><small>AI-ассистент Виктора</small></div>' +
-      '<button type="button" class="chat-close" aria-label="Закрыть">×</button></header>' +
+      '<div class="chat-hbtns"><button type="button" class="chat-menu" aria-label="Главное меню">☰ Меню</button>' +
+      '<button type="button" class="chat-close" aria-label="Закрыть">×</button></div></header>' +
       '<div class="chat-log" aria-live="polite"></div>' +
       '<div class="chat-chips"></div>' +
       '<form class="chat-form"><input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">' +
@@ -47,14 +60,34 @@
     launch.classList.add('hidden');
     if (!log.children.length) {
       add('bot', GREETING);
-      CHIPS.forEach(function (c) {
-        var b = document.createElement('button');
-        b.type = 'button'; b.textContent = c;
-        b.addEventListener('click', function () { send(c); });
-        chips.appendChild(b);
-      });
+      CHIPS.forEach(function (c) { chip(c, function () { send(c); }); });
+      chip('☰ Меню', showMenu);
     }
     setTimeout(function () { input.focus(); }, 50);
+  }
+  function chip(label, fn) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.textContent = label;
+    b.addEventListener('click', fn);
+    chips.appendChild(b);
+  }
+  function showMenu() {
+    chips.innerHTML = '';
+    MENU.forEach(function (m) { chip(m[0], function () { send(m[1]); }); });
+    chip('↺ Начать заново', reset);
+    log.scrollTop = log.scrollHeight;
+  }
+  function showFollowUps() {
+    chips.innerHTML = '';
+    chip('☰ Меню', showMenu);
+    chip('✍️ Оставить заявку', function () { send('Хочу оставить заявку'); });
+  }
+  function reset() {
+    history = [];
+    log.innerHTML = '';
+    chips.innerHTML = '';
+    add('bot', GREETING);
+    showMenu();
   }
   function close() { panel.hidden = true; launch.classList.remove('hidden'); }
 
@@ -84,11 +117,13 @@
     if (ok) history.push({ role: 'assistant', content: reply });
     else history.pop();
     busy = false;
+    showFollowUps();
     input.focus();
   }
 
   launch.addEventListener('click', open);
   root.querySelector('.chat-close').addEventListener('click', close);
+  root.querySelector('.chat-menu').addEventListener('click', showMenu);
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var t = input.value; input.value = '';
