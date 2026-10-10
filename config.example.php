@@ -12,5 +12,9 @@ return [
     'imap_user'   => 'info@shebercraft.kz',
     'imap_pass'   => 'ВСТАВЬТЕ_ПАРОЛЬ_ОТ_ЯЩИКА',
 
+    // Цифровой сотрудник на сайте (chat.php). Ключ: console.anthropic.com -> API Keys
+    'anthropic_key'   => 'sk-ant-...',
+    'anthropic_model' => 'claude-haiku-5-5',
+
     'cron_key'    => 'длинная-случайная-строка',
 ];
